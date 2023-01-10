@@ -1,5 +1,6 @@
 import usersCollection from "../models/userSchema.js";
 import jwt from "jsonwebtoken";
+import bcrypt from 'bcrypt';
 
 
 export const getAllUsers = async (req, res, next) => {
@@ -22,27 +23,32 @@ export const createNewUser = async (req, res, next) => {
 };
 
 export const loginUser = async (req, res, next) => {
+
   try {
     const user = await usersCollection.findOne({ email: req.body.email });
 
-    if (await user.comparePassword(req.body.password)) {
-      let token = jwt.sign(
-        { _id: user._id, firstName: user.firstName },
-        process.env.TOKEN_SECRET_KEY,
-        { expiresIn: "1h", issuer: "CDT", audience: "users" }
-      );
+    if (user) {
 
-      const updatedUser = await usersCollection.findByIdAndUpdate(
-        user._id,
-        { token: token },
-        { new: true }
-      );
+      const password = await bcrypt.compare(req.body.password, user.password)
 
-      res.header("token", token);
-      res.json({ success: true, data: updatedUser.publicFields() });
+      if (password) {
+
+        let token = jwt.sign({ _id: user._id, firstName: user.firstName }, process.env.TOKEN_SECRET_KEY, { expiresIn: "50 days", issuer: "CDT", audience: "users" })
+
+        const updatedUser = await usersCollection.findByIdAndUpdate(user._id, { token: token }, { new: true })
+
+        res.header("token", token)
+
+        res.json({ success: true, data: updatedUser})
+
+      } else {
+        throw new Error("password doesn't match")
+      }
+
     } else {
       throw new Error("Email doesn't exist");
     }
+
   } catch (err) {
     next(err);
   }
