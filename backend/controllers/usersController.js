@@ -1,6 +1,6 @@
 import usersCollection from "../models/userSchema.js";
-
 import jwt from "jsonwebtoken";
+
 
 export const getAllUsers = async (req, res, next) => {
   try {
