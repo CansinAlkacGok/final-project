@@ -9,6 +9,8 @@ const app = express();
 
 const PORT = 4000;
 
+mongoose.set("strictQuery", false);
+
 mongoose.connect(`${process.env.MONGO_URI}`, () => {
     console.log("connection established")
 })

@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import usersCollection from '../models/usersSchema.js'
+import usersCollection from '../models/userSchema.js'
 
 async function verifyToken (req,res,next){
 
