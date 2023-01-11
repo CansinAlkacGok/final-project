@@ -1,7 +1,6 @@
 import usersCollection from "../models/userSchema.js";
 import jwt from "jsonwebtoken";
-import bcrypt from 'bcrypt';
-
+import bcrypt from "bcrypt";
 
 export const getAllUsers = async (req, res, next) => {
   try {
@@ -22,72 +21,90 @@ export const createNewUser = async (req, res, next) => {
   }
 };
 
-// ---- added these two controllers ---- //
-
-export const getSingleUser = async(req,res,next)=>{
-
-  try{
-      const id = req.params.id
-      const singleUser = await usersCollection.findById(id)
-      res.json({success:true, user:singleUser})
-
+export const getSingleUser = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const singleUser = await usersCollection.findById(id);
+    res.json({ success: true, user: singleUser });
+  } catch (err) {
+    const error = new Error("Id doesn't exist");
+    error.status = 404;
+    next(error);
   }
-  catch(err){
-      const error  = new Error("Id doesn't exist")
-      error.status = 404;
-      next(error)
-  }
-}
+};
 
-export const deleteUser = async (req,res,next) => {
+export const updateUser = async (req, res, next) => {
+  try {
+    let user = await usersCollection.findById(req.params.id);
 
-    try{
-      const {id} = req.params
-      const existingUser = await usersCollection.findById(id)
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+    await user.save();
 
-      if(existingUser) {
-        const deleteStatus = await usersCollection.deleteOne({_id:existingUser._id})
-      } else {
-        throw new Error("User id does not exist")
+    let body = {};
+    for (const key in req.body) {
+      if (req.body[key] !== "" && key !== "password") {
+        body[key] = req.body[key];
       }
-
     }
-    catch(err) {
-      next(err)
+    const updatedUser = await usersCollection.findByIdAndUpdate(
+      req.params.id,
+      body,
+      { new: true }
+    );
+    res.json({ success: true, data: updatedUser });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const deleteUser = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const existingUser = await usersCollection.findById(id);
+
+    if (existingUser) {
+      const deleteStatus = await usersCollection.deleteOne({
+        _id: existingUser._id,
+      });
+    } else {
+      throw new Error("User id does not exist");
     }
-
-}
-
-// ---- end ---- //
-
+  } catch (err) {
+    next(err);
+  }
+};
 
 export const loginUser = async (req, res, next) => {
-
   try {
     const user = await usersCollection.findOne({ email: req.body.email });
 
     if (user) {
-
-      const password = await bcrypt.compare(req.body.password, user.password)
+      const password = await bcrypt.compare(req.body.password, user.password);
 
       if (password) {
+        let token = jwt.sign(
+          { _id: user._id, firstName: user.firstName },
+          process.env.TOKEN_SECRET_KEY,
+          { expiresIn: "50 days", issuer: "CDT", audience: "users" }
+        );
 
-        let token = jwt.sign({ _id: user._id, firstName: user.firstName }, process.env.TOKEN_SECRET_KEY, { expiresIn: "50 days", issuer: "CDT", audience: "users" })
+        const updatedUser = await usersCollection.findByIdAndUpdate(
+          user._id,
+          { token: token },
+          { new: true }
+        );
 
-        const updatedUser = await usersCollection.findByIdAndUpdate(user._id, { token: token }, { new: true })
+        res.header("token", token);
 
-        res.header("token", token)
-
-        res.json({ success: true, data: updatedUser})
-
+        res.json({ success: true, data: updatedUser });
       } else {
-        throw new Error("password doesn't match")
+        throw new Error("password doesn't match");
       }
-
     } else {
       throw new Error("Email doesn't exist");
     }
-
   } catch (err) {
     next(err);
   }

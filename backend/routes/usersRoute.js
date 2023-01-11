@@ -1,6 +1,14 @@
-import express from 'express';
-import { getAllUsers, createNewUser, loginUser, checkUserToken, deleteUser, getSingleUser } from '../controllers/usersController.js';
-import verifyToken from '../middlewares/verification.js';
+import express from "express";
+import {
+  getAllUsers,
+  createNewUser,
+  loginUser,
+  checkUserToken,
+  deleteUser,
+  getSingleUser,
+  updateUser,
+} from "../controllers/usersController.js";
+import verifyToken from "../middlewares/verification.js";
 
 const route = express.Router();
 
@@ -12,12 +20,10 @@ route.post("/login", loginUser);
 
 route.get("/checkusertoken", checkUserToken);
 
-// ---- added these two routes ---- //
+route.get("/:id", getSingleUser);
 
-route.get("/:id", getSingleUser)
+route.patch("/:id", updateUser);
 
 route.delete("/:id", deleteUser);
-
-// ---- end ---- //
 
 export default route;
