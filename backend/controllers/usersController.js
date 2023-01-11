@@ -22,6 +22,45 @@ export const createNewUser = async (req, res, next) => {
   }
 };
 
+// ---- added these two controllers ---- //
+
+export const getSingleUser = async(req,res,next)=>{
+
+  try{
+      const id = req.params.id
+      const singleUser = await usersCollection.findById(id)
+      res.json({success:true, user:singleUser})
+
+  }
+  catch(err){
+      const error  = new Error("Id doesn't exist")
+      error.status = 404;
+      next(error)
+  }
+}
+
+export const deleteUser = async (req,res,next) => {
+
+    try{
+      const {id} = req.params
+      const existingUser = await usersCollection.findById(id)
+
+      if(existingUser) {
+        const deleteStatus = await usersCollection.deleteOne({_id:existingUser._id})
+      } else {
+        throw new Error("User id does not exist")
+      }
+
+    }
+    catch(err) {
+      next(err)
+    }
+
+}
+
+// ---- end ---- //
+
+
 export const loginUser = async (req, res, next) => {
 
   try {
