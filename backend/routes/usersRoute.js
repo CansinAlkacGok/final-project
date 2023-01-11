@@ -1,4 +1,5 @@
-import express from "express";
+
+import express from 'express';
 import {
   getAllUsers,
   createNewUser,
@@ -7,14 +8,15 @@ import {
   deleteUser,
   getSingleUser,
   updateUser,
-} from "../controllers/usersController.js";
-import verifyToken from "../middlewares/verification.js";
+} from "../controllers/usersController.js";;
+import verifyToken from '../middlewares/verification.js';
+import { usersValidation } from '../middlewares/validation.js';
 
 const route = express.Router();
 
-route.get("/", getAllUsers);
+route.get("/",verifyToken, getAllUsers);
 
-route.post("/", createNewUser);
+route.post("/", usersValidation, createNewUser);
 
 route.post("/login", loginUser);
 
