@@ -1,10 +1,10 @@
-import usersCollection from "../models/userSchema.js";
+import UsersCollection from "../models/userSchema.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 export const getAllUsers = async (req, res, next) => {
   try {
-    const users = await usersCollection.find(); //res.json({ success: true, users: users });
+    const users = await UsersCollection.find();
     res.json(users);
   } catch (err) {
     next(err);
@@ -13,7 +13,7 @@ export const getAllUsers = async (req, res, next) => {
 
 export const createNewUser = async (req, res, next) => {
   try {
-    const createUser = new usersCollection(req.body);
+    const createUser = new UsersCollection(req.body);
     await createUser.save();
     res.json({ success: true, users: createUser });
   } catch (err) {
@@ -24,7 +24,7 @@ export const createNewUser = async (req, res, next) => {
 export const getSingleUser = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const singleUser = await usersCollection.findById(id);
+    const singleUser = await UsersCollection.findById(id);
     res.json({ success: true, user: singleUser });
   } catch (err) {
     const error = new Error("Id doesn't exist");
@@ -35,7 +35,7 @@ export const getSingleUser = async (req, res, next) => {
 
 export const updateUser = async (req, res, next) => {
   try {
-    let user = await usersCollection.findById(req.params.id);
+    let user = await UsersCollection.findById(req.params.id);
 
     if (req.body.password) {
       user.password = req.body.password;
@@ -48,7 +48,7 @@ export const updateUser = async (req, res, next) => {
         body[key] = req.body[key];
       }
     }
-    const updatedUser = await usersCollection.findByIdAndUpdate(
+    const updatedUser = await UsersCollection.findByIdAndUpdate(
       req.params.id,
       body,
       { new: true }
@@ -62,12 +62,12 @@ export const updateUser = async (req, res, next) => {
 export const deleteUser = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const existingUser = await usersCollection.findById(id);
+    const existingUser = await UsersCollection.findById(id);
 
     if (existingUser) {
-      const deleteStatus = await usersCollection.deleteOne({
-        _id: existingUser._id,
-      });
+      const deleteStatus = await UsersCollection.deleteOne({ _id: existingUser._id });
+      res.json({success: true, status: deleteStatus})
+
     } else {
       throw new Error("User id does not exist");
     }
@@ -78,7 +78,7 @@ export const deleteUser = async (req, res, next) => {
 
 export const loginUser = async (req, res, next) => {
   try {
-    const user = await usersCollection.findOne({ email: req.body.email });
+    const user = await UsersCollection.findOne({ email: req.body.email });
 
     if (user) {
       const password = await bcrypt.compare(req.body.password, user.password);
@@ -90,7 +90,7 @@ export const loginUser = async (req, res, next) => {
           { expiresIn: "50 days", issuer: "CDT", audience: "users" }
         );
 
-        const updatedUser = await usersCollection.findByIdAndUpdate(
+        const updatedUser = await UsersCollection.findByIdAndUpdate(
           user._id,
           { token: token },
           { new: true }
@@ -105,17 +105,6 @@ export const loginUser = async (req, res, next) => {
     } else {
       throw new Error("Email doesn't exist");
     }
-  } catch (err) {
-    next(err);
-  }
-};
-
-export const checkUserToken = async (req, res, next) => {
-  try {
-    const token = req.headers.token;
-    const payload = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
-
-    const user = await usersCollection.findById(payload._id);
   } catch (err) {
     next(err);
   }

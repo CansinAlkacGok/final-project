@@ -23,6 +23,8 @@ Schema.pre("save", function (next) {
         next();
 })
 
-const usersCollection = mongoose.model("users", Schema);
+const UsersCollection = mongoose.model("users", Schema);
 
-export default usersCollection;
+UsersCollection.createIndexes({email: -1})
+
+export default UsersCollection;

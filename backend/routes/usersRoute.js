@@ -1,26 +1,23 @@
 
 import express from 'express';
 import {
-  getAllUsers,
-  createNewUser,
-  loginUser,
-  checkUserToken,
-  deleteUser,
-  getSingleUser,
-  updateUser,
+    getAllUsers,
+    createNewUser,
+    loginUser,
+    deleteUser,
+    getSingleUser,
+    updateUser,
 } from "../controllers/usersController.js";;
 import verifyToken from '../middlewares/verification.js';
 import { usersValidation } from '../middlewares/validation.js';
 
 const route = express.Router();
 
-route.get("/",verifyToken, getAllUsers);
+route.get("/", verifyToken, getAllUsers);
 
 route.post("/", usersValidation, createNewUser);
 
 route.post("/login", loginUser);
-
-route.get("/checkusertoken", checkUserToken);
 
 route.get("/:id", getSingleUser);
 
