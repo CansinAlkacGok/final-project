@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import usersCollection from '../models/userSchema.js'
+import UsersCollection from '../models/userSchema.js'
 
 async function verifyToken (req,res,next){
 
@@ -9,7 +9,7 @@ async function verifyToken (req,res,next){
       
         const payload = jwt.verify(token, process.env.TOKEN_SECRET_KEY )
 
-        const user = await usersCollection.findById(payload._id)
+        const user = await UsersCollection.findById(payload._id)
 
         req.user = user
         next() 
