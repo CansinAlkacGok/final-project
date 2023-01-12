@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
  
 const Schema = new mongoose.Schema({
     firstName: {type: String, required:true},
@@ -9,6 +10,21 @@ const Schema = new mongoose.Schema({
     tasks: {type: Object}
 })
 
-const usersCollection = mongoose.model("users", Schema);
+Schema.pre("save", function (next) {
 
-export default usersCollection;
+    if(this.isModified("password")){
+        
+        const hashedPassword = bcrypt.hashSync(this.password, 10)
+        this.password = hashedPassword;
+        
+         console.log("password hashed and store into DB")
+    }
+
+        next();
+})
+
+const UsersCollection = mongoose.model("users", Schema);
+
+UsersCollection.createIndexes({email: -1})
+
+export default UsersCollection;
