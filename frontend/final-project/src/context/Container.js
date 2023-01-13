@@ -23,7 +23,7 @@ export default function Container(props) {
           }
         });
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <MyContext.Provider value={{ user, setUser }}>
