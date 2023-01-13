@@ -109,3 +109,19 @@ export const loginUser = async (req, res, next) => {
     next(err);
   }
 };
+
+export const checkUserToken = async (req, res,next) => {
+
+  try{
+      const token = req.headers.token 
+      const payload = jwt.verify(token, process.env.TOKEN_SECRET_KEY) 
+
+      const user = await UsersCollection.findById(payload._id)
+
+      res.json({success: true, data: user})
+  }
+  catch(err){
+      next(err)
+  }
+
+}
