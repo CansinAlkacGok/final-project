@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink, Routes, Route } from "react-router-dom";
-import HomePage from "./components/HomePage.js";
+import UsersLandingPage from "./components/UsersLandingPage";
 import Register from "./components/Register.js";
 import Login from "./components/Login.js";
 
@@ -23,7 +23,7 @@ function App() {
       </ul>
 
       <Routes>
-        <Route path="/" element={<HomePage></HomePage>} />
+        <Route path="/" element={<UsersLandingPage></UsersLandingPage>} />
         <Route path="/login" element={<Login></Login>} />
         <Route path="/users" element={<Register></Register>} />
       </Routes>
