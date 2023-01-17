@@ -70,28 +70,29 @@ export default function UsersLandingPage() {
                 <br></br>
               </div>
             </div>
-                  
+
             <div className="yellow">
               <h1>Outlet - Placeholder for Features in the middle</h1>
               <Outlet></Outlet>
-              
             </div>
 
             <div className="red">
               <div className="purple">
-                <h1>Calendar</h1>
+                <h1>Feature</h1>
+                <p>e.g. Calendar</p>
               </div>
 
               <div className="green">
-                <h1>Spotify</h1>
+                <h1>Feature</h1>
+                <p>e.g. Spotify</p>
               </div>
 
               <div className="blue">
-                <h1>Other</h1>
+                <h1>Feature</h1>
               </div>
             </div>
           </div>
-          
+
           <footer>
             <h1>Footer</h1>
           </footer>
@@ -106,7 +107,6 @@ export default function UsersLandingPage() {
           </nav>
         </>
       )}
-
     </div>
   );
 }

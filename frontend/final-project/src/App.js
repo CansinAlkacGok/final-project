@@ -11,7 +11,6 @@ import Notes from "./components/Notes";
 function App() {
   return (
     <div className="App">
-
       <Routes>
         <Route path="/" element={<HomePage></HomePage>}>
           <Route path="/login" element={<Login></Login>} />
@@ -19,6 +18,7 @@ function App() {
         </Route>
 
         <Route path="/home" element={<UsersLandingPage></UsersLandingPage>}>
+
           <Route path="/home/profile" element={<ProfilePage></ProfilePage>}></Route>
           <Route path="/home/settings" element={<Settings></Settings>}></Route>
 
@@ -26,10 +26,7 @@ function App() {
           <Route path="/home/notes/personal" element={<Notes></Notes>}></Route>
           <Route path="/home/notes/business" element={<Notes></Notes>}></Route>
           <Route path="/home/notes/education" element={<Notes></Notes>}></Route>
-          
         </Route>
-
-
       </Routes>
     </div>
   );
