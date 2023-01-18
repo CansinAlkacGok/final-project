@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import morgan from 'morgan'
 import usersRoute from './routes/usersRoute.js';
+import fileUpload from 'express-fileupload';
 
 const app = express();
 
@@ -18,6 +19,17 @@ mongoose.connect(`${process.env.MONGO_URI}`, () => {
 app.use(morgan("dev"));
 
 app.use(express.json());
+
+app.use(express.urlencoded({extended:true}))
+
+app.use(fileUpload());
+
+app.use((req,res,next)=> {
+
+    console.log(req.body)
+    next();
+})
+
 
 app.use("/users", usersRoute)
 

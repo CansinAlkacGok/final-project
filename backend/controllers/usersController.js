@@ -12,6 +12,7 @@ export const getAllUsers = async (req, res, next) => {
 };
 
 export const createNewUser = async (req, res, next) => {
+  console.log(req.body)
   try {
     const createUser = new UsersCollection(req.body);
     await createUser.save();
