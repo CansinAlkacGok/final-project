@@ -23,7 +23,7 @@ function App() {
         <Route path="/home" element={<UsersLandingPage></UsersLandingPage>}>
           <Route path="/home/profile" element={<Profile></Profile>}></Route>
           <Route path="/home/settings" element={<Settings></Settings>}></Route>
-          <Route path ='/editprofile' element= {<EditProfileUser></EditProfileUser>} />
+          <Route path ='/home/editprofile' element= {<EditProfileUser></EditProfileUser>} />
           <Route path="/home/notes/all" element={<Notes></Notes>}></Route>
           <Route path="/home/notes/personal" element={<Notes></Notes>}></Route>
           <Route path="/home/notes/business" element={<Notes></Notes>}></Route>
