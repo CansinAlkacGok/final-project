@@ -4,6 +4,7 @@ import {
     getAllUsers,
     createNewUser,
     loginUser,
+    checkUserToken,
     deleteUser,
     getSingleUser,
     updateUser,
@@ -16,6 +17,8 @@ const route = express.Router();
 route.get("/", verifyToken, getAllUsers);
 
 route.post("/", usersValidation, createNewUser);
+
+route.get("/checkusertoken", checkUserToken)
 
 route.post("/login", loginUser);
 
