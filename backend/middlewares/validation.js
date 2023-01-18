@@ -1,6 +1,6 @@
 import { check, validationResult } from 'express-validator';
 
-export let usersValidation = [
+let usersValidation = [
 
     check("firstName").escape().trim().isLength({ min: 3 }).withMessage("minimum character required is 3"),
 
@@ -12,6 +12,7 @@ export let usersValidation = [
 
     (req, res, next) => {
 
+        console.log(req.body)
         const result = validationResult(req)
 
         if (result.isEmpty()) {
@@ -29,3 +30,5 @@ export let usersValidation = [
         }
     }
 ] 
+
+export default usersValidation

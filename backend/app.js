@@ -3,7 +3,12 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
 import morgan from 'morgan'
+import fileUpload from 'express-fileupload';
 import usersRoute from './routes/usersRoute.js';
+import kanbanRoute from './routes/kanbanRoute.js'
+import tasksRoute from './routes/tasksRoute.js';
+import notesRoute from './routes/notesRoute.js';
+
 
 const app = express();
 
@@ -19,7 +24,25 @@ app.use(morgan("dev"));
 
 app.use(express.json());
 
-app.use("/users", usersRoute)
+app.use(express.urlencoded({extended:true}))
+
+app.use(fileUpload());
+
+app.use((req,res,next)=> {
+
+    console.log(req.body)
+    next();
+})
+
+
+app.use("/users", usersRoute);
+
+app.use("/kanban", kanbanRoute);
+
+app.use("/tasks", tasksRoute);
+
+app.use("/notes", notesRoute);
+
 
 app.use((err, req, res, next)=> { 
     

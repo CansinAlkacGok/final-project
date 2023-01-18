@@ -10,7 +10,7 @@ import {
     updateUser,
 } from "../controllers/usersController.js";;
 import verifyToken from '../middlewares/verification.js';
-import { usersValidation } from '../middlewares/validation.js';
+import usersValidation from '../middlewares/validation.js';
 
 const route = express.Router();
 
@@ -24,7 +24,7 @@ route.post("/login", loginUser);
 
 route.get("/:id", getSingleUser);
 
-route.patch("/:id", updateUser);
+route.patch("/:id", verifyToken, updateUser);
 
 route.delete("/:id", deleteUser);
 
