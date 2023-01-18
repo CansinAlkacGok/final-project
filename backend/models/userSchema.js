@@ -1,16 +1,17 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcrypt';
  
-const Schema = new mongoose.Schema({
+const usersSchema = new mongoose.Schema({
     firstName: {type: String, required:true},
     lastName: {type: String, required:true},
     email: {type: String, required:true},
     password: {type: String, required:true},
-    notes: {type: Object},
-    tasks: {type: Object}
+    notes: [{type: Schema.Types.ObjectId, ref: "notes"}],
+    tasks: [{type: Schema.Types.ObjectId, ref: "tasks"}],
+    kanban: [{type: Schema.Types.ObjectId, ref: "kanban"}]
 })
 
-Schema.pre("save", function (next) {
+usersSchema.pre("save", function (next) {
 
     if(this.isModified("password")){
         
@@ -23,7 +24,7 @@ Schema.pre("save", function (next) {
         next();
 })
 
-const UsersCollection = mongoose.model("users", Schema);
+const UsersCollection = mongoose.model("users", usersSchema);
 
 UsersCollection.createIndexes({email: -1})
 
