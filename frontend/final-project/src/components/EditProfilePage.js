@@ -28,7 +28,7 @@ export default function EditProfileUser() {
                     setUser(result.data)
 
                     setTimeout(()=>{
-                        navigate("/profile")
+                        navigate("/home/profile")
                     },2000)
                     
                 } else {

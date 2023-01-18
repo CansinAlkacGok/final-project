@@ -13,7 +13,7 @@ export default function Profile() {
   };
 
   const editProfile = () => {
-    navigate("/editprofile")
+    navigate("/home/editprofile")
   }
 
   const deleteUserAccount = () => {
@@ -70,3 +70,4 @@ export default function Profile() {
     </div>
   );
 }
+
