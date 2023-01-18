@@ -5,6 +5,7 @@ import MyContext from "../context/MyContext";
 import testImage from "./testImage.jpg";
 import "./UsersLandingPage.css";
 
+
 export default function UsersLandingPage() {
   const { user, setUser } = useContext(MyContext);
   const navigate = useNavigate();
@@ -109,4 +110,5 @@ export default function UsersLandingPage() {
       )}
     </div>
   );
+
 }
