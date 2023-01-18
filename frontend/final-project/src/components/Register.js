@@ -9,9 +9,10 @@ export default function Register() {
 
   const registiration = (e) => {
 
-    e.preventdefault();
+    e.preventDefault()
 
     const data = new FormData(e.target)
+   
 
     fetch("/users",
       {
@@ -48,8 +49,8 @@ export default function Register() {
         <input type="email" name="email" required /><br></br>
         <label>Password </label> <br></br>
         <input type="password" name="password" required /><br></br>
-        <label>Profile Image </label> <br></br>
-        <input type="file" name="image" /> <br></br>
+        {/*      <label>Profile Image </label> <br></br>
+        <input type="file" name="image" /> <br></br> */}
         <button>Register</button>
       </form>
       <Toaster position="top-center" />
