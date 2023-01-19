@@ -44,27 +44,27 @@ export default function UsersLandingPage() {
               </div>
               <div className="note-categories">
                 <h3>Navigation</h3>
-                <NavLink className="category" to="/home/notes/all">
+                <NavLink className="category" to="/home/all">
                   {" "}
                   All{" "}
                 </NavLink>
                 <br></br>
-                <NavLink className="category" to="/home/notes/personal">
+                <NavLink className="category" to="/home/kanban">
                   {" "}
-                  Personal{" "}
+                  Kanban{" "}
                 </NavLink>
                 <br></br>
-                <NavLink className="category" to="/home/notes/business">
+                <NavLink className="category" to="/home/notes">
                   {" "}
-                  Business{" "}
+                  Notes{" "}
                 </NavLink>
                 <br></br>
-                <NavLink className="category" to="/home/notes/education">
+                <NavLink className="category" to="/home/todo">
                   {" "}
-                  Education{" "}
+                  To Do's{" "}
                 </NavLink>
                 <br></br>
-                <NavLink className="category" to="/home/notes/education">
+                <NavLink className="category" to="/home/notes/">
                   {" "}
                   <button>Add Section</button>{" "}
                 </NavLink>
