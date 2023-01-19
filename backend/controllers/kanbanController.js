@@ -1,11 +1,17 @@
 import KanbanCollection from "../models/kanbanSchema.js";
 
-
-// Not sure about hwo to get all the "toDos", "Allworking" and "AllDone". So far I have just added the code below to see all the data for each controller, so they are basically the same except endpoints.
 export const getAllToDos = async (req, res, next) => {
   try {
     const toDos = await KanbanCollection.find();
-    res.json(toDos);
+    const toDosArray = [];
+    for (const toDo of toDos) {
+      if (toDo.toDo.length > 0) {
+        // console.log(toDo.toDo);
+        toDosArray.push(toDo.toDo);
+      }
+    }
+    // console.log(toDosArray.flat());
+    res.json({ success: true, toDos: toDosArray.flat() });
   } catch (err) {
     next(err);
   }
@@ -14,13 +20,15 @@ export const getAllToDos = async (req, res, next) => {
 export const getAllWorking = async (req, res, next) => {
   try {
     const allWorking = await KanbanCollection.find();
-
-    // res.json(allWorking[1].working);
-    // [
-    //     "do the dishes"
-    // ]
-
-    res.json(allWorking);
+    const allWorkingArray = [];
+    for (const working of allWorking) {
+      if (working.working.length > 0) {
+        // console.log(working.working);
+        allWorkingArray.push(working.working);
+      }
+    }
+    // console.log(allWorkingArray.flat());
+    res.json({ success: true, working: allWorkingArray.flat() });
   } catch (err) {
     next(err);
   }
@@ -29,7 +37,15 @@ export const getAllWorking = async (req, res, next) => {
 export const getAllDone = async (req, res, next) => {
   try {
     const allDone = await KanbanCollection.find();
-    res.json(allDone);
+    const allDoneArray = [];
+    for (const done of allDone) {
+      if (done.done.length > 0) {
+        // console.log(done.done);
+        allDoneArray.push(done.done);
+      }
+    }
+    // console.log(allDoneArray.flat());
+    res.json({ success: true, done: allDoneArray.flat() });
   } catch (err) {
     next(err);
   }
@@ -49,7 +65,7 @@ export const getSingleToDo = async (req, res, next) => {
   try {
     const id = req.params.id;
     const singleToDo = await KanbanCollection.findById(id);
-    res.json({ success: true, kanban: singleToDo });
+    res.json({ success: true, kanban: singleToDo.toDo });
   } catch (err) {
     next(err);
   }
@@ -59,7 +75,7 @@ export const getSingleWorking = async (req, res, next) => {
   try {
     const id = req.params.id;
     const singleWorking = await KanbanCollection.findById(id);
-    res.json({ success: true, kanban: singleWorking });
+    res.json({ success: true, kanban: singleWorking.working });
   } catch (err) {
     next(err);
   }
@@ -69,7 +85,7 @@ export const getSingleDone = async (req, res, next) => {
   try {
     const id = req.params.id;
     const singleDone = await KanbanCollection.findById(id);
-    res.json({ success: true, kanban: singleDone });
+    res.json({ success: true, kanban: singleDone.done });
   } catch (err) {
     next(err);
   }
