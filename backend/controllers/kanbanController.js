@@ -1,25 +1,48 @@
-import KanbanCollection from '../models/kanbanSchema.js';
+import KanbanCollection from '../models/kanbanSchema.js'
 
-export const getAllToDos = () => {}
 
-export const getAllWorking = () => {}
+export const getAllToDos = async (req, res, next) => {
 
-export const getAllDone = () => {}
+    try {
+        const toDos = await KanbanCollection.find();
 
-export const createNewToDo = () => {}
+        //const toDosArray = []
 
-export const getSingleToDo = () => {}
+        for (const toDo of toDos) {
+            if (toDo.toDo.length > 0) {
+               // console.log(toDo.toDo)
+                toDosArray.push(toDo.toDo)
+            }
 
-export const getSingleWorking = () => {}
+        }
+        //console.log(toDosArray.flat())
+        res.json({ success: true, toDos: toDosArray.flat() })
 
-export const getSingleDone = () => {}
+    }
+    catch (err) { 
+        next(err); }
+};
 
-export const updateToDo = () => {}
 
-export const updateWorking = () => {}
 
-export const deleteToDo = () => {}
+export const getAllWorking = () => { }
 
-export const deleteWorking = () => {}
+export const getAllDone = () => { }
 
-export const deleteDone = () => {}
+export const createNewToDo = () => { }
+
+export const getSingleToDo = () => { }
+
+export const getSingleWorking = () => { }
+
+export const getSingleDone = () => { }
+
+export const updateToDo = () => { }
+
+export const updateWorking = () => { }
+
+export const deleteToDo = () => { }
+
+export const deleteWorking = () => { }
+
+export const deleteDone = () => { }
