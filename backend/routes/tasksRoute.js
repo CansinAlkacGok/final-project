@@ -1,22 +1,23 @@
 import express from 'express';
-import {getAllTasks, getAllCompletedTasks, getSingleTask, getSingleCompletedTask, createNewTask, updateTask, deleteTask, deleteCompletedTask} from '../controllers/tasksController.js'
+import {getAllTasks, getAllCompletedTasks, getSingleTask, completeTask, createNewTask, updateTask, deleteTask, deleteCompletedTask} from '../controllers/tasksController.js';
+import verifyToken from '../middlewares/verification.js';
 
 const route = express.Router();
 
-route.get("/", getAllTasks);
+route.get("/",verifyToken, getAllTasks);
 
-route.get("/completed", getAllCompletedTasks)
+route.get("/completed", verifyToken, getAllCompletedTasks)
 
-route.post("/", createNewTask);
+route.post("/", verifyToken, createNewTask);
 
-route.get("/:id", getSingleTask);
+route.get("/:id", verifyToken, getSingleTask);
 
-route.get("/completed/:id", getSingleCompletedTask)
+route.get("/completed/:id", verifyToken, completeTask)
 
-route.patch("/:id", updateTask);
+route.patch("/:id",verifyToken, updateTask);
 
-route.delete("/:id", deleteTask);
+route.delete("/:id", verifyToken, deleteTask);
 
-route.delete ("/completed/:id", deleteCompletedTask)
+route.delete ("/completed/:id", verifyToken, deleteCompletedTask)
 
 export default route;

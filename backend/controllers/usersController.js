@@ -49,11 +49,7 @@ export const updateUser = async (req, res, next) => {
         body[key] = req.body[key];
       }
     }
-    const updatedUser = await UsersCollection.findByIdAndUpdate(
-      req.params.id,
-      body,
-      { new: true }
-    );
+    const updatedUser = await UsersCollection.findByIdAndUpdate(req.params.id, body,{ new: true }).populate({path:"tasks", model: "tasks"});
     res.json({ success: true, data: updatedUser });
   } catch (err) {
     next(err);
