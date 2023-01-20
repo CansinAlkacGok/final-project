@@ -1,4 +1,3 @@
-
 import KanbanCollection from "../models/kanbanSchema.js";
 
 export const getAllToDos = async (req, res, next) => {
@@ -7,7 +6,7 @@ export const getAllToDos = async (req, res, next) => {
     const toDosArray = [];
     for (const toDo of toDos) {
       if (toDo.toDo.length > 0) {
-        // console.log(toDo.toDo);
+        //console.log(toDo.toDo);
         toDosArray.push(toDo.toDo);
       }
     }
