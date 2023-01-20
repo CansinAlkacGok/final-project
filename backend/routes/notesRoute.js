@@ -1,7 +1,9 @@
 import express from 'express';
-import {getAllHealthNotes,getAllPersonalNotes,getAllBusinessNotes,getAllInspirationsNotes, createHealthNotes, createPersonalNotes, createBusinessNotes, createInspirationsNotes, getSingleHealthNote, getSinglePersonalNote, getSingleBusinessNote, getSingleInspirationsNote, updateHealthNote, updatePersonalNote, updateBusinessNote, updateInspirationsNote, deleteHealthNote, deletePersonalNote, deleteBusinessNote, deleteInspirationsNote } from '../controllers/notesController.js'
+import {getAllNotes, getAllHealthNotes,getAllPersonalNotes,getAllBusinessNotes,getAllInspirationsNotes, createHealthNotes, createPersonalNotes, createBusinessNotes, createInspirationsNotes, getSingleHealthNote, getSinglePersonalNote, getSingleBusinessNote, getSingleInspirationsNote, updateHealthNote, updatePersonalNote, updateBusinessNote, updateInspirationsNote, deleteHealthNote, deletePersonalNote, deleteBusinessNote, deleteInspirationsNote } from '../controllers/notesController.js'
 
 const route = express.Router();
+
+route.get("/", getAllNotes)
 
 route.get("/health", getAllHealthNotes);
 
