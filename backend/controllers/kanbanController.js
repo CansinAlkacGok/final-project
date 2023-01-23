@@ -3,21 +3,8 @@ import UsersCollection from "../models/userSchema.js";
 
 export const getAllTasks = async (req, res, next) => {
   try {
-<<<<<<< HEAD
     const alltasks = await KanbanCollection.find();
     res.json({ success: true, toDos: alltasks });
-=======
-    const toDos = await KanbanCollection.find();
-    const toDosArray = [];
-    for (const toDo of toDos) {
-      if (toDo.toDo.length > 0) {
-        //console.log(toDo.toDo);
-        toDosArray.push(toDo.toDo);
-      }
-    }
-    // console.log(toDosArray.flat());
-    res.json({ success: true, toDos: toDosArray.flat() });
->>>>>>> 6a71e786c6feb8241d09478bb49a2e8cfec8ed82
   } catch (err) {
     next(err);
   }
