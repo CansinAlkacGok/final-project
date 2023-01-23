@@ -1,30 +1,30 @@
-import express from 'express';
-import {getAllToDos, getAllWorking, getAllDone, getSingleToDo, getSingleWorking, getSingleDone, createNewToDo, updateToDo, updateWorking, deleteToDo, deleteWorking, deleteDone } from '../controllers/kanbanController.js'
+import express from "express";
+import {
+  getSingleToDo,
+  getAllTasks,
+  createNewTask,
+  getAllDoingTasks,
+  getAllDoneTasks,
+  updateTask,
+  deleteTask,
+} from "../controllers/kanbanController.js";
+import verifyToken from '../middlewares/verification.js';
 
 const route = express.Router();
 
-route.get("/", getAllToDos);
 
-route.get("/working", getAllWorking);
+route.get("/", verifyToken, getAllTasks);
 
-route.get("/done", getAllDone)
+route.get("/doing", verifyToken, getAllDoingTasks);
 
-route.post("/", createNewToDo);
+route.get("/done", verifyToken, getAllDoneTasks);
 
-route.get("/:id", getSingleToDo);
+route.post("/", verifyToken, createNewTask);
 
-route.get("/working/:id", getSingleWorking);
+route.get("/:id", verifyToken, getSingleToDo);
 
-route.get("/done/:id", getSingleDone);
+route.patch("/:id", verifyToken, updateTask);
 
-route.patch("/:id", updateToDo);
-
-route.patch("/working/:id", updateWorking)
-
-route.delete("/:id", deleteToDo);
-
-route.delete("/working/:id", deleteWorking);
-
-route.delete("/done/:id", deleteDone);
+route.delete("/:id", verifyToken, deleteTask);
 
 export default route;

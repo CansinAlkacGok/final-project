@@ -8,7 +8,7 @@ const usersSchema = new mongoose.Schema({
     password: {type: String, required:true},
     notes: [{type: Schema.Types.ObjectId, ref: "notes"}],
     tasks: [{type: Schema.Types.ObjectId, ref: "tasks"}],
-    kanban: [{type: Schema.Types.ObjectId, ref: "kanban"}]
+    kanban: [{type: Schema.Types.ObjectId, ref: "kanbans"}]
 })
 
 usersSchema.pre("save", function (next) {
