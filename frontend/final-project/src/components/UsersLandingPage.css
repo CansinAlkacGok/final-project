@@ -1,111 +1,133 @@
 html {
-    min-height: 100%;
-    position: relative;
+  min-height: 100%;
+  position: relative;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    /* ---- Change below later ! ---- */
-    text-decoration: none;
-    color: black;
+  margin: 0;
+  padding: 0;
+  /* ---- Change below later ! ---- */
+  text-decoration: none;
+  color: black;
 }
 
 body {
-    height: 100%;
-    box-sizing: border-box;
-    background-color: rgb(236, 236, 236);
+  height: 100%;
+  box-sizing: border-box;
+  background-color: rgb(236, 236, 236);
 }
 
-
 .navigations {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: 1.3rem;
+    height: 90vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1.3rem;
 }
 
 .header {
-    background-color: rgba(163, 220, 233, 0.5);
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
-    height: 5vh;
-    
-    width: 100%;
-    box-shadow: 0px 5px 10px 1px rgb(188, 188, 188);
+  /* background-color: rgba(163, 220, 233, 0.5); */
+    height: 10vh;
+  width: 100%;
+  background: linear-gradient(
+    0deg,
+    rgb(236, 236, 236) 0%,
+    rgba(166, 223, 241, 1) 50%,
+    rgba(136, 119, 221, 1) 100%
+  );
+
+  /* display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0px 5px 10px 1px rgb(188, 188, 188); */
 }
 
-.header button {
-    
+/* .header button {
+  font-weight: 600;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(17, 17, 17);
+  padding: 0.3rem 0.5rem;
+  margin-right: 2rem;
+  color: white;
 }
+.header button:hover {
+  background-color: rgb(22, 219, 154);
+  cursor: pointer;
+} */
 
 .profile-settings {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
-.side-navigation {
-    width: fit-content;
-    padding: 3rem;
-    /* margin-top: 3vh; */
-    background: linear-gradient(0deg, rgba(163, 220, 233,1) 0%, rgba(163, 220, 233,0) 100%);
-    text-align: center;
+.navigation-left {
+  width: fit-content;
+  padding: 3rem;
+  /* background: linear-gradient(
+    0deg,
+    rgba(163, 220, 233, 1) 0%,
+    rgba(233, 163, 163, 0) 100%
+  ); */
+  background: linear-gradient(
+    0deg,
+    rgb(163, 220, 233) 0%,
+    rgb(236, 236, 236) 100%
+  );
+  text-align: center;
 }
 
-.note-categories {
-    margin-top: 8rem;
-    min-height: fit-content;
+.categories {
+  margin-top: 8rem;
+  width: 100%;
+  min-height: fit-content;
+  padding-top: 2rem;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
 
-.note-categories h3 {
-    margin-bottom: 2rem;
+.categories h3 {
+  margin-bottom: 2rem;
 }
 
-.note-categories .category {
-    display: flex;
-    justify-content: center;
-
+.navlink {
+  display: flex;
+  justify-content: center;
+  padding: 0.3rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
-
-.red {
-    font-size: 1rem;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 87vh;
-    background-color: rgba(255, 0, 0, 0.56);
+.navigation-right {
+  font-size: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: 1rem;
+  height: 85vh;
 }
 
-.yellow {
-    margin-top: 2rem;
-    background-color: rgba(243, 243, 69, 0.646);
-}
-
-.green {
-    height: 20vh;
-    background-color: rgba(101, 243, 69, 0.646);
-}
-
-.blue {
-    height: 20vh;
-    background-color: rgba(52, 103, 232, 0.646);
-}
-
-.purple {
-    height: 20vh;
-    background-color: rgba(183, 14, 202, 0.646);
+.feature {
+  height: 15vh;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background: linear-gradient(
+    0deg,
+    rgb(249, 224, 245) 0%,
+    rgba(166, 223, 241, 1) 50%,
+    rgba(135, 208, 224, 0.4) 100%
+  );
 }
 
 footer {
-    position: absolute;
-    text-align: center;
-    bottom: 0;
-    width: 100%;
-    height: 5vh;
-    background-color: rgba(163, 220, 233, 1);
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 5vh;
+  background-color: rgba(163, 220, 233, 1);
 }

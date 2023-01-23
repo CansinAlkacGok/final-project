@@ -5,7 +5,6 @@ import MyContext from "../context/MyContext";
 import testImage from "./testImage.jpg";
 import "./UsersLandingPage.css";
 
-
 export default function UsersLandingPage() {
   const { user, setUser } = useContext(MyContext);
   const navigate = useNavigate();
@@ -16,17 +15,24 @@ export default function UsersLandingPage() {
     navigate("/login");
   };
 
+  const isActive = ({ isActive }) => {
+    return {
+      backgroundColor: isActive ? "rgb(82, 219, 212)" : "",
+      borderRadius: isActive ? "5px" : "",
+    };
+  };
+
   return (
     <div>
       {user ? (
         <>
           <div className="header">
-            <NavLink to="/home"> Brand Name / Logo </NavLink> <br></br>
-            <button onClick={logout}>Logout </button>
+            {/* <NavLink to="/home"> Brand Name / Logo </NavLink> <br></br>
+              <button onClick={logout}>Logout </button>  */}
           </div>
 
           <div className="navigations">
-            <div className="side-navigation">
+            <div className="navigation-left">
               <div className="profile-settings">
                 <img
                   alt=""
@@ -37,66 +43,63 @@ export default function UsersLandingPage() {
                     borderRadius: "50%",
                   }}
                 ></img>
-                <NavLink to="/home/profile"> Profile </NavLink>
-                <br></br>
-                <NavLink to="/home/settings"> Settings </NavLink>
-                <br></br>
-              </div>
-              <div className="note-categories">
-                <h3>Navigation</h3>
-                <NavLink className="category" to="/home/all">
+                <NavLink
+                  style={isActive}
+                  className="navlink"
+                  to="/home/profile"
+                >
                   {" "}
-                  All{" "}
+                  Profile{" "}
                 </NavLink>
                 <br></br>
-                <NavLink className="category" to="/home/kanban">
+              </div>
+              <div className="categories">
+                <NavLink style={isActive} className="navlink" to="/home/kanban">
                   {" "}
                   Kanban{" "}
                 </NavLink>
                 <br></br>
-                <NavLink className="category" to="/home/notes">
+                <NavLink style={isActive} className="navlink" to="/home/todo">
+                  {" "}
+                  To-Do List{" "}
+                </NavLink>
+                <br></br>
+                <NavLink style={isActive} className="navlink" to="/home/notes">
                   {" "}
                   Notes{" "}
                 </NavLink>
                 <br></br>
-                <NavLink className="category" to="/home/todo">
+                <NavLink style={isActive} className="navlink" to="/home/notes/">
                   {" "}
-                  To Do's{" "}
-                </NavLink>
-                <br></br>
-                <NavLink className="category" to="/home/notes/">
-                  {" "}
-                  <button>Add Section</button>{" "}
                 </NavLink>
                 <br></br>
               </div>
             </div>
 
-            <div className="yellow">
-              <h1>Outlet - Placeholder for Features in the middle</h1>
+            <div>
               <Outlet></Outlet>
             </div>
 
-            <div className="red">
-              <div className="purple">
+            <div className="navigation-right">
+              <div className="feature">
                 <h1>Feature</h1>
                 <p>e.g. Calendar</p>
               </div>
 
-              <div className="green">
+              <div className="feature">
                 <h1>Feature</h1>
                 <p>e.g. Spotify</p>
               </div>
 
-              <div className="blue">
+              <div className="feature">
                 <h1>Feature</h1>
               </div>
             </div>
           </div>
 
-          <footer>
+          {/* <footer>
             <h1>Footer</h1>
-          </footer>
+          </footer> */}
         </>
       ) : (
         <>
@@ -110,5 +113,4 @@ export default function UsersLandingPage() {
       )}
     </div>
   );
-
 }

@@ -23,12 +23,10 @@ function App() {
 
         <Route path="/home" element={<UsersLandingPage></UsersLandingPage>}>
           <Route path="/home/profile" element={<Profile></Profile>}></Route>
-          <Route path="/home/settings" element={<Settings></Settings>}></Route>
           <Route path ='/home/editprofile' element= {<EditProfileUser></EditProfileUser>} />
-          <Route path="/home/all" element={<Kanban></Kanban>}></Route>
           <Route path="/home/kanban" element={<Kanban></Kanban>}></Route>
-          <Route path="/home/" element={<Kanban></Kanban>}></Route>
-          <Route path="/home/" element={<Kanban></Kanban>}></Route>
+          <Route path="/home/todo" element={<Kanban></Kanban>}></Route>
+          <Route path="/home/notes" element={<Kanban></Kanban>}></Route>
         </Route>
 
       </Routes>
