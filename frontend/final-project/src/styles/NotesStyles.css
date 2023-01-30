@@ -1,116 +1,83 @@
-html {
-    min-height: 100%;
-    position: relative;
+h1 {
+  text-align: center;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    /* ---- Change below later ! ---- */
-    text-decoration: none;
-    color: black;
+.notesContainer {
+  padding: 1rem 5rem;
 }
 
-body {
-    height: 100%;
-    box-sizing: border-box;
-    background-color: rgb(236, 236, 236);
+.notesSection {
+  padding: 5rem 5rem 1rem 5rem;
+  margin: 1rem 2rem;
+  border-bottom: 1px solid black;
+  width: 80%;
 }
 
-
-.navigations {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: 1.3rem;
+.notesTags {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
-.header {
-    background-color: rgba(163, 220, 233, 0.5);
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
-    height: 5vh;
-    
-    width: 100%;
-    box-shadow: 0px 5px 10px 1px rgb(188, 188, 188);
+.noteTag {
+  text-align: center;
+  width: 5rem;
+  border: 1px solid black;
+  padding: 1rem 2rem;
+  margin: 2rem 2rem 0 0;
 }
 
-
-
-.profile-settings {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+.diet {
+  background-color: lightgoldenrodyellow;
 }
 
-.side-navigation {
-    width: fit-content;
-    padding: 3rem;
-    /* margin-top: 3vh; */
-    background: linear-gradient(0deg, rgba(163, 220, 233,1) 0%, rgba(163, 220, 233,0) 100%);
-    text-align: center;
+.fitness {
+  background-color: lightgreen;
 }
 
-.note-categories {
-    margin-top: 8rem;
-    min-height: fit-content;
+.diary {
+  background-color: lightcyan;
 }
 
-.note-categories h3 {
-    margin-bottom: 2rem;
+.coding {
+  background-color: lightseagreen;
 }
 
-.note-categories .category {
-    display: flex;
-    justify-content: center;
-
+.jogging {
+  background-color: violet;
 }
 
+.inspiration {
+  background-color: orange;
+}
 
-.red {
-    font-size: 1rem;
+.learning {
+  background-color: darkgoldenrod;
+}
+
+@media (max-width: 1024px) {
+  .notesContainer,
+  .notesSection {
+    display: grid;
+    grid-template-columns: 1fr;
     padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 87vh;
-    background-color: rgba(255, 0, 0, 0.56);
+    margin: 1rem;
+  }
+  .notesTags {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
-.yellow {
-    width: 100%;
-    margin-top: 2rem;
-    background-color: rgba(243, 243, 69, 0.646);
-}
-
-.yellowH1{
-    text-align: center;
-}
-
-.green {
-    height: 20vh;
-    background-color: rgba(101, 243, 69, 0.646);
-}
-
-.blue {
-    height: 20vh;
-    background-color: rgba(52, 103, 232, 0.646);
-}
-
-.purple {
-    height: 20vh;
-    background-color: rgba(183, 14, 202, 0.646);
-    margin-bottom: 5rem;
-   
-}
-
-footer {
-    position: absolute;
-    text-align: center;
-    bottom: 0;
-    width: 100%;
-    height: 5vh;
-    background-color: rgba(163, 220, 233, 1);
+@media (max-width: 768px) {
+  .notesContainer,
+  .notesSection {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    margin: 1rem;
+  }
+  .notesTags {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
