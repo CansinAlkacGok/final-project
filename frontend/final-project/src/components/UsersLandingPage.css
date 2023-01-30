@@ -1,24 +1,19 @@
 html {
-  min-height: 100%;
   position: relative;
 }
 
 * {
   margin: 0;
   padding: 0;
-  /* ---- Change below later ! ---- */
-  text-decoration: none;
-  color: black;
 }
 
 body {
-  height: 100%;
   box-sizing: border-box;
-  background-color: rgb(236, 236, 236);
+  background-color: rgb(243, 243, 243);
 }
 
 .navigations {
-    height: 90vh;
+  height: 90vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -27,11 +22,17 @@ body {
 
 .header {
   /* background-color: rgba(163, 220, 233, 0.5); */
-    height: 10vh;
+  height: 10vh;
   width: 100%;
+  /* background: linear-gradient(
+    0deg,
+    rgb(243, 243, 243) 0%,
+    rgba(166, 223, 241, 1) 70%,
+    rgba(166, 223, 241, 1) 100%
+  ); */
   background: linear-gradient(
     0deg,
-    rgb(236, 236, 236) 0%,
+    rgb(243, 243, 243) 0%,
     rgba(166, 223, 241, 1) 50%,
     rgba(136, 119, 221, 1) 100%
   );
@@ -39,8 +40,8 @@ body {
   /* display: flex;
   justify-content: space-between;
   flex-direction: row;
-  align-items: center;
-  box-shadow: 0px 5px 10px 1px rgb(188, 188, 188); */
+  align-items: center; */
+ 
 }
 
 /* .header button {
@@ -55,7 +56,7 @@ body {
 .header button:hover {
   background-color: rgb(22, 219, 154);
   cursor: pointer;
-} */
+}  */
 
 .profile-settings {
   display: flex;
@@ -74,7 +75,7 @@ body {
   background: linear-gradient(
     0deg,
     rgb(163, 220, 233) 0%,
-    rgb(236, 236, 236) 100%
+    rgb(243, 243, 243) 100%
   );
   text-align: center;
 }
@@ -95,6 +96,8 @@ body {
 .navlink {
   display: flex;
   justify-content: center;
+  text-decoration: none;
+  color: black;
   padding: 0.3rem 0;
   font-size: 1.5rem;
   font-weight: 600;

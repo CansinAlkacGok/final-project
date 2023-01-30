@@ -28,7 +28,7 @@ export default function UsersLandingPage() {
         <>
           <div className="header">
             {/* <NavLink to="/home"> Brand Name / Logo </NavLink> <br></br>
-              <button onClick={logout}>Logout </button>  */}
+              <button onClick={logout}>Logout </button>   */}
           </div>
 
           <div className="navigations">

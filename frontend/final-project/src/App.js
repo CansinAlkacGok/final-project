@@ -5,8 +5,6 @@ import Register from "./components/Register.js";
 import Login from "./components/Login.js";
 import HomePage from "./components/HomePage";
 import Profile from "./components/ProfilePage";
-import Settings from "./components/Settings";
-import Notes from "./components/Kanban";
 import EditProfileUser from "./components/EditProfilePage.js";
 import Kanban from "./components/Kanban";
 
