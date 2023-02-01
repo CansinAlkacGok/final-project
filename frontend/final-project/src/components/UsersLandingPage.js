@@ -76,7 +76,7 @@ export default function UsersLandingPage() {
               </div>
             </div>
 
-            <div>
+            <div className="outlet-container">
               <Outlet></Outlet>
             </div>
 

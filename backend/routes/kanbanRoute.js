@@ -23,7 +23,8 @@ route.post("/", verifyToken, createNewTask);
 
 route.get("/:id", verifyToken, getSingleToDo);
 
-route.patch("/:id", verifyToken, updateTask);
+route.patch("/:id", verifyToken, updateTask); 
+// Error code 500 while dragging and dropping when using "verifyToken"  -> check
 
 route.delete("/:id", verifyToken, deleteTask);
 
