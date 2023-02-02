@@ -31,16 +31,17 @@ export default function UsersLandingPage() {
               <button onClick={logout}>Logout </button>   */}
           </div>
 
-          
-            <div className="navigation">
+          <div className="navigations">
+            <div className="navigation-left">
               <div className="profile-settings">
                 <img
                   alt=""
                   src={testImage}
                   style={{
-                    width: "clamp(6rem, 9vw, 10rem)",
-                    margin: "0 0 2rem 1.5vw",
+                    width: "133px",
+                    marginBottom: "2rem",
                     borderRadius: "50%",
+
                   }}
                 ></img>
                 <NavLink
@@ -76,25 +77,23 @@ export default function UsersLandingPage() {
               </div>
             </div>
 
-
-          <div className="outlet-feature-container">
             <div className="outlet-container">
               <Outlet></Outlet>
             </div>
 
-            <div className="feature">
-              <div className="features">
-                <h2>Feature</h2>
+            <div className="navigation-right">
+              <div className="feature">
+                <h1>Feature</h1>
                 <p>e.g. Calendar</p>
               </div>
 
-              <div className="features">
-                <h2>Feature</h2>
+              <div className="feature">
+                <h1>Feature</h1>
                 <p>e.g. Spotify</p>
               </div>
 
-              <div className="features">
-                <h2>Feature</h2>
+              <div className="feature">
+                <h1>Feature</h1>
               </div>
             </div>
           </div>

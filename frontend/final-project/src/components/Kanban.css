@@ -1,7 +1,8 @@
 .kanban-container {
-  padding: 1rem;
   width: 100%;
   margin-top: 5rem;
+  padding-bottom: 5rem;
+
 }
 
 .kanban-form {
@@ -9,8 +10,6 @@
   flex-direction: column;
   text-align: center;
   margin: 2rem 0;
-  padding: 1rem;
-  gap: 1rem;
 }
 
 .kanban-form input {
@@ -47,6 +46,8 @@
     rgba(166, 223, 241, 0.9) 50%,
     rgba(135, 208, 224, 0.9) 100%
   );
+
+
 }
 .board-container h2 {
   padding: 1rem 0;
@@ -55,7 +56,7 @@
 
 .board-column {
   margin: 0.5rem;
-  padding: 0.5rem;
+  padding: clamp(.5rem, 0.5vw, 1rem);
   width: 33%;
   /* background-color: rgb(224, 121, 121); */
   /* background: linear-gradient(0deg, rgba(135,208,224,1) 0%, rgba(166,223,241,1) 50%, rgba(136,119,221,1) 100%); */
@@ -65,11 +66,13 @@
 
 .board-task {
   /* background-color: rgba(163, 220, 233,1); */
-  background-color: rgba(255, 255, 255, 0.623);
+  background-color: rgba(255, 255, 255);
   border-radius: inherit;
   padding: 0.3rem;
   margin: 0.4rem;
   text-align: center;
+
+  
 }
 
 .board-task:hover {
@@ -94,4 +97,133 @@
   border-radius: 5px;
   cursor: pointer;
   color: white;
+}
+
+/* Kanban Modal for Editing a Task */
+
+.kanban-modal-edit {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgb(243, 243, 243);
+  z-index: 99;
+  width: 50%;
+  margin: 1rem auto;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.kanban-modal-edit input {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  min-width: 40%;
+  font-size: clamp(1rem, 1.3rem, 2rem);
+  margin: 0.5rem;
+}
+.kanban-modal-edit textarea {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 40%;
+  font-size: clamp(1rem, 1.3rem, 2rem);
+  margin: 0.5rem;
+}
+
+.kanban-modal-edit button {
+  background-color: rgb(166, 223, 241);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  margin: 1rem;
+  font-weight: 600;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.kanban-modal-edit button:hover {
+  background-color: rgb(22, 219, 154);
+  color: white;
+  cursor: pointer;
+}
+
+/* Kanban Modal for Creating a new Task */
+
+.add-task-btn {
+  
+  background-color: rgb(171, 82, 219);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  font-size: var(--font-size-clamp);
+  color: rgb(255, 255, 255);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.add-task-btn:hover {
+  background-color: rgb(22, 219, 154);
+  color: white;
+  cursor: pointer;
+}
+
+.kanban-modal-create {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 2;
+  background: rgb(243, 243, 243);
+  width: 50%;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.kanban-modal-create input {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 60%;
+  font-size: clamp(1rem, 1.3rem, 2rem);
+  margin: 0.5rem;
+}
+.kanban-modal-create textarea {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 60%;
+  font-size: clamp(1rem, 1.3rem, 2rem);
+  margin: 0.5rem;
+}
+
+.kanban-modal-create button {
+  background-color: rgb(166, 223, 241);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  margin: 1rem;
+  font-weight: 600;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.kanban-modal-create button:hover {
+  background-color: rgb(22, 219, 154);
+  color: white;
+  cursor: pointer;
 }
