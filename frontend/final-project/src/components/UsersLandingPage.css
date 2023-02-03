@@ -37,10 +37,6 @@ body {
     box-shadow: 0px 5px 10px 1px rgb(188, 188, 188);
 }
 
-.header button {
-    
-}
-
 .profile-settings {
     display: flex;
     flex-direction: column;
@@ -83,7 +79,7 @@ body {
 
 .yellow {
     margin-top: 2rem;
-    background-color: rgba(243, 243, 69, 0.646);
+ /*    background-color: rgba(243, 243, 69, 0.646); */
 }
 
 .green {
@@ -99,6 +95,7 @@ body {
 .purple {
     height: 20vh;
     background-color: rgba(183, 14, 202, 0.646);
+    margin: 2rem 0;
 }
 
 footer {
@@ -109,3 +106,4 @@ footer {
     height: 5vh;
     background-color: rgba(163, 220, 233, 1);
 }
+

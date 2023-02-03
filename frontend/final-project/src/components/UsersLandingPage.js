@@ -6,11 +6,10 @@ import testImage from "./testImage.jpg";
 import "./UsersLandingPage.css";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import Notes from "./Notes";
 
 export default function UsersLandingPage() {
-   // calender
-   const [value, onChange] = useState(new Date());
+  // calender
+  const [value, onChange] = useState(new Date());
 
   const { user, setUser } = useContext(MyContext);
   const navigate = useNavigate();
@@ -59,7 +58,7 @@ export default function UsersLandingPage() {
                   Kanban{" "}
                 </NavLink>
                 <br></br>
-                <NavLink className="category" to="/notes">
+                <NavLink className="category" to="/home/notes">
                   {" "}
                   Notes{" "}
                 </NavLink>
@@ -78,10 +77,7 @@ export default function UsersLandingPage() {
             </div>
 
             <div className="yellow">
-              <h1>Outlet - Placeholder for Features in the middle</h1>
-              <Outlet>
-                <Notes />
-              </Outlet>
+              <Outlet></Outlet>
             </div>
 
             <div className="red">

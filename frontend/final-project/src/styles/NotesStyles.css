@@ -1,57 +1,170 @@
-h1 {
+.notesH1 {
   text-align: center;
 }
 
+.notesH3 {
+  padding: 1rem;
+}
+
 .notesContainer {
-  padding: 1rem 5rem;
+  margin: 5rem 0;
+  width: 100%;
 }
 
 .notesSection {
-  padding: 5rem 5rem 1rem 5rem;
-  margin: 1rem 2rem;
+  padding: 2rem 2rem 1rem 2rem;
   border-bottom: 1px solid black;
-  width: 80%;
+  display: flex;
+  justify-content:space-between;
+  align-self: flex-end;
 }
 
 .notesTags {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .noteTag {
   text-align: center;
   width: 5rem;
   border: 1px solid black;
+  font-size: 1rem;
   padding: 1rem 2rem;
   margin: 2rem 2rem 0 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 16px;
+  min-width: 150px;
+  border-radius: 16px;
+}
+.overflow-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.diet {
-  background-color: lightgoldenrodyellow;
+.noteLink {
+  margin: 1rem 0;
 }
 
-.fitness {
+.noteTitle {
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom: 1px solid black;
+}
+
+.modalHealth {
+  width: 25rem;
+  background-color: lightgreen;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+.modalBusiness {
+  width: 25rem;
+  background-color: lightpink;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+.modalInspirations {
+  width: 25rem;
+  background-color: orange;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+
+.modalPersonal {
+  width: 25rem;
+  background-color: lightcyan;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+
+.notesInput {
+  width: 15rem;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 16px;
+}
+
+.notesTextarea {
+  width: 10rem;
+  padding: 3rem;
+  margin: 1rem;
+  border-radius: 16px;
+}
+
+.notesButton {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 15px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+.notesButton:hover {
+  background-color: wheat;
+}
+
+.backButton {
+  display: flex;
+  justify-content: center;
+}
+
+.singleNoteParagraph {
+  margin: 1rem 0;
+}
+
+/* .noteButton {
+  padding: 5px;
+  background-color: rgb(252, 247, 247);
+}
+
+.noteButton:hover {
+  background-color: azure;
+} */
+
+.health {
   background-color: lightgreen;
 }
 
-.diary {
+.personal {
   background-color: lightcyan;
 }
 
-.coding {
-  background-color: lightseagreen;
-}
-
-.jogging {
-  background-color: violet;
-}
-
-.inspiration {
+.inspirations {
   background-color: orange;
 }
 
-.learning {
-  background-color: darkgoldenrod;
+.business {
+  background-color: lightpink;
+}
+
+.singleNoteContainer {
+  padding: 1rem 3rem;
+}
+
+.singleNoteContainer h1 {
+  text-transform: uppercase;
 }
 
 @media (max-width: 1024px) {
