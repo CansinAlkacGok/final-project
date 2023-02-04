@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { GrEdit } from "react-icons/gr";
 import { useContext } from "react";
 import MyContext from "../context/MyContext";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Notes() {
   const { notes, setNotes } = useContext(MyContext);
@@ -52,12 +53,12 @@ export default function Notes() {
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
-          setNotes([...notes, result.note]);
-          console.log("success", result.note);
+          toast.success("New note created");
+          setNotes([...notes, result.note]);          
           e.target.reset();
           setShowModalHealth(false);
         } else {
-          console.log(result.message);
+          toast.error(result.message);          
         }
       });
   };
@@ -78,12 +79,12 @@ export default function Notes() {
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
-          setNotes([...notes, result.note]);
-          console.log("success", result.note);
+          toast.success("New note created");
+          setNotes([...notes, result.note]);          
           e.target.reset();
           setShowModalBusiness(false);
         } else {
-          console.log(result.message);
+          toast.error(result.message);          
         }
       });
   };
@@ -104,12 +105,11 @@ export default function Notes() {
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
-          setNotes([...notes, result.note]);
-          console.log("success", result.note);
+          setNotes([...notes, result.note]);          
           e.target.reset();
           setShowModalInspirations(false);
         } else {
-          console.log(result.message);
+          toast.error(result.message);          
         }
       });
   };
@@ -130,18 +130,19 @@ export default function Notes() {
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
-          setNotes([...notes, result.note]);
-          console.log("success", result.note);
+          toast.success("New note created");
+          setNotes([...notes, result.note]);          
           e.target.reset();
           setShowModalPersonal(false);
         } else {
-          console.log(result.message);
+          toast.error(result.message);         
         }
       });
   };
 
   return (
     <div className="notesComponent">
+        <Toaster position="top-center" />
       <div className="notesContainer">
         <h1 className="notesH1">Notes</h1>
         <h3 className="notesH3">Health:</h3>

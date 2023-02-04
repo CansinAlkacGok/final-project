@@ -15,7 +15,7 @@
   padding: 2rem 2rem 1rem 2rem;
   border-bottom: 1px solid black;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-self: flex-end;
 }
 
@@ -54,6 +54,7 @@
   font-weight: 700;
   text-transform: uppercase;
   border-bottom: 1px solid black;
+  word-wrap: break-word;
 }
 
 .modalHealth {
@@ -94,6 +95,13 @@
   border-radius: 16px;
 }
 
+.editModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .notesInput {
   width: 15rem;
   padding: 1rem;
@@ -106,6 +114,15 @@
   padding: 3rem;
   margin: 1rem;
   border-radius: 16px;
+}
+
+.editNotesTextarea {
+  width: 20rem;
+  height: 20rem;
+  padding: 3rem;
+  margin: 1rem;
+  border-radius: 16px;
+  overflow: auto;
 }
 
 .notesButton {
@@ -130,18 +147,22 @@
   justify-content: center;
 }
 
+/* Single notes */
+
+.singleNoteContainer {
+  width: 50vw;
+  padding: 1rem 3rem;
+  word-wrap: break-word;
+}
+
+.singleNoteTitle {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .singleNoteParagraph {
-  margin: 1rem 0;
+  margin: 1rem 0 5rem 0;
 }
-
-/* .noteButton {
-  padding: 5px;
-  background-color: rgb(252, 247, 247);
-}
-
-.noteButton:hover {
-  background-color: azure;
-} */
 
 .health {
   background-color: lightgreen;
@@ -157,14 +178,6 @@
 
 .business {
   background-color: lightpink;
-}
-
-.singleNoteContainer {
-  padding: 1rem 3rem;
-}
-
-.singleNoteContainer h1 {
-  text-transform: uppercase;
 }
 
 @media (max-width: 1024px) {
