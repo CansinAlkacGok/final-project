@@ -1,6 +1,7 @@
 import React from 'react'
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import "./Register.css"
 
 
 export default function Register() {
@@ -38,9 +39,10 @@ export default function Register() {
 
   return (
 
-    <div>
+    <div className="register-container">
       <h1>Register</h1>
-      <form onSubmit={registiration}>
+
+      <form onSubmit={registiration} className="register-form-container">
         <label>First Name </label> <br></br>
         <input type="text" name="firstName" required /><br></br>
         <label>Last Name </label> <br></br>
@@ -51,7 +53,9 @@ export default function Register() {
         <input type="password" name="password" required /><br></br>
         {/*      <label>Profile Image </label> <br></br>
         <input type="file" name="image" /> <br></br> */}
+                <span className="span-login">
         <button>Register</button>
+        </span>
       </form>
       <Toaster position="top-center" />
     </div>
