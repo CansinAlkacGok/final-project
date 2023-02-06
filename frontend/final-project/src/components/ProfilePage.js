@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
 import MyContext from "../context/MyContext.js";
 import { useNavigate } from "react-router-dom";
-import "./ProfilePage.css";
+import "../styles/ProfilePage.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 const returnIcon = <FontAwesomeIcon icon={faLeftLong} />;
-
-
 
 export default function Profile() {
   const { user, setUser } = useContext(MyContext);
@@ -47,7 +45,9 @@ export default function Profile() {
   return (
     <div className="profile-container">
       <span className="profile-back-span">
-        <button onClick={backToMainPage} className="profile-back-delete-btns">{returnIcon} Main Page </button>
+        <button onClick={backToMainPage} className="profile-back-delete-btns">
+          {returnIcon} Main Page{" "}
+        </button>
       </span>
 
       <h1>Profile</h1>
@@ -58,31 +58,43 @@ export default function Profile() {
 
           <div className="profile-input-container">
             <div className="input-divs">
-            <h4>First Name</h4>
-            <p> {user.firstName} </p>
+              <h4>First Name</h4>
+              <p> {user.firstName} </p>
             </div>
             <div className="input-divs">
-            <h4>Last Name</h4>
-            <p> {user.lastName} </p>
+              <h4>Last Name</h4>
+              <p> {user.lastName} </p>
             </div>
             <div className="input-divs">
-            <h4>Email</h4>
-            <p> {user.email} </p>
+              <h4>Email</h4>
+              <p> {user.email} </p>
             </div>
             <div className="input-divs">
-            <h4>Password</h4>
-            <p> ***************** </p>
+              <h4>Password</h4>
+              <p> ***************** </p>
             </div>
 
             <div className="profile-edit-buttons-container">
-              <button onClick={editProfile} className="profile-edit-logout-btns">Edit</button>
-              <button onClick={logout} className="profile-edit-logout-btns">Logout</button>
+              <button
+                onClick={editProfile}
+                className="profile-edit-logout-btns"
+              >
+                Edit
+              </button>
+              <button onClick={logout} className="profile-edit-logout-btns">
+                Logout
+              </button>
             </div>
           </div>
 
           {/*     <img src={user.profileImage} width="300" alt="profileImage" /> */}
 
-          <button onClick={deleteUserAccount} className="profile-back-delete-btns">Delete Account</button>
+          <button
+            onClick={deleteUserAccount}
+            className="profile-back-delete-btns"
+          >
+            Delete Account
+          </button>
         </>
       )}
     </div>

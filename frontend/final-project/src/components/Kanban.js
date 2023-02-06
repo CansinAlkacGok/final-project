@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import MyContext from "../context/MyContext";
-import "./Kanban.css";
+import "../styles/Kanban.css";
 
 // Font Awesome Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -214,10 +214,7 @@ export default function Kanban() {
 
         {/* ---- Modal for Creating a new Task ---- */}
         <div>
-          <button
-            onClick={handleAdd}
-            className="add-task-btn"
-          >
+          <button onClick={handleAdd} className="add-task-btn">
             {" "}
             {plusIcon} add Task
           </button>

@@ -1,4 +1,4 @@
-.register-container {
+.login-container {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -15,44 +15,43 @@
   );
 }
 
-.register-container h1 {
+.login-container h1 {
   font-size: clamp(1.7rem, 1.3rem, 2rem);
 }
 
-.register-form-container {
+.login-form-container {
   width: 60%;
   margin: 1rem;
   font-size: clamp(1rem, 1rem, 2rem);
 }
 
-.register-form-container label{
+.login-form-container label {
   font-size: clamp(1rem, 1.2rem, 2rem);
   font-weight: 600;
 }
 
-.register-container input{
+.login-container input {
   border-radius: 5px;
   width: 100%;
   margin: 1rem 0;
   padding: 0.3rem 0.5rem;
 }
 
-.span-register {
+.span-login {
   display: flex;
   justify-content: center;
 }
 
-.register-form-container button {
+.login-form-container button {
   width: fit-content;
   border-radius: 5px;
   border: none;
   background-color: rgb(82, 219, 212);
   padding: 0.3rem 0.5rem;
   font-weight: 600;
-
 }
 
-.register-form-container button:hover {
+.login-form-container button:hover {
   background-color: rgb(22, 219, 154);
   cursor: pointer;
 }
