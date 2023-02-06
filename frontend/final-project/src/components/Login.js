@@ -3,7 +3,7 @@ import { useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import MyContext from "../context/MyContext";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import "../styles/Login.css";
 
 export default function Login() {
   const { setUser } = useContext(MyContext);
@@ -45,16 +45,16 @@ export default function Login() {
       <form onSubmit={loginUser} className="login-form-container">
         <label>
           {" "}
-          Email  <input type="email" name="email" />
+          Email <input type="email" name="email" />
         </label>
         <br />
         <label>
           {" "}
-          Password  <input type="password" name="password" />
+          Password <input type="password" name="password" />
         </label>
         <br />
         <span className="span-login">
-        <button>Login</button>
+          <button>Login</button>
         </span>
       </form>
     </div>
