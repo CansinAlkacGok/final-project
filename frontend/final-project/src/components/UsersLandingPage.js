@@ -1,12 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import MyContext from "../context/MyContext";
 import testImage from "./testImage.jpg";
 import "./UsersLandingPage.css";
-
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 export default function UsersLandingPage() {
+  // calender
+  const [value, onChange] = useState(new Date());
+
   const { user, setUser } = useContext(MyContext);
   const navigate = useNavigate();
 
@@ -73,14 +77,12 @@ export default function UsersLandingPage() {
             </div>
 
             <div className="yellow">
-              <h1>Outlet - Placeholder for Features in the middle</h1>
               <Outlet></Outlet>
             </div>
 
             <div className="red">
               <div className="purple">
-                <h1>Feature</h1>
-                <p>e.g. Calendar</p>
+                <Calendar onChange={onChange} value={value} />
               </div>
 
               <div className="green">
@@ -110,5 +112,4 @@ export default function UsersLandingPage() {
       )}
     </div>
   );
-
 }

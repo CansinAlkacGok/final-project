@@ -94,9 +94,9 @@ export const getAllInspirationsNotes = async (req, res, next) => {
 };
 
 export const createHealthNotes = async (req, res, next) => {
-
+console.log(req.body);
     try {
-        const healthNote = new NotesCollection({ health: req.body })
+        const healthNote = new NotesCollection({ health: [{title:[req.body.title], note:[req.body.note]}] })
         console.log(healthNote);
         await healthNote.save();
 
@@ -110,7 +110,7 @@ export const createHealthNotes = async (req, res, next) => {
 export const createPersonalNotes = async (req, res, next) => {
 
     try {
-        const personalNote = new NotesCollection({ personal: req.body })
+        const personalNote = new NotesCollection({ personal: [{title:[req.body.title], note:[req.body.note]}] })
         console.log(personalNote);
         await personalNote.save();
 
@@ -124,7 +124,7 @@ export const createPersonalNotes = async (req, res, next) => {
 export const createBusinessNotes = async (req, res, next) => {
 
     try {
-        const businessNote = new NotesCollection({ business: req.body })
+        const businessNote = new NotesCollection({ business: [{title:[req.body.title], note:[req.body.note]}] })
         console.log(businessNote);
         await businessNote.save();
 
@@ -138,7 +138,7 @@ export const createBusinessNotes = async (req, res, next) => {
 export const createInspirationsNotes = async (req, res, next) => {
 
     try {
-        const inspirationsNote = new NotesCollection({ inspirations: req.body })
+        const inspirationsNote = new NotesCollection({ inspirations: [{title:[req.body.title], note:[req.body.note]}] })
         console.log(inspirationsNote);
         await inspirationsNote.save();
 
