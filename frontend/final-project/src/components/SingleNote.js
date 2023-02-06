@@ -104,7 +104,10 @@ export default function SingleHealthNote() {
         if (result.success) {
           const newNotes = notes.filter((item) => item._id !== id);
           setNotes(newNotes);
-          navigate("/home/notes");
+          toast.success("Note deleted");
+          setTimeout(() => {
+            navigate("/home/notes");
+          }, 1000);
         } else {
           console.log(result.message);
         }
@@ -121,7 +124,10 @@ export default function SingleHealthNote() {
         if (result.success) {
           const newNotes = notes.filter((item) => item._id !== id);
           setNotes(newNotes);
-          navigate("/home/notes");
+          toast.success("Note deleted");
+          setTimeout(() => {
+            navigate("/home/notes");
+          }, 1000);
         } else {
           console.log(result.message);
         }
@@ -138,7 +144,10 @@ export default function SingleHealthNote() {
         if (result.success) {
           const newNotes = notes.filter((item) => item._id !== id);
           setNotes(newNotes);
-          navigate("/home/notes");
+          toast.success("Note deleted");
+          setTimeout(() => {
+            navigate("/home/notes");
+          }, 1000);
         } else {
           console.log(result.message);
         }
@@ -155,7 +164,10 @@ export default function SingleHealthNote() {
         if (result.success) {
           const newNotes = notes.filter((item) => item._id !== id);
           setNotes(newNotes);
-          navigate("/home/notes");
+          toast.success("Note deleted");
+          setTimeout(() => {
+            navigate("/home/notes");
+          }, 1000);
         } else {
           console.log(result.message);
         }
@@ -163,14 +175,6 @@ export default function SingleHealthNote() {
   };
 
   // EDIT
-
-  const handleChangeHealth = (event) => {
-    if (event.target.name === "title") {
-      setSingleHealthNote(event.target.value);
-    } else if (event.target.name === "note") {
-      setSingleHealthNote(event.target.value);
-    }
-  };
 
   const editHealthNotes = (e) => {
     e.preventDefault();
@@ -189,7 +193,15 @@ export default function SingleHealthNote() {
       .then((result) => {
         if (result.success) {
           toast.success("Note edited");
-          setNotes([...notes, result.note]);
+          setNotes(
+            notes.map((item) => {
+              if (item._id === result.note._id) {
+                return result.note;
+              } else {
+                return item;
+              }
+            })
+          );
           setTimeout(() => {
             navigate("/home/notes");
           }, 1500);
@@ -197,14 +209,6 @@ export default function SingleHealthNote() {
           toast.error(result.message);
         }
       });
-  };
-
-  /* const handleChangeBusiness = (e) => {
-    if (e.target.name === "title") {
-      setSingleBusinessNote(e.target.value);
-    } else if (e.target.name === "note") {
-      setSingleBusinessNote(e.target.value);
-    }
   };
 
   const editBusinessNotes = (e) => {
@@ -224,7 +228,15 @@ export default function SingleHealthNote() {
       .then((result) => {
         if (result.success) {
           toast.success("Note edited");
-          setNotes([...notes, result.note]);
+          setNotes(
+            notes.map((item) => {
+              if (item._id === result.note._id) {
+                return result.note;
+              } else {
+                return item;
+              }
+            })
+          );
           setTimeout(() => {
             navigate("/home/notes");
           }, 1500);
@@ -232,15 +244,7 @@ export default function SingleHealthNote() {
           toast.error(result.message);
         }
       });
-  }; */
-
-/*   const handleChangeInspirations = (e) => {
-    if (e.target.name === "title") {
-      setSingleInspirationsNote(e.target.value);
-    } else if (e.target.name === "note") {
-      setSingleInspirationsNote(e.target.value);
-    }
-  }; 
+  };
 
   const editInspirationsNotes = (e) => {
     e.preventDefault();
@@ -259,7 +263,15 @@ export default function SingleHealthNote() {
       .then((result) => {
         if (result.success) {
           toast.success("Note edited");
-          setNotes([...notes, result.note]);
+          setNotes(
+            notes.map((item) => {
+              if (item._id === result.note._id) {
+                return result.note;
+              } else {
+                return item;
+              }
+            })
+          );
           setTimeout(() => {
             navigate("/home/notes");
           }, 1500);
@@ -267,7 +279,42 @@ export default function SingleHealthNote() {
           toast.error(result.message);
         }
       });
-  }; */
+  };
+
+  const editPersonalNotes = (e) => {
+    e.preventDefault();
+    fetch(`/notes/personal/${id}`, {
+      method: "PATCH",
+      headers: {
+        token: localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: e.target.title.value,
+        note: e.target.note.value,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          toast.success("Note edited");
+          setNotes(
+            notes.map((item) => {
+              if (item._id === result.note._id) {
+                return result.note;
+              } else {
+                return item;
+              }
+            })
+          );
+          setTimeout(() => {
+            navigate("/home/notes");
+          }, 1500);
+        } else {
+          toast.error(result.message);
+        }
+      });
+  };
 
   return (
     <div className="singleNoteContainer">
@@ -276,167 +323,182 @@ export default function SingleHealthNote() {
         <button className="notesButton" onClick={goBack}>
           <AiOutlineArrowLeft />
         </button>
-        {singleHealthNote && (
-          <>
-            <button
-              className="notesButton"
-              onClick={() => setEditClicked((current) => !current)}
-            >
-              Edit
-            </button>
-            <button
-              className="notesButton"
-              onClick={() => deleteHealthNote(id)}
-            >
-              Delete
-            </button>
-          </>
-        )}
-        {singleBusinessNote && (
-          <>
-         {/*    <button
-              className="notesButton"
-              onClick={() => setEditClicked((current) => !current)}
-            >
-              Edit
-            </button> */}
-            <button
-              className="notesButton"
-              onClick={() => deleteBusinessNote(id)}
-            >
-              delete
-            </button>
-          </>
-        )}
-        {singleInspirationsNote && (
-          <>
-           {/*  <button
-              className="notesButton"
-              onClick={() => setEditClicked((current) => !current)}
-            >
-              Edit
-            </button> */}
-            <button
-              className="notesButton"
-              onClick={() => deleteInspirationsNote(id)}
-            >
-              delete
-            </button>
-          </>
-        )}
-        {singlePersonalNote && (
-          <>
-            {/* <button
-              className="notesButton"
-              onClick={() => setEditClicked((current) => !current)}
-            >
-              Edit
-            </button> */}
-            <button
-              className="notesButton"
-              onClick={() => deletePersonalNote(id)}
-            >
-              delete
-            </button>
-          </>
-        )}
+        <div>
+          {singleHealthNote && (
+            <>
+              <button
+                className="notesButton"
+                onClick={() => setEditClicked((current) => !current)}
+              >
+                Edit
+              </button>
+              <button
+                className="notesButton"
+                onClick={() => deleteHealthNote(id)}
+              >
+                Delete
+              </button>
+            </>
+          )}
+          {singleBusinessNote && (
+            <>
+              <button
+                className="notesButton"
+                onClick={() => setEditClicked((current) => !current)}
+              >
+                Edit
+              </button>
+              <button
+                className="notesButton"
+                onClick={() => deleteBusinessNote(id)}
+              >
+                Delete
+              </button>
+            </>
+          )}
+          {singleInspirationsNote && (
+            <>
+              <button
+                className="notesButton"
+                onClick={() => setEditClicked((current) => !current)}
+              >
+                Edit
+              </button>
+              <button
+                className="notesButton"
+                onClick={() => deleteInspirationsNote(id)}
+              >
+                Delete
+              </button>
+            </>
+          )}
+          {singlePersonalNote && (
+            <>
+              <button
+                className="notesButton"
+                onClick={() => setEditClicked((current) => !current)}
+              >
+                Edit
+              </button>
+              <button
+                className="notesButton"
+                onClick={() => deletePersonalNote(id)}
+              >
+                Delete
+              </button>
+            </>
+          )}
+        </div>
       </div>
 
-      {editClicked ===
-        false(
-          <>
-            <h1 className="singleNoteTitle">
-              {singleHealthNote ? singleHealthNote.title : ""}
-            </h1>
-            <h1 className="singleNoteTitle">
-              {singleBusinessNote ? singleBusinessNote.title : ""}
-            </h1>
-            <h1 className="singleNoteTitle">
-              {singleInspirationsNote ? singleInspirationsNote.title : ""}
-            </h1>
-            <h1 className="singleNoteTitle">
-              {singlePersonalNote ? singlePersonalNote.title : ""}
-            </h1>
+      {editClicked === false && (
+        <>
+          <h1 className="singleNoteTitle">
+            {singleHealthNote ? singleHealthNote.title : ""}
+          </h1>
+          <h1 className="singleNoteTitle">
+            {singleBusinessNote ? singleBusinessNote.title : ""}
+          </h1>
+          <h1 className="singleNoteTitle">
+            {singleInspirationsNote ? singleInspirationsNote.title : ""}
+          </h1>
+          <h1 className="singleNoteTitle">
+            {singlePersonalNote ? singlePersonalNote.title : ""}
+          </h1>
 
-            <p className="singleNoteParagraph">
-              {singleHealthNote ? singleHealthNote.note : ""}
-            </p>
-            <p className="singleNoteParagraph">
-              {singleBusinessNote ? singleBusinessNote.note : ""}
-            </p>
-            <p className="singleNoteParagraph">
-              {singleInspirationsNote ? singleInspirationsNote.note : ""}
-            </p>
-            <p className="singleNoteParagraph">
-              {singlePersonalNote ? singlePersonalNote.note : ""}
-            </p>
-          </>
-        )}
-      {editClicked === true && (
+          <p className="singleNoteParagraph">
+            {singleHealthNote ? singleHealthNote.note : ""}
+          </p>
+          <p className="singleNoteParagraph">
+            {singleBusinessNote ? singleBusinessNote.note : ""}
+          </p>
+          <p className="singleNoteParagraph">
+            {singleInspirationsNote ? singleInspirationsNote.note : ""}
+          </p>
+          <p className="singleNoteParagraph">
+            {singlePersonalNote ? singlePersonalNote.note : ""}
+          </p>
+        </>
+      )}
+      {editClicked === true && singleHealthNote && (
         <>
           <form onSubmit={editHealthNotes} className="editModal">
             <input
               className="notesInput"
               type="text"
               name="title"
-              value={singleHealthNote.title}
-              onChange={handleChangeHealth}
+              defaultValue={singleHealthNote.title}
             />
             <textarea
               className="editNotesTextarea"
               type="text"
               name="note"
-              value={singleHealthNote.note}
-              onChange={handleChangeHealth}
+              defaultValue={singleHealthNote.note}
             ></textarea>
             <button className="notesButton">Save</button>
           </form>
         </>
       )}
 
-   {/*    {editClicked === true && (
+      {editClicked === true && singleBusinessNote && (
         <>
           <form onSubmit={editBusinessNotes} className="editModal">
             <input
               className="notesInput"
               type="text"
               name="title"
-              value={singleBusinessNote.title}
-              onChange={handleChangeBusiness}
+              defaultValue={singleBusinessNote.title}
             />
             <textarea
               className="editNotesTextarea"
               type="text"
               name="note"
-              value={singleBusinessNote.note}
-              onChange={handleChangeBusiness}
+              defaultValue={singleBusinessNote.note}
             ></textarea>
             <button className="notesButton">Save</button>
           </form>
         </>
-      )} */}
+      )}
 
-      {/* {editClicked === true && singleInspirationsNote && (
+      {editClicked === true && singleInspirationsNote && (
         <>
           <form onSubmit={editInspirationsNotes} className="editModal">
             <input
               className="notesInput"
               type="text"
               name="title"
-              value={singleInspirationsNote.title}
-              onChange={handleChangeInspirations}
+              defaultValue={singleInspirationsNote.title}
             />
             <textarea
               className="editNotesTextarea"
               type="text"
               name="note"
-              value={singleInspirationsNote.note}
-              onChange={handleChangeInspirations}
+              defaultValue={singleInspirationsNote.note}
             ></textarea>
             <button className="notesButton">Save</button>
           </form>
         </>
-      )} */}
+      )}
+
+      {editClicked === true && singlePersonalNote && (
+        <>
+          <form onSubmit={editPersonalNotes} className="editModal">
+            <input
+              className="notesInput"
+              type="text"
+              name="title"
+              defaultValue={singlePersonalNote.title}
+            />
+            <textarea
+              className="editNotesTextarea"
+              type="text"
+              name="note"
+              defaultValue={singlePersonalNote.note}
+            ></textarea>
+            <button className="notesButton">Save</button>
+          </form>
+        </>
+      )}
     </div>
   );
 }
