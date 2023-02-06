@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Container(props) {
   const [user, setUser] = useState(null);
-
+  const [notes, setNotes] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function Container(props) {
   }, [navigate]);
 
   return (
-    <MyContext.Provider value={{ user, setUser }}>
+    <MyContext.Provider value={{ user, setUser, notes, setNotes }}>
       {props.children}
     </MyContext.Provider>
   );

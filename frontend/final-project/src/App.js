@@ -5,9 +5,11 @@ import Register from "./components/Register.js";
 import Login from "./components/Login.js";
 import HomePage from "./components/HomePage";
 import Profile from "./components/ProfilePage";
+import Notes from "./components/Notes.js";
+
 import EditProfileUser from "./components/EditProfilePage.js";
 import Kanban from "./components/Kanban";
-
+import SingleNote from "./components/SingleNote";
 
 function App() {
   return (
@@ -17,16 +19,21 @@ function App() {
         <Route path="/" element={<HomePage></HomePage>}>
           <Route path="/login" element={<Login></Login>} />
           <Route path="/users" element={<Register></Register>} />
-        </Route>
+         </Route>        
 
         <Route path="/home" element={<UsersLandingPage></UsersLandingPage>}>
           <Route path="/home/profile" element={<Profile></Profile>}></Route>
           <Route path ='/home/editprofile' element= {<EditProfileUser></EditProfileUser>} />
           <Route path="/home/kanban" element={<Kanban></Kanban>}></Route>
+        
           <Route path="/home/todo" element={<Kanban></Kanban>}></Route>
-          <Route path="/home/notes" element={<Kanban></Kanban>}></Route>
-        </Route>
+          <Route path="/home/notes" element={<Notes></Notes>}></Route>  
+          <Route path="/home/notes/:id" element={<SingleNote></SingleNote>}></Route>  
 
+
+
+        </Route>
+    
       </Routes>
     </div>
   );

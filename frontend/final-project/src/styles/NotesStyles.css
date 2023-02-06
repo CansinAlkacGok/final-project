@@ -1,0 +1,209 @@
+.notesH1 {
+  text-align: center;
+}
+
+.notesH3 {
+  padding: 1rem;
+}
+
+.notesContainer {
+  margin: 5rem 0;
+  width: 100%;
+}
+
+.notesSection {
+  padding: 2rem 2rem 1rem 2rem;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
+}
+
+.notesTags {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.noteTag {
+  text-align: center;
+  width: 5rem;
+  border: 1px solid black;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  margin: 2rem 2rem 0 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 16px;
+  min-width: 150px;
+  border-radius: 16px;
+}
+.overflow-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.noteLink {
+  margin: 1rem 0;
+}
+
+.noteTitle {
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom: 1px solid black;
+  word-wrap: break-word;
+}
+
+.modalHealth {
+  width: 25rem;
+  background-color: lightgreen;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+.modalBusiness {
+  width: 25rem;
+  background-color: lightpink;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+.modalInspirations {
+  width: 25rem;
+  background-color: orange;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+
+.modalPersonal {
+  width: 25rem;
+  background-color: lightcyan;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}
+
+.editModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.notesInput {
+  width: 15rem;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 16px;
+}
+
+.notesTextarea {
+  width: 10rem;
+  padding: 3rem;
+  margin: 1rem;
+  border-radius: 16px;
+}
+
+.editNotesTextarea {
+  width: 20rem;
+  height: 20rem;
+  padding: 3rem;
+  margin: 1rem;
+  border-radius: 16px;
+  overflow: auto;
+}
+
+.notesButton {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 15px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+.notesButton:hover {
+  background-color: wheat;
+}
+
+.backButton {
+  display: flex;
+  justify-content: center;
+}
+
+/* Single notes */
+
+.singleNoteContainer {
+  width: 50vw;
+  padding: 1rem 3rem;
+  word-wrap: break-word;
+}
+
+.singleNoteTitle {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.singleNoteParagraph {
+  margin: 1rem 0 5rem 0;
+}
+
+.health {
+  background-color: lightgreen;
+}
+
+.personal {
+  background-color: lightcyan;
+}
+
+.inspirations {
+  background-color: orange;
+}
+
+.business {
+  background-color: lightpink;
+}
+
+@media (max-width: 1024px) {
+  .notesContainer,
+  .notesSection {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    margin: 1rem;
+  }
+  .notesTags {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .notesContainer,
+  .notesSection {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    margin: 1rem;
+  }
+  .notesTags {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
