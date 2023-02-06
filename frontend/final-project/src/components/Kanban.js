@@ -21,9 +21,8 @@ export default function Kanban() {
   const [showModal, setShowModal] = useState(false);
   const [editTask, setEditTask] = useState({
     title: "",
-    task: ""
+    task: "",
   });
-
 
   // States for New Task
   const [showModalCreate, setShowModalCreate] = useState(false);
@@ -60,6 +59,7 @@ export default function Kanban() {
 
   //  ---- Edit Task ----
   const handleEdit = (task) => {
+    console.log(task);
     setShowModalCreate(false);
     setEditTask(task);
     setShowModal(true);
@@ -67,6 +67,7 @@ export default function Kanban() {
 
   const handleSave = async () => {
     console.log(editTask);
+
     try {
       const response = await fetch(`/kanban/${editTask._id}`, {
         method: "PATCH",
@@ -77,20 +78,17 @@ export default function Kanban() {
         body: JSON.stringify(editTask),
       });
       const data = await response.json();
-      // setUser(data.data);
-      setShowModal(false);
 
-      setUser(data.data)
-      // setUser((prevState) => {
-      //   const updatedKanban = prevState.kanban.map((task) => {
-      //     if (task._id === data._id) {
-      //       return data;
-      //     }
-      //     return task;
-      //   });
-      //   // return { ...prevState, kanban: updatedKanban };
-      //   return { ...prevState, kanban: updatedKanban }
-      // });
+      setUser((prevState) => {
+        const updatedKanban = prevState.kanban.map((task) => {
+          if (task._id === data._id) {
+            return data;
+          }
+          return task;
+        });
+        return { ...prevState, kanban: updatedKanban };
+      });
+      setShowModal(false);
     } catch (err) {
       console.error(err);
     }
@@ -217,7 +215,6 @@ export default function Kanban() {
         {/* ---- Modal for Creating a new Task ---- */}
         <div>
           <button
-            // onClick={() => setShowModalCreate(true)}
             onClick={handleAdd}
             className="add-task-btn"
           >
@@ -275,7 +272,6 @@ export default function Kanban() {
                   {" "}
                   <h3>{task.title}</h3>
                   <p>{task.task}</p>
-                  <p>{task.date}</p>
                   <div className="taskIcons">
                     <button onClick={() => handleEdit(task)}>{editIcon}</button>
                     <button onClick={() => handleDelete(task._id)}>
@@ -305,7 +301,7 @@ export default function Kanban() {
                   <h3>{task.title}</h3>
                   <p>{task.task}</p>
                   <div className="taskIcons">
-                    <button>{editIcon}</button>
+                    <button onClick={() => handleEdit(task)}>{editIcon}</button>
                     <button onClick={() => handleDelete(task._id)}>
                       {deleteIcon}
                     </button>
@@ -333,7 +329,7 @@ export default function Kanban() {
                   <h3>{task.title}</h3>
                   <p>{task.task}</p>
                   <div className="taskIcons">
-                    <button>{editIcon}</button>
+                    <button onClick={() => handleEdit(task)}>{editIcon}</button>
                     <button onClick={() => handleDelete(task._id)}>
                       {deleteIcon}
                     </button>
