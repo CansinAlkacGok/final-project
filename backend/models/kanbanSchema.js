@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const kanbanSchema = new mongoose.Schema({
   title: { type: String, required: true },
-  task: { type: String },
+  task: { type: String, required: true },
   status: { type: String, default: "do" },
   date: {
     type: Date,
