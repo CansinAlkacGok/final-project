@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import MyContext from "../context/MyContext";
-import testImage from "./testImage.jpg";
+
 import "./UsersLandingPage.css";
 
 import Calendar from "react-calendar";
@@ -41,15 +41,7 @@ export default function UsersLandingPage() {
           
             <div className="navigation">
               <div className="profile-settings">
-                <img
-                  alt=""
-                  src={testImage}
-                  style={{
-                    width: "clamp(6rem, 9vw, 10rem)",
-                    margin: "0 0 2rem 1.5vw",
-                    borderRadius: "50%",
-                  }}
-                ></img>
+                
                 <NavLink
                   style={isActive}
                   className="navlink"
@@ -80,6 +72,7 @@ export default function UsersLandingPage() {
                   {" "}
                 </NavLink>
                 <br></br>
+                <Calendar></Calendar>
               </div>
             </div>
 
@@ -89,23 +82,6 @@ export default function UsersLandingPage() {
               <Outlet></Outlet>
             </div>
 
-            <div className="feature">
-              <div className="features">
-                <h2>Feature</h2>
-                <p>e.g. Calendar</p>
-
-
-              </div>
-
-              <div className="features">
-                <h2>Feature</h2>
-                <p>e.g. Spotify</p>
-              </div>
-
-              <div className="features">
-                <h2>Feature</h2>
-              </div>
-            </div>
           </div>
 
 
