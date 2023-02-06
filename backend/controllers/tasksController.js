@@ -41,7 +41,6 @@ export const createNewTask = async (req,res,next) => {
         await task.save();
 
         const updatedUser = await UsersCollection.findByIdAndUpdate(req.user._id, {$push: {tasks: task}}, {new: true}).populate("tasks")
-
         res.json({success: true, data:updatedUser})
 
     }
