@@ -95,7 +95,9 @@ export default function Kanban() {
   };
 
   // ---- Filter through all the Kanban Tasks and sort them according to status (do, doing, done)
+
   useEffect(() => {
+    console.log(user)
     const filteredTasks = user.kanban.reduce(
       (acc, task) => {
         if (task.status === "do") {

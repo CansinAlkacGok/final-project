@@ -86,7 +86,7 @@ export const completeTask = async (req,res,next) => {
 
         task.completed = !task.completed;
         task.save();
-        res.json(task);
+        res.json({success: true, data:task});
     }
     catch (err) {
         next(err)

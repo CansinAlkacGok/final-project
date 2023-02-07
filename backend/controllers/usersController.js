@@ -50,7 +50,7 @@ export const updateUser = async (req, res, next) => {
       }
     }
 
-    const updatedUser = await UsersCollection.findByIdAndUpdate(req.params.id, body,{ new: true }).populate("tasks");
+    const updatedUser = await UsersCollection.findByIdAndUpdate(req.params.id, body,{ new: true }).populate("tasks").populate("kanban");
 
  //   const updatedUser = await UsersCollection.findByIdAndUpdate(
  //     req.params.id,
@@ -100,7 +100,7 @@ export const loginUser = async (req, res, next) => {
           user._id,
           { token: token },
           { new: true }
-        ).populate("tasks")
+        ).populate("tasks").populate("kanban")
 
         res.header("token", token);
 
@@ -122,7 +122,7 @@ export const checkUserToken = async (req, res, next) => {
     const payload = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
 
 
-      const user = await UsersCollection.findById(payload._id).populate("tasks")
+      const user = await UsersCollection.findById(payload._id).populate("tasks").populate("kanban")
 
   //  const user = await UsersCollection.findById(payload._id).populate("kanban");
 

@@ -4,8 +4,8 @@ import MyContext from '../context/MyContext.js';
 export default function SingleToDo({ task, date }) {
 
     const [editing, setEditing] = useState(false);
-    const [done, setDone] = useState(false)
-    const { setUser } = useContext(MyContext)
+
+    const { user, setUser } = useContext(MyContext)
 
     const handleUpdate = (e) => {
 
@@ -57,23 +57,29 @@ export default function SingleToDo({ task, date }) {
     const handleDone = (e) => {
         e.preventDefault();
 
-        setDone(!done)
-
         fetch(`tasks/completed/${task._id}`, {
             method: "PATCH",
             headers: { token: localStorage.getItem("token") }
         })
             .then(res => res.json())
             .then(result => {
-                setUser(prevTask => {
+             /*  setUser(prevTask => {
                     const updatedTasks = prevTask.tasks.map(task => {
                         if (task._id === result.task._id) {
                             task.completed = true;
                         }
                         return task;
                     });
-                    return { ...prevTask, tasks: updatedTasks };
-                });
+                    return { ...prevTask, tasks: [...updatedTasks] };
+                });  */
+                setUser({...user, tasks: user.tasks.map(task => {
+                    if (task._id === result.data._id) {
+                        return result.data
+                    }else{
+                        return task
+                    }
+                })})
+               
             });
     };
 
