@@ -49,7 +49,7 @@ export const updateUser = async (req, res, next) => {
         body[key] = req.body[key];
       }
     }
-    const updatedUser = await UsersCollection.findByIdAndUpdate(req.params.id, body,{ new: true }).populate({path:"tasks", model: "tasks"});
+    const updatedUser = await UsersCollection.findByIdAndUpdate(req.params.id, body,{ new: true }).populate("tasks");
     res.json({ success: true, data: updatedUser });
   } catch (err) {
     next(err);
@@ -91,7 +91,7 @@ export const loginUser = async (req, res, next) => {
           user._id,
           { token: token },
           { new: true }
-        );
+        ).populate("tasks")
 
         res.header("token", token);
 
@@ -113,7 +113,7 @@ export const checkUserToken = async (req, res,next) => {
       const token = req.headers.token 
       const payload = jwt.verify(token, process.env.TOKEN_SECRET_KEY) 
 
-      const user = await UsersCollection.findById(payload._id)
+      const user = await UsersCollection.findById(payload._id).populate("tasks")
 
       res.json({success: true, data: user})
   }

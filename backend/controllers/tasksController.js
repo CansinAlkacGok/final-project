@@ -1,3 +1,4 @@
+import KanbanCollection from '../models/kanbanSchema.js';
 import TasksCollection from '../models/tasksSchema.js';
 import UsersCollection from '../models/userSchema.js';
 
@@ -40,7 +41,18 @@ export const createNewTask = async (req,res,next) => {
         const task = new TasksCollection(req.body);
         await task.save();
 
-        const updatedUser = await UsersCollection.findByIdAndUpdate(req.user._id, {$push: {tasks: task}}, {new: true}).populate("tasks")
+        let kanban = {}
+        if(req.body.kanban){
+            kanban = await KanbanCollection({toDo: req.body.task})
+            await kanban.save()
+        }
+
+      //  const updatedUser = await UsersCollection.findByIdAndUpdate(req.user._id, {$push: {tasks: task, kanban: req.body.kanban && kanban._id}}, {new: true}).populate("tasks")
+
+      const updatedUser= await UsersCollection.findById(req.user._id).populate("tasks")
+      updatedUser.tasks.push(task)
+      updatedUser.kanban.push(kanban._id)
+      await updatedUser.save();
 
         res.json({success: true, data:updatedUser})
 
@@ -65,7 +77,7 @@ export const getSingleTask = async (req,res,next) => {
     }
 };
 
-export const completeTask = async () => {
+export const completeTask = async (req,res,next) => {
 
     try {
         const task = await TasksCollection.findById(req.params.id);
@@ -95,7 +107,7 @@ export const updateTask = async (req,res,next) => {
 
  };
 
-export const deleteTask = async (req,res,body) => {
+export const deleteTask = async (req,res,next) => {
 
     try{
         const id = req.params.id
@@ -106,7 +118,7 @@ export const deleteTask = async (req,res,body) => {
 
             const deletedTask = await TasksCollection.deleteOne({_id: task._id})
 
-            const updatedUser = await UsersCollection.findByIdAndUpdate(req.user._id, {$pull: {tasks: id}}, {new:true}).populate({path:"tasks"})
+            const updatedUser = await UsersCollection.findByIdAndUpdate(req.user._id, {$pull: {tasks: id}}, {new:true}).populate("tasks")
 
             res.json({success:true, data:updatedUser})
         }else{
@@ -118,7 +130,7 @@ export const deleteTask = async (req,res,body) => {
     }
  };
 
-export const deleteCompletedTask = async (req,res,body) => {
+export const deleteCompletedTask = async (req,res,next) => {
 
     try{
         const id = req.params.id
