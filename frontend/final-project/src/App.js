@@ -6,9 +6,10 @@ import Login from "./components/Login.js";
 import HomePage from "./components/HomePage";
 import Profile from "./components/ProfilePage";
 import Settings from "./components/Settings";
-import Notes from "./components/Kanban";
+import Notes from "./components/Notes.js";
 import EditProfileUser from "./components/EditProfilePage.js";
-import Kanban from "./components/Kanban";
+import Kanban from "./components/Kanban.js";
+import TodoList from "./components/TodoList.js";
 
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
           <Route path="/home/kanban" element={<Kanban></Kanban>}></Route>
           <Route path="/home/" element={<Kanban></Kanban>}></Route>
           <Route path="/home/" element={<Kanban></Kanban>}></Route>
+          <Route path="/home/todo" element={<TodoList></TodoList>}></Route>
+          <Route path="/home/notes" element = {<Notes></Notes>}></Route>
         </Route>
 
       </Routes>

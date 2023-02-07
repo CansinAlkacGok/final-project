@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Container(props) {
   const [user, setUser] = useState(null);
-
+  const [allTasks, setTasks] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,10 +23,26 @@ export default function Container(props) {
           }
         });
     }
+
+    const getTasks = () => {
+      fetch("/tasks",{
+       method: "GET",
+       headers: {token: localStorage.getItem("token")}
+     })
+     .then(res => res.json())
+     .then(result => {
+      //console.log(result.tasks)
+      setTasks([...result.tasks])})
+   }
+ 
+   getTasks();
+
   }, [navigate]);
 
+  //console.log(tasks)
+
   return (
-    <MyContext.Provider value={{ user, setUser }}>
+    <MyContext.Provider value={{ user, setUser, allTasks, setTasks }}>
       {props.children}
     </MyContext.Provider>
   );
