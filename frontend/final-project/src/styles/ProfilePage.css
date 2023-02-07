@@ -4,7 +4,8 @@
   align-items: center;
   margin: 6rem auto;
   padding: 2rem;
-  width: 50vw;
+  width:clamp(20rem, -0.875rem + 40.333vw, 50rem);
+  height: fit-content;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background: linear-gradient(
@@ -13,11 +14,13 @@
     rgba(166, 223, 241, 0.9) 50%,
     rgba(135, 208, 224, 0.9) 100%
   );
+  font-size: clamp(0.6rem, -0.875rem + 2.333vw, 1.5rem);
+}
+.profile-container h1 {
+  font-size:clamp(1.3rem, -0.875rem + 3.333vw, 2rem)
 }
 
-.profile-container h1 {
-  font-size: clamp(1.7rem, 1.3rem, 2rem);
-}
+
 
 .profile-back-span {
   display: flex;
@@ -68,6 +71,6 @@
   background-color: rgb(243, 243, 243);
 }
 
-.input-divs {
+.user-info {
   margin: 1rem;
 }
