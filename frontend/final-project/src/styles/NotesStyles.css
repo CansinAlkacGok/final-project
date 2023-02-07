@@ -11,12 +11,11 @@
 }
 
 .notesContainer {
- /*  margin: 5rem 0; */
   width: 100%;
 }
 
 .notesSection {
-  padding: 2rem 2rem 1rem 2rem;
+  padding: 1rem;
   border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
@@ -62,7 +61,7 @@
 
 .modalHealth {
   width: 25rem;
-  background-color: #66D2D6;
+  background-color: #66d2d6;
   text-align: center;
   display: flex;
   align-items: center;
@@ -71,7 +70,7 @@
 }
 .modalBusiness {
   width: 25rem;
-  background-color: #E56997;
+  background-color: #e56997;
   text-align: center;
   display: flex;
   align-items: center;
@@ -80,7 +79,7 @@
 }
 .modalInspirations {
   width: 25rem;
-  background-color: #FBC740;
+  background-color: #fbc740;
   text-align: center;
   display: flex;
   align-items: center;
@@ -90,7 +89,7 @@
 
 .modalPersonal {
   width: 25rem;
-  background-color: #BD97CB;
+  background-color: #bd97cb;
   text-align: center;
   display: flex;
   align-items: center;
@@ -142,7 +141,7 @@
 }
 
 .notesButton:hover {
-  background-color: #EFF1DB;
+  background-color: #eff1db;
 }
 
 .backButton {
@@ -168,23 +167,22 @@
 }
 
 .health {
-  background-color: #66D2D6;
+  background-color: #66d2d6;
 }
 
 .personal {
-  background-color: #BD97CB;
+  background-color: #bd97cb;
 }
 
 .inspirations {
-  background-color: #FBC740;
+  background-color: #fbc740;
 }
 
 .business {
-  background-color: #E56997;
+  background-color: #e56997;
 }
 
 @media (max-width: 1024px) {
- /*  .notesContainer, */
   .notesSection {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -193,12 +191,11 @@
   }
   .notesTags {
     display: grid;
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 550px) {
- /*  .notesContainer, */
   .notesSection {
     display: grid;
     grid-template-columns: 1fr;
