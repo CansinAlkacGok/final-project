@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import MyContext from "../context/MyContext";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import "../styles/EditProfilePage.css"
 
 export default function EditProfileUser() {
   const { user, setUser } = useContext(MyContext);
@@ -33,26 +34,39 @@ export default function EditProfileUser() {
       });
   };
   return (
-    <div>
+    <div className="edit-profile-container">
       <Toaster position="top-center"></Toaster>
       <h1>Profile Editor</h1>
-      <form onSubmit={sendUpdateRequest}>
+
+      <form onSubmit={sendUpdateRequest} className="profile-edit-form">
+
+    <div>
         <label>First Name</label> <br></br>
         <input
           type="text"
           name="firstName"
           defaultValue={user.firstName}
         />{" "}
+</div>
+
         <br></br>
+
+        <div>
         <label>Last Name</label> <br></br>
         <input type="text" name="lastName" defaultValue={user.lastName} />{" "}
+        </div>
+
         <br></br>
+
+        <div>
         <label>Password</label> <br></br>
         <input type="password" name="password" placeholder="********" />{" "}
+        </div>
         <br></br>
         {/*     <label>Profile Image : <input type="file" name="image" /> </label> <br></br>
                 <img src={user.profileImage} alt="profile" width="100"></img><br></br> */}
-        <button>Save</button>
+                <span> <button className="profile-edit-logout-btns">Save</button></span>
+       
       </form>
     </div>
   );
