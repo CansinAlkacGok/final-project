@@ -57,30 +57,34 @@ export default function Profile() {
           {/* <h2>{user.firstName} {user.lastName}</h2> */}
 
           <div className="profile-input-container">
-            <div className="input-divs">
+            <div className="user-info">
               <h4>First Name</h4>
               <p> {user.firstName} </p>
             </div>
-            <div className="input-divs">
+            <div className="user-info">
               <h4>Last Name</h4>
               <p> {user.lastName} </p>
             </div>
-            <div className="input-divs">
+            <div className="user-info">
               <h4>Email</h4>
               <p> {user.email} </p>
             </div>
-            <div className="input-divs">
+            <div className="user-info">
               <h4>Password</h4>
               <p> ***************** </p>
             </div>
 
             <div className="profile-edit-buttons-container">
+              <span>
               <button
                 onClick={editProfile}
-                className="profile-edit-logout-btns"
+                // className="profile-edit-logout-btns"
+                className="button"
               >
                 Edit
               </button>
+              </span>
+
               <button onClick={logout} className="profile-edit-logout-btns">
                 Logout
               </button>
@@ -95,6 +99,7 @@ export default function Profile() {
           >
             Delete Account
           </button>
+          
         </>
       )}
     </div>

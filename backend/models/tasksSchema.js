@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 
 const tasksSchema = new mongoose.Schema({
     task: {type:String, required: true},
-    date: {type: Date},
+    date: {type: Date, default: Date.now},
     completed: {type:Boolean, default: false},
 //    userId: {type:Schema.Types.ObjectId, ref: "users"}
 })

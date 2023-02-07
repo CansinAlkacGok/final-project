@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function Container(props) {
   const [user, setUser] = useState(null);
+
+  const [allTasks, setTasks] = useState([]);
   const [notes, setNotes] = useState([]);
   const navigate = useNavigate();
 
@@ -24,10 +26,28 @@ export default function Container(props) {
           }
         });
     }
+
+    const getTasks = () => {
+      fetch("/tasks",{
+       method: "GET",
+       headers: {token: localStorage.getItem("token")}
+     })
+     .then(res => res.json())
+     .then(result => {
+      //console.log(result.tasks)
+      setTasks([...result.tasks])})
+   }
+ 
+   getTasks();
+
   }, [navigate]);
 
+  //console.log(tasks)
+
   return (
-    <MyContext.Provider value={{ user, setUser, notes, setNotes }}>
+
+    <MyContext.Provider value={{ user, setUser, allTasks, setTasks , notes, setNotes }}>
+
       {props.children}
     </MyContext.Provider>
   );

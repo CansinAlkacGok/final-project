@@ -39,24 +39,31 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container">
-      <h1>Login</h1>
-      <Toaster position="top-center" />
-      <form onSubmit={loginUser} className="login-form-container">
-        <label>
-          {" "}
-          Email <input type="email" name="email" />
-        </label>
-        <br />
-        <label>
-          {" "}
-          Password <input type="password" name="password" />
-        </label>
-        <br />
-        <span className="span-login">
-          <button>Login</button>
-        </span>
-      </form>
+    <div className="login-page">
+      <div className="test">
+        <h1>ladida</h1>
+      </div>
+
+      <div className="login-container">
+        <h1>Login</h1>
+        <Toaster position="top-center" />
+        <form onSubmit={loginUser} className="login-form-container">
+          <label>
+            {" "}
+            Email <input type="email" name="email" />
+          </label>
+          <br />
+          <label>
+            {" "}
+            Password <input type="password" name="password" />
+          </label>
+          <br />
+          <span className="span-login">
+            <button>Login</button>
+          </span>
+        </form>
+      </div>
+
     </div>
   );
 }
