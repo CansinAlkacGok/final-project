@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+
+html {
+  position: relative;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-bg-color: rgb(243, 243, 243);
+  --secondary-color: rgb(166, 223, 241);
+  --multicolor: linear-gradient(
+    0deg,
+    rgb(249, 224, 245) 0%,
+    rgba(166, 223, 241, 1) 50%,
+    rgba(135, 208, 224, 0.4) 100%
+  );
+
+}
+
+.button {
+  font-size:clamp(0.6rem, -0.875rem + 3vw, 1rem);
+  width: fit-content;
+  font-weight: 600;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(82, 219, 212);
+  padding: 0.3rem 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  /* font-family: 'Source Sans Pro', sans-serif; */
+  box-sizing: border-box;
+  background-color: var(--main-bg-color);
+  /* background-image: url("https://cdn.pixabay.com/photo/2023/01/12/16/16/bamboo-7714448_960_720.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; */
+}
+
+.outlet-feature-container {
+  display: flex;
+  justify-content: center;
+  margin-left: 2rem;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  font-size: 1.3rem;
+}
+
+.header {
+  height: 10vh;
+  width: 100%;
+  background: linear-gradient(
+    0deg,
+    rgb(243, 243, 243) 0%,
+    rgba(166, 223, 241, 1) 70%,
+    rgba(166, 223, 241, 1) 100%
+  );
+  opacity: 0.9;
+}
+
+.navigation-outlet-container {
+  height: 90vh;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 2rem;
+}
+
+.navigation {
+  /* position: fixed; */
+  width: 10vw;
+  padding: 1.5rem;
+  background: linear-gradient(
+    0deg,
+    rgb(163, 220, 233) 0%,
+    rgb(243, 243, 243) 100%
+  );
+  text-align: center;
+}
+
+.categories {
+  margin: 1rem 0 8rem 0;
+  width: 100%;
+  padding-top: 2rem;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.categories h3 {
+  margin-bottom: 2rem;
+}
+
+.navlink {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+  padding: 0.3rem 1rem;
+  font-size: clamp(0.5rem, 1vw, 2rem);
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 1200px) {
+  .outlet-feature-container {
+    flex-wrap: wrap;
+  }
+
+  .navigation {
+    padding: 1rem;
+  }
+
+  .outlet-container {
+    width: 100%;
+    margin-right: 3rem;
+    padding-right: 0;
+  }
+}

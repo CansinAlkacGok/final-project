@@ -1,12 +1,15 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const kanbanSchema = new mongoose.Schema({
-    toDo: [{type: String}], 
-    working: [{type: String}], 
-    done: [{type: String}] 
-})
+  title: { type: String, required: true },
+  task: { type: String, required: true },
+  status: { type: String, default: "do" },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
-const KanbanCollection = mongoose.model("kanban", kanbanSchema)
+const KanbanCollection = mongoose.model("kanbans", kanbanSchema);
 
 export default KanbanCollection;
-

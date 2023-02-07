@@ -1,59 +1,57 @@
-import React from 'react'
+import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
+import "../styles/Register.css";
 
 export default function Register() {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const registiration = (e) => {
+    e.preventDefault();
 
-    e.preventDefault()
+    const data = new FormData(e.target);
 
-    const data = new FormData(e.target)
-   
-
-    fetch("/users",
-      {
-        method: "POST",
-        body: data
-      }
-    )
-      .then(res => res.json())
-      .then(result => {
+    fetch("/users", {
+      method: "POST",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((result) => {
         if (result.success) {
-
-          toast.success("Successfully Registered!")
+          toast.success("Successfully Registered!");
 
           setTimeout(() => {
-            navigate("/login")
-          }, 2000)
-
+            navigate("/login");
+          }, 2000);
         } else {
-          toast.error(JSON.stringify(result.message))
+          toast.error(JSON.stringify(result.message));
         }
-      })
-  }
+      });
+  };
 
   return (
-
-    <div>
+    <div className="register-container">
       <h1>Register</h1>
-      <form onSubmit={registiration}>
+
+      <form onSubmit={registiration} className="register-form-container">
         <label>First Name </label> <br></br>
-        <input type="text" name="firstName" required /><br></br>
+        <input type="text" name="firstName" required />
+        <br></br>
         <label>Last Name </label> <br></br>
         <input type="text" name="lastName" required /> <br></br>
         <label>Email </label> <br></br>
-        <input type="email" name="email" required /><br></br>
+        <input type="email" name="email" required />
+        <br></br>
         <label>Password </label> <br></br>
-        <input type="password" name="password" required /><br></br>
+        <input type="password" name="password" required />
+        <br></br>
         {/*      <label>Profile Image </label> <br></br>
         <input type="file" name="image" /> <br></br> */}
-        <button>Register</button>
+        <span className="span-login">
+          <button>Register</button>
+        </span>
       </form>
       <Toaster position="top-center" />
     </div>
-  )
+  );
 }

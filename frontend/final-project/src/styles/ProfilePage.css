@@ -1,0 +1,76 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5rem auto;
+  padding: 2rem;
+  width:clamp(20rem, -0.875rem + 40.333vw, 50rem);
+  height: fit-content;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background: linear-gradient(
+    0deg,
+    rgb(249, 224, 245) 0%,
+    rgba(166, 223, 241, 0.9) 50%,
+    rgba(135, 208, 224, 0.9) 100%
+  );
+  font-size: clamp(0.6rem, -0.875rem + 2.333vw, 1.5rem);
+}
+.profile-container h1 {
+  font-size:clamp(1.3rem, -0.875rem + 3.333vw, 2rem)
+}
+
+
+
+.profile-back-span {
+  display: flex;
+  align-self: flex-end;
+}
+
+.profile-back-delete-btns {
+  background-color: rgb(64, 23, 227);
+  width: fit-content;
+  font-weight: 600;
+  border-radius: 5px;
+  border: none;
+  padding: 0.3rem 0.5rem;
+  color: rgb(239, 237, 237);
+}
+
+.profile-back-delete-btns:hover {
+  background-color: rgb(22, 219, 154);
+  cursor: pointer;
+}
+
+.profile-edit-logout-btns {
+  width: fit-content;
+  font-weight: 600;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(82, 219, 212);
+  padding: 0.3rem 0.5rem;
+}
+
+.profile-edit-logout-btns:hover {
+  background-color: rgb(22, 219, 154);
+  cursor: pointer;
+}
+
+.profile-edit-buttons-container {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.profile-input-container {
+  margin: 2rem 0;
+  padding: 2rem 2rem 1.5rem 2rem;
+  width: 50%;
+  border-radius: 5px;
+  background-color: rgb(243, 243, 243);
+}
+
+.user-info {
+  margin: 1rem;
+}
