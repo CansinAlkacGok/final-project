@@ -2,7 +2,6 @@
   width: 100%;
   margin-top: 3rem;
   padding-bottom: 5rem;
-
 }
 
 .kanban-form {
@@ -55,7 +54,7 @@
 
 .board-column {
   margin: 0.5rem;
-  padding: clamp(.5rem, 0.5vw, 1rem);
+  padding: clamp(0.5rem, 0.5vw, 1rem);
   width: 33%;
   /* background-color: rgb(224, 121, 121); */
   /* background: linear-gradient(0deg, rgba(135,208,224,1) 0%, rgba(166,223,241,1) 50%, rgba(136,119,221,1) 100%); */
@@ -70,8 +69,6 @@
   padding: 0.3rem;
   margin: 0.4rem;
   text-align: center;
-
-  
 }
 
 .board-task:hover {
@@ -157,7 +154,6 @@
 /* Kanban Modal for Creating a new Task */
 
 .add-task-btn {
-  
   background-color: rgb(171, 82, 219);
   padding: 0.5rem 1rem;
   border-radius: 5px;

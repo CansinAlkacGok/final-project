@@ -54,11 +54,11 @@ export default function Notes() {
       .then((result) => {
         if (result.success) {
           toast.success("New note created");
-          setNotes([...notes, result.note]);          
+          setNotes([...notes, result.note]);
           e.target.reset();
           setShowModalHealth(false);
         } else {
-          toast.error(result.message);          
+          toast.error(result.message);
         }
       });
   };
@@ -80,11 +80,11 @@ export default function Notes() {
       .then((result) => {
         if (result.success) {
           toast.success("New note created");
-          setNotes([...notes, result.note]);          
+          setNotes([...notes, result.note]);
           e.target.reset();
           setShowModalBusiness(false);
         } else {
-          toast.error(result.message);          
+          toast.error(result.message);
         }
       });
   };
@@ -105,11 +105,11 @@ export default function Notes() {
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
-          setNotes([...notes, result.note]);          
+          setNotes([...notes, result.note]);
           e.target.reset();
           setShowModalInspirations(false);
         } else {
-          toast.error(result.message);          
+          toast.error(result.message);
         }
       });
   };
@@ -131,18 +131,18 @@ export default function Notes() {
       .then((result) => {
         if (result.success) {
           toast.success("New note created");
-          setNotes([...notes, result.note]);          
+          setNotes([...notes, result.note]);
           e.target.reset();
           setShowModalPersonal(false);
         } else {
-          toast.error(result.message);         
+          toast.error(result.message);
         }
       });
   };
 
   return (
     <div className="notesComponent">
-        <Toaster position="top-center" />
+      <Toaster position="top-center" />
       <div className="notesContainer">
         <h1 className="notesH1">Notes</h1>
         <h3 className="notesH3">Health:</h3>

@@ -3,11 +3,10 @@ import { NavLink, Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import MyContext from "../context/MyContext";
 
-import "./UsersLandingPage.css";
+import "../styles/UsersLandingPage.css";
 
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-
 
 export default function UsersLandingPage() {
   // calender
@@ -38,10 +37,9 @@ export default function UsersLandingPage() {
               <button onClick={logout}>Logout </button>   */}
           </div>
 
-          
+          <div className="navigation-outlet-container">
             <div className="navigation">
-              <div className="profile-settings">
-                
+              <div>
                 <NavLink
                   style={isActive}
                   className="navlink"
@@ -76,15 +74,10 @@ export default function UsersLandingPage() {
               </div>
             </div>
 
-
-          <div className="outlet-feature-container">
-            <div className="outlet-container">
+            <div className="outlet-feature-container">
               <Outlet></Outlet>
             </div>
-
           </div>
-
-
         </>
       ) : (
         <>

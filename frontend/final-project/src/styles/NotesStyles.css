@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.notesComponent {
+  width: 100%;
+}
+
 .notesH3 {
   padding: 1rem;
 }
