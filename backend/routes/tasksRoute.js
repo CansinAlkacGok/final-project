@@ -12,7 +12,7 @@ route.post("/", verifyToken, createNewTask);
 
 route.get("/:id", verifyToken, getSingleTask);
 
-route.get("/completed/:id", verifyToken, completeTask)
+route.patch("/completed/:id", verifyToken, completeTask)
 
 route.patch("/:id",verifyToken, updateTask);
 

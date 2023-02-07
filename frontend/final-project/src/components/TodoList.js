@@ -8,6 +8,7 @@ export default function TodoList() {
   const [form, setForm] = useState(false);
   const { user, setUser } = useContext(MyContext)
 
+
   const addTaskButton = () => {
     setForm(!form)
   }
@@ -35,6 +36,10 @@ export default function TodoList() {
 
     setForm(!form)
   }
+console.log(user, "cansin")
+
+  const doneTask = user && user.tasks.filter(task => task.completed) 
+  const pendingTask = user && user.tasks.filter(task => !task.completed) 
 
   return (
     <div>
@@ -64,34 +69,31 @@ export default function TodoList() {
               <div>
                 <h5>Tasks</h5>
                 <ul>
-                  {user.tasks.map((task) => {
+                  {pendingTask.map((task) => {
                     console.log(task)
                     const date = [(task.date).split('').splice(0, 4), "/", (task.date).split('').splice(5, 2), "/", (task.date).split('').splice(8, 2)]
                     //console.log(date)
-                    if (!task.completed) {
                       return (
                         <SingleToDo task={task} date={date} />
                       )
-                    }
-
                   })}
                 </ul>
               </div>
               <div>
                 <h5>Done</h5>
                 <ul>
-                  {user.tasks.map((task) => {
+                  {doneTask.map((task) => {
                     console.log(task)
                     const date = [(task.date).split('').splice(0, 4), "/", (task.date).split('').splice(5, 2), "/", (task.date).split('').splice(8, 2)]
                     //console.log(date)
-                    if (task.completed) {
+                  
                       return (
                         <div>
                           <li key={task._id}>{task.task}</li>
                           <span>{date.reverse()}</span>
                         </div>
                       )
-                    }
+                  
                   })}
                 </ul>
               </div>
