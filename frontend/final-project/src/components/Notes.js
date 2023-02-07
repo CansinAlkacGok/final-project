@@ -143,8 +143,7 @@ export default function Notes() {
   return (
     <div className="notesComponent">
       <Toaster position="top-center" />
-      <div className="notesContainer">
-        <h1 className="notesH1">Notes</h1>
+      <div className="notesContainer">        
         <h3 className="notesH3">Health:</h3>
         <div className="notesSection">
           <div className="notesTags">

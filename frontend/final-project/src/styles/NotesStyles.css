@@ -11,7 +11,7 @@
 }
 
 .notesContainer {
-  margin: 5rem 0;
+ /*  margin: 5rem 0; */
   width: 100%;
 }
 
@@ -36,11 +36,10 @@
   border: 1px solid black;
   font-size: 1rem;
   padding: 1rem 2rem;
-  margin: 2rem 2rem 0 0;
+  margin: 0 1rem 0 0;
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin-bottom: 16px;
   min-width: 150px;
   border-radius: 16px;
 }
@@ -63,7 +62,7 @@
 
 .modalHealth {
   width: 25rem;
-  background-color: lightgreen;
+  background-color: #66D2D6;
   text-align: center;
   display: flex;
   align-items: center;
@@ -72,7 +71,7 @@
 }
 .modalBusiness {
   width: 25rem;
-  background-color: lightpink;
+  background-color: #E56997;
   text-align: center;
   display: flex;
   align-items: center;
@@ -81,7 +80,7 @@
 }
 .modalInspirations {
   width: 25rem;
-  background-color: orange;
+  background-color: #FBC740;
   text-align: center;
   display: flex;
   align-items: center;
@@ -91,7 +90,7 @@
 
 .modalPersonal {
   width: 25rem;
-  background-color: lightcyan;
+  background-color: #BD97CB;
   text-align: center;
   display: flex;
   align-items: center;
@@ -143,7 +142,7 @@
 }
 
 .notesButton:hover {
-  background-color: wheat;
+  background-color: #EFF1DB;
 }
 
 .backButton {
@@ -169,37 +168,37 @@
 }
 
 .health {
-  background-color: lightgreen;
+  background-color: #66D2D6;
 }
 
 .personal {
-  background-color: lightcyan;
+  background-color: #BD97CB;
 }
 
 .inspirations {
-  background-color: orange;
+  background-color: #FBC740;
 }
 
 .business {
-  background-color: lightpink;
+  background-color: #E56997;
 }
 
 @media (max-width: 1024px) {
-  .notesContainer,
+ /*  .notesContainer, */
   .notesSection {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     padding: 1rem;
     margin: 1rem;
   }
   .notesTags {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr ;
   }
 }
 
-@media (max-width: 768px) {
-  .notesContainer,
+@media (max-width: 550px) {
+ /*  .notesContainer, */
   .notesSection {
     display: grid;
     grid-template-columns: 1fr;
@@ -208,6 +207,6 @@
   }
   .notesTags {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 }
