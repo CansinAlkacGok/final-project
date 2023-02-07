@@ -37,47 +37,40 @@ export default function UsersLandingPage() {
               <button onClick={logout}>Logout </button>   */}
           </div>
 
-          <div className="navigation-outlet-container">
-            <div className="navigation">
-              <div>
-                <NavLink
-                  style={isActive}
-                  className="navlink"
-                  to="/home/profile"
-                >
-                  {" "}
-                  Profile{" "}
-                </NavLink>
-                <br></br>
-              </div>
-              <div className="categories">
-                <NavLink style={isActive} className="navlink" to="/home/kanban">
-                  {" "}
-                  Kanban{" "}
-                </NavLink>
-                <br></br>
-                <NavLink style={isActive} className="navlink" to="/home/todo">
-                  {" "}
-                  To-Do List{" "}
-                </NavLink>
-                <br></br>
-                <NavLink style={isActive} className="navlink" to="/home/notes">
-                  {" "}
-                  Notes{" "}
-                </NavLink>
-                <br></br>
-                <NavLink style={isActive} className="navlink" to="/home/notes/">
-                  {" "}
-                </NavLink>
-                <br></br>
-                
-              </div>
-              <Calendar></Calendar>
+          <div className="navigation">
+            <div>
+              <NavLink style={isActive} className="navlink" to="/home/profile">
+                {" "}
+                Profile{" "}
+              </NavLink>
+              <br></br>
             </div>
+            <div className="navlinks">
+              <NavLink style={isActive} className="navlink" to="/home/kanban">
+                {" "}
+                Kanban{" "}
+              </NavLink>
+              <br></br>
+              <NavLink style={isActive} className="navlink" to="/home/todo">
+                {" "}
+                To-Do List{" "}
+              </NavLink>
+              <br></br>
+              <NavLink style={isActive} className="navlink" to="/home/notes">
+                {" "}
+                Notes{" "}
+              </NavLink>
+              <br></br>
+              <NavLink style={isActive} className="navlink" to="/home/notes/">
+                {" "}
+              </NavLink>
+              <br></br>
+            </div>
+            <Calendar></Calendar>
+          </div>
 
-            <div className="outlet-feature-container">
-              <Outlet></Outlet>
-            </div>
+          <div className="outlet-feature-container">
+            <Outlet></Outlet>
           </div>
         </>
       ) : (

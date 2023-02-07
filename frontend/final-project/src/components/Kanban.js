@@ -59,14 +59,14 @@ export default function Kanban() {
 
   //  ---- Edit Task ----
   const handleEdit = (task) => {
-    console.log(task);
+
     setShowModalCreate(false);
     setEditTask(task);
     setShowModal(true);
   };
 
   const handleSave = async () => {
-    console.log(editTask);
+
 
     try {
       const response = await fetch(`/kanban/${editTask._id}`, {
@@ -77,12 +77,13 @@ export default function Kanban() {
         },
         body: JSON.stringify(editTask),
       });
-      const data = await response.json();
-
+      const result = await response.json();
+      
       setUser((prevState) => {
         const updatedKanban = prevState.kanban.map((task) => {
-          if (task._id === data._id) {
-            return data;
+          
+          if (task._id === result.data._id) {
+            return result.data;
           }
           return task;
         });
@@ -97,7 +98,7 @@ export default function Kanban() {
   // ---- Filter through all the Kanban Tasks and sort them according to status (do, doing, done)
 
   useEffect(() => {
-    console.log(user)
+    
     const filteredTasks = user.kanban.reduce(
       (acc, task) => {
         if (task.status === "do") {
@@ -119,7 +120,6 @@ export default function Kanban() {
 
   // ---- Delete Task ----
   const handleDelete = (taskId) => {
-    console.log(taskId);
 
     fetch(`/kanban/${taskId}`, {
       method: "DELETE",
@@ -144,13 +144,13 @@ export default function Kanban() {
   // ---- drag and drop ----
   const handleDrag = (e, task) => {
     e.dataTransfer.setData("task", JSON.stringify(task));
-    console.log(task);
+
   };
 
   const handleDrop = (e, status) => {
     let task = JSON.parse(e.dataTransfer.getData("task"));
     task.status = status;
-    console.log(task);
+
 
     fetch(`/kanban/${task._id}`, {
       method: "PATCH",
