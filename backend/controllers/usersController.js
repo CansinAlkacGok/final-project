@@ -49,15 +49,15 @@ export const updateUser = async (req, res, next) => {
         body[key] = req.body[key];
       }
     }
-<<<<<<< HEAD
+
     const updatedUser = await UsersCollection.findByIdAndUpdate(req.params.id, body,{ new: true }).populate("tasks");
-=======
-    const updatedUser = await UsersCollection.findByIdAndUpdate(
-      req.params.id,
-      body,
-      { new: true }
-    ).populate({ path: "tasks", model: "tasks" }).populate("kanban");
->>>>>>> 5b4b28af1a138b462a4a653ba460663eb332c90f
+
+ //   const updatedUser = await UsersCollection.findByIdAndUpdate(
+ //     req.params.id,
+ //     body,
+ //     { new: true }
+ //   ).populate({ path: "tasks", model: "tasks" }).populate("kanban");
+
     res.json({ success: true, data: updatedUser });
   } catch (err) {
     next(err);
@@ -121,11 +121,11 @@ export const checkUserToken = async (req, res, next) => {
     const token = req.headers.token;
     const payload = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
 
-<<<<<<< HEAD
+
       const user = await UsersCollection.findById(payload._id).populate("tasks")
-=======
-    const user = await UsersCollection.findById(payload._id).populate("kanban");
->>>>>>> 5b4b28af1a138b462a4a653ba460663eb332c90f
+
+  //  const user = await UsersCollection.findById(payload._id).populate("kanban");
+
 
     res.json({ success: true, data: user });
   } catch (err) {
