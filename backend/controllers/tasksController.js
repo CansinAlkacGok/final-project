@@ -41,7 +41,7 @@ export const createNewTask = async (req,res,next) => {
         const task = new TasksCollection(req.body);
         await task.save();
 
-<<<<<<< HEAD
+
         let kanban = {}
         if(req.body.kanban){
             kanban = await KanbanCollection({toDo: req.body.task})
@@ -55,9 +55,7 @@ export const createNewTask = async (req,res,next) => {
       updatedUser.kanban.push(kanban._id)
       await updatedUser.save();
 
-=======
-        const updatedUser = await UsersCollection.findByIdAndUpdate(req.user._id, {$push: {tasks: task}}, {new: true}).populate("tasks")
->>>>>>> 5b4b28af1a138b462a4a653ba460663eb332c90f
+
         res.json({success: true, data:updatedUser})
 
     }
