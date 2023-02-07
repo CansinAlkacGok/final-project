@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import MyContext from "./MyContext.js";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Container(props) {
   const [user, setUser] = useState(null);
+
   const [allTasks, setTasks] = useState([]);
+  const [notes, setNotes] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,7 +45,9 @@ export default function Container(props) {
   //console.log(tasks)
 
   return (
-    <MyContext.Provider value={{ user, setUser, allTasks, setTasks }}>
+
+    <MyContext.Provider value={{ user, setUser, allTasks, setTasks , notes, setNotes }}>
+
       {props.children}
     </MyContext.Provider>
   );

@@ -1,6 +1,11 @@
 import React, { useContext } from "react";
 import MyContext from "../context/MyContext.js";
 import { useNavigate } from "react-router-dom";
+import "../styles/ProfilePage.css";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+const returnIcon = <FontAwesomeIcon icon={faLeftLong} />;
 
 export default function Profile() {
   const { user, setUser } = useContext(MyContext);
@@ -13,61 +18,90 @@ export default function Profile() {
   };
 
   const editProfile = () => {
-    navigate("/home/editprofile")
-  }
+    navigate("/home/editprofile");
+  };
 
   const deleteUserAccount = () => {
-    fetch(`/users/${user._id}`,
-      {
-        method: "DELETE",
-        headers: { token: localStorage.getItem("token") }
-      })
-      .then(res => res.json())
-      .then(result => {
+    fetch(`/users/${user._id}`, {
+      method: "DELETE",
+      headers: { token: localStorage.getItem("token") },
+    })
+      .then((res) => res.json())
+      .then((result) => {
         if (result.success) {
-          setUser(null)
-          localStorage.removeItem("token")
-          navigate("/")
+          setUser(null);
+          localStorage.removeItem("token");
+          navigate("/");
         } else {
-          console.log(result.message)
+          console.log(result.message);
         }
-      })
-
-  }
+      });
+  };
 
   const backToMainPage = () => {
-    navigate("/home")
-  }
+    navigate("/home");
+  };
 
   return (
-    <div>
+    <div className="profile-container">
+      <span className="profile-back-span">
+        <button onClick={backToMainPage} className="profile-back-delete-btns">
+          {returnIcon} Main Page{" "}
+        </button>
+      </span>
+
       <h1>Profile</h1>
-      <button onClick={backToMainPage}> Back to main page </button>
 
-      {
-        user && <>
+      {user && (
+        <>
+          {/* <h2>{user.firstName} {user.lastName}</h2> */}
 
-          <h2>{user.firstName} {user.lastName}</h2>
-          <button onClick={editProfile}>Edit</button>
-          
-          <div>
-            <h4>First Name</h4>
-            <p> {user.firstName} </p>
-            <h4>Last Name</h4>
-            <p> {user.lastName} </p>
-            <h4>Email</h4>
-            <p> {user.email} </p>
-            <h4>Password</h4>
-            <p> ***************** </p>
+          <div className="profile-input-container">
+            <div className="user-info">
+              <h4>First Name</h4>
+              <p> {user.firstName} </p>
+            </div>
+            <div className="user-info">
+              <h4>Last Name</h4>
+              <p> {user.lastName} </p>
+            </div>
+            <div className="user-info">
+              <h4>Email</h4>
+              <p> {user.email} </p>
+            </div>
+            <div className="user-info">
+              <h4>Password</h4>
+              <p> ***************** </p>
+            </div>
+
+            <div className="profile-edit-buttons-container">
+              <span>
+              <button
+                onClick={editProfile}
+                // className="profile-edit-logout-btns"
+                className="button"
+              >
+                Edit
+              </button>
+              </span>
+
+              <button onClick={logout} className="profile-edit-logout-btns">
+                Logout
+              </button>
+            </div>
           </div>
 
           {/*     <img src={user.profileImage} width="300" alt="profileImage" /> */}
+
+          <button
+            onClick={deleteUserAccount}
+            className="profile-back-delete-btns"
+          >
+            Delete Account
+          </button>
           
-          <button onClick={logout}>logout</button>
-          <button onClick={deleteUserAccount}>Delete User</button>
         </>
-      }
+      )}
     </div>
   );
 }
-

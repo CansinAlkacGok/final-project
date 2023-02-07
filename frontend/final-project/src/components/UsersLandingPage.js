@@ -1,12 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import MyContext from "../context/MyContext";
-import testImage from "./testImage.jpg";
-import "./UsersLandingPage.css";
 
+import "../styles/UsersLandingPage.css";
+
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 export default function UsersLandingPage() {
+  // calender
+  const [value, onChange] = useState(new Date());
+
   const { user, setUser } = useContext(MyContext);
   const navigate = useNavigate();
 
@@ -16,87 +21,64 @@ export default function UsersLandingPage() {
     navigate("/login");
   };
 
+  const isActive = ({ isActive }) => {
+    return {
+      backgroundColor: isActive ? "rgb(82, 219, 212)" : "",
+      borderRadius: isActive ? "5px" : "",
+    };
+  };
+
   return (
     <div>
       {user ? (
         <>
           <div className="header">
-            <NavLink to="/home"> Brand Name / Logo </NavLink> <br></br>
-            <button onClick={logout}>Logout </button>
+            {/* <NavLink to="/home"> Brand Name / Logo </NavLink> <br></br>
+              <button onClick={logout}>Logout </button>   */}
           </div>
 
-          <div className="navigations">
-            <div className="side-navigation">
-              <div className="profile-settings">
-                <img
-                  alt=""
-                  src={testImage}
-                  style={{
-                    width: "133px",
-                    marginBottom: "2rem",
-                    borderRadius: "50%",
-                  }}
-                ></img>
-                <NavLink to="/home/profile"> Profile </NavLink>
-                <br></br>
-                <NavLink to="/home/settings"> Settings </NavLink>
-                <br></br>
-              </div>
-              <div className="note-categories">
-                <h3>Navigation</h3>
-                <NavLink className="category" to="/home/all">
+          <div className="navigation-outlet-container">
+            <div className="navigation">
+              <div>
+                <NavLink
+                  style={isActive}
+                  className="navlink"
+                  to="/home/profile"
+                >
                   {" "}
-                  All{" "}
+                  Profile{" "}
                 </NavLink>
                 <br></br>
-                <NavLink className="category" to="/home/kanban">
+              </div>
+              <div className="categories">
+                <NavLink style={isActive} className="navlink" to="/home/kanban">
                   {" "}
                   Kanban{" "}
                 </NavLink>
                 <br></br>
-                <NavLink className="category" to="/home/notes">
+                <NavLink style={isActive} className="navlink" to="/home/todo">
+                  {" "}
+                  To-Do List{" "}
+                </NavLink>
+                <br></br>
+                <NavLink style={isActive} className="navlink" to="/home/notes">
                   {" "}
                   Notes{" "}
                 </NavLink>
                 <br></br>
-                <NavLink className="category" to="/home/todo">
+                <NavLink style={isActive} className="navlink" to="/home/notes/">
                   {" "}
-                  To Do's{" "}
                 </NavLink>
                 <br></br>
-                <NavLink className="category" to="/home/notes/">
-                  {" "}
-                  <button>Add Section</button>{" "}
-                </NavLink>
-                <br></br>
+                
               </div>
+              <Calendar></Calendar>
             </div>
 
-            <div className="yellow">
-              <h1>Outlet - Placeholder for Features in the middle</h1>
+            <div className="outlet-feature-container">
               <Outlet></Outlet>
             </div>
-
-            <div className="red">
-              <div className="purple">
-                <h1>Feature</h1>
-                <p>e.g. Calendar</p>
-              </div>
-
-              <div className="green">
-                <h1>Feature</h1>
-                <p>e.g. Spotify</p>
-              </div>
-
-              <div className="blue">
-                <h1>Feature</h1>
-              </div>
-            </div>
           </div>
-
-          <footer>
-            <h1>Footer</h1>
-          </footer>
         </>
       ) : (
         <>
@@ -110,5 +92,4 @@ export default function UsersLandingPage() {
       )}
     </div>
   );
-
 }
