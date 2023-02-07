@@ -70,8 +70,9 @@ export default function UsersLandingPage() {
                   {" "}
                 </NavLink>
                 <br></br>
-                <Calendar></Calendar>
+                
               </div>
+              <Calendar></Calendar>
             </div>
 
             <div className="outlet-feature-container">

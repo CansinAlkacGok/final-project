@@ -1,5 +1,6 @@
 .kanban-container {
-  width: 100%;
+  font-size: clamp(0.5rem, 1vw, 1rem);
+  width: 70%;
   margin-top: 3rem;
   padding-bottom: 5rem;
 }
@@ -221,4 +222,11 @@
   background-color: rgb(22, 219, 154);
   color: white;
   cursor: pointer;
+}
+
+
+@media only screen and (max-width: 1200px) {
+
+
+
 }
