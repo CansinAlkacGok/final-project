@@ -3,6 +3,7 @@ import { useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import MyContext from "../context/MyContext";
 import { useNavigate } from "react-router-dom";
+import "../styles/Login.css";
 
 export default function Login() {
   const { setUser } = useContext(MyContext);
@@ -38,22 +39,31 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <Toaster position="top-center" />
-      <form onSubmit={loginUser}>
-        <label>
-          {" "}
-          Email : <input type="email" name="email" />
-        </label>
-        <br />
-        <label>
-          {" "}
-          Password : <input type="password" name="password" />
-        </label>
-        <br />
-        <button>Login</button>
-      </form>
+    <div className="login-page">
+      <div className="test">
+        <h1>ladida</h1>
+      </div>
+
+      <div className="login-container">
+        <h1>Login</h1>
+        <Toaster position="top-center" />
+        <form onSubmit={loginUser} className="login-form-container">
+          <label>
+            {" "}
+            Email <input type="email" name="email" />
+          </label>
+          <br />
+          <label>
+            {" "}
+            Password <input type="password" name="password" />
+          </label>
+          <br />
+          <span className="span-login">
+            <button>Login</button>
+          </span>
+        </form>
+      </div>
+
     </div>
   );
 }

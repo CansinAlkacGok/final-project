@@ -1,48 +1,111 @@
-import KanbanCollection from '../models/kanbanSchema.js'
+import KanbanCollection from "../models/kanbanSchema.js";
+import UsersCollection from "../models/userSchema.js";
 
-
-export const getAllToDos = async (req, res, next) => {
-
-    try {
-        const toDos = await KanbanCollection.find();
-
-        //const toDosArray = []
-
-        for (const toDo of toDos) {
-            if (toDo.toDo.length > 0) {
-               // console.log(toDo.toDo)
-                toDosArray.push(toDo.toDo)
-            }
-
-        }
-        //console.log(toDosArray.flat())
-        res.json({ success: true, toDos: toDosArray.flat() })
-
-    }
-    catch (err) { 
-        next(err); }
+export const getAllTasks = async (req, res, next) => {
+  try {
+    const alltasks = await KanbanCollection.find();
+    res.json({ success: true, toDos: alltasks });
+  } catch (err) {
+    next(err);
+  }
 };
 
+export const createNewTask = async (req, res, next) => {
+  try {
+    const task = new KanbanCollection(req.body);
+    await task.save();
 
+    const updatedUser = await UsersCollection.findByIdAndUpdate(
+      req.user._id,
+      { $push: { kanban: task } },
+      { new: true }
+    ).populate("kanban");
 
-export const getAllWorking = () => { }
+    res.json({ success: true, data: updatedUser });
+  } catch (err) {
+    next(err);
+  }
+};
 
-export const getAllDone = () => { }
+export const getAllDoingTasks = async (req, res, next) => {
+  try {
+    const allTasks = await KanbanCollection.find();
+    const filterAllDoing = [];
 
-export const createNewToDo = () => { }
+    for (const task of allTasks) {
+      if (task.status === "doing") {
+        filterAllDoing.push(task);
+      }
+    }
+    res.json({ success: true, data: filterAllDoing });
+  } catch (err) {
+    next(err);
+  }
+};
 
-export const getSingleToDo = () => { }
+export const getAllDoneTasks = async (req, res, next) => {
+  try {
+    const allTasks = await KanbanCollection.find();
+    const filterAllDone = [];
 
-export const getSingleWorking = () => { }
+    for (const task of allTasks) {
+      if (task.status === "done") {
+        filterAllDone.push(task);
+      }
+    }
+    res.json({ success: true, data: filterAllDone });
+  } catch (err) {
+    next(err);
+  }
+};
 
-export const getSingleDone = () => { }
+export const getSingleToDo = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const singleToDo = await KanbanCollection.findById(id);
+    res.json({ success: true, data: singleToDo });
+  } catch (err) {
+    next(err);
+  }
+};
 
-export const updateToDo = () => { }
+export const updateTask = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const updatedTask = await KanbanCollection.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    res.json({ success: true, data: updatedTask });
+  } catch (err) {
+    next(err);
+  }
+};
 
-export const updateWorking = () => { }
+export const deleteTask = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const existingTask = await KanbanCollection.findById(id);
 
-export const deleteToDo = () => { }
+    // console.log(existingTask._id); // clg to check
 
-export const deleteWorking = () => { }
+    if (existingTask) {
+      const deleteStatus = await KanbanCollection.deleteOne({
+        _id: existingTask._id,
+      });
 
-export const deleteDone = () => { }
+      const updatedUser = await UsersCollection.findByIdAndUpdate(
+        req.user._id,
+        { $pull: { existingTask: id } },
+        { new: true }
+      ).populate({ path: "kanban" });
+
+      // console.log(updatedUser); // clg to check
+
+      res.json({ success: true, data: updatedUser });
+    } else {
+      throw new Error("Task id doesn't exist!");
+    }
+  } catch (err) {
+    next(err);
+  }
+};
