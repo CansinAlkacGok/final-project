@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react';
 import MyContext from '../context/MyContext.js';
+import "../styles/ToDoList.css"
+
 
 export default function SingleToDo({ task, date }) {
 
@@ -63,43 +65,49 @@ export default function SingleToDo({ task, date }) {
         })
             .then(res => res.json())
             .then(result => {
-             /*  setUser(prevTask => {
-                    const updatedTasks = prevTask.tasks.map(task => {
-                        if (task._id === result.task._id) {
-                            task.completed = true;
+                /*  setUser(prevTask => {
+                       const updatedTasks = prevTask.tasks.map(task => {
+                           if (task._id === result.task._id) {
+                               task.completed = true;
+                           }
+                           return task;
+                       });
+                       return { ...prevTask, tasks: [...updatedTasks] };
+                   });  */
+                setUser({
+                    ...user, tasks: user.tasks.map(task => {
+                        if (task._id === result.data._id) {
+                            return result.data
+                        } else {
+                            return task
                         }
-                        return task;
-                    });
-                    return { ...prevTask, tasks: [...updatedTasks] };
-                });  */
-                setUser({...user, tasks: user.tasks.map(task => {
-                    if (task._id === result.data._id) {
-                        return result.data
-                    }else{
-                        return task
-                    }
-                })})
-               
+                    })
+                })
+
             });
     };
+
 
     return (
         <div>
 
-            <li key={task._id}>{task.task}</li>
+            <li className='task-list' key={task._id}>{task.task}</li>
             <span>{date.reverse()}</span>
-            <button onClick={() => { setEditing(true) }}>Update</button>
-            <button onClick={handleDelete}>Delete</button>
-            <button onClick={handleDone}>Done</button>
+            <button onClick={() => { setEditing(!editing) }} className='editing-buttons'>Edit</button>
+            <button onClick={handleDelete} className='editing-buttons'>Delete</button>
+            <button onClick={handleDone} className='editing-buttons'>Done</button>
             <div>
                 {
                     editing && (
-                        <form onSubmit={handleUpdate}>
+                        <form onSubmit={handleUpdate} className='edit-task-form'>
                             <label>Task: </label>
-                            <input type="text" name="task"></input><br></br>
+                            <input type="text" name="task" defaultValue={task.task}></input><br></br>
                             <label>Due Date: </label>
                             <input type="date" name="date"></input><br></br>
-                            <button>Submit</button>
+                            <div>
+                                <button onClick={() => setEditing(!editing)}>Cancel</button>
+                                <button>Save</button>
+                            </div>
                         </form>
                     )
                 }
