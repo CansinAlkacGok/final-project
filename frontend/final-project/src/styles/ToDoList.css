@@ -1,0 +1,119 @@
+.container {
+    font-size: clamp(0.5rem, 1vw, 1rem);
+    width: 60%;
+    margin-top: 3rem;
+    padding-bottom: 5rem;
+}
+
+.container h2{
+    text-align: center;
+}
+
+.add-button{
+    margin-top: 2rem;
+    margin-left: 1rem;
+    width: 10%;
+    padding: 0.6rem;
+    border-radius: 0.6rem;
+    background-color: rgb(231, 243, 249);
+    border-color: rgb(90, 137, 160);
+    font-weight: bolder;
+}
+
+.create-task-form{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgb(231, 243, 249);
+    z-index: 99;
+    width: 40%;
+    margin: 1rem auto;
+    align-items:center;
+    text-align:start;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 0.6rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.edit-task-form{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgb(231, 243, 249);
+    z-index: 99;
+    width: 20%;
+    margin: 1rem auto;
+    align-items:center;
+    text-align:start;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 0.6rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.create-task-form input, .edit-task-form input, .create-task-form-button button{
+    padding: 0.4rem;
+    border-radius: 0.6rem;
+}
+.create-task-form input,  .create-task-form label{
+    width: 40%;
+}
+
+.edit-task-form input, .edit-task-form label{
+    width: 70%;
+}
+
+.create-task-form-button{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+.create-task-form-button button, .edit-task-form button{
+    background-color:  rgb(231, 243, 249);
+    padding: 0.5rem 1rem;
+    border-radius: 0.6rem;
+    border-color: rgb(90, 137, 160);
+    margin: 1rem;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.checkbox{
+    display: flex;
+    justify-content: flex-start;
+    gap: 0;
+    width: 60%;
+}
+
+.tasks-container{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3rem;
+}
+
+.task-list{
+    margin: 1rem;
+}
+
+span{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.editing-buttons {
+    padding: 0.2rem;
+    margin: 0.1rem;
+    font-weight: bolder;   
+    border-radius: 0.5rem;
+    background-color:  rgb(231, 243, 249);
+    border-color: rgb(90, 137, 160);
+}
+
