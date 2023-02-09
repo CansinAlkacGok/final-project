@@ -10,7 +10,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 export default function SingleHealthNote() {
   const navigate = useNavigate();
-  const { notes, setNotes } = useContext(MyContext);
+  const { setUser } = useContext(MyContext);
   const [singleHealthNote, setSingleHealthNote] = useState(null);
   const [singleBusinessNote, setSingleBusinessNote] = useState(null);
   const [singleInspirationsNote, setSingleInspirationsNote] = useState(null);
@@ -102,8 +102,9 @@ export default function SingleHealthNote() {
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
-          const newNotes = notes.filter((item) => item._id !== id);
-          setNotes(newNotes);
+         /*  const newNotes = notes.filter((item) => item._id !== id); */
+         /*  setNotes(newNotes); */
+         setUser(result.data)
           toast.success("Note deleted");
           setTimeout(() => {
             navigate("/home/notes");
@@ -122,8 +123,7 @@ export default function SingleHealthNote() {
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
-          const newNotes = notes.filter((item) => item._id !== id);
-          setNotes(newNotes);
+          setUser(result.data)
           toast.success("Note deleted");
           setTimeout(() => {
             navigate("/home/notes");
@@ -142,8 +142,7 @@ export default function SingleHealthNote() {
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
-          const newNotes = notes.filter((item) => item._id !== id);
-          setNotes(newNotes);
+          setUser(result.data)
           toast.success("Note deleted");
           setTimeout(() => {
             navigate("/home/notes");
@@ -162,8 +161,7 @@ export default function SingleHealthNote() {
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
-          const newNotes = notes.filter((item) => item._id !== id);
-          setNotes(newNotes);
+          setUser(result.data)
           toast.success("Note deleted");
           setTimeout(() => {
             navigate("/home/notes");
@@ -193,7 +191,7 @@ export default function SingleHealthNote() {
       .then((result) => {
         if (result.success) {
           toast.success("Note edited");
-          setNotes(
+          /* setNotes(
             notes.map((item) => {
               if (item._id === result.note._id) {
                 return result.note;
@@ -201,7 +199,8 @@ export default function SingleHealthNote() {
                 return item;
               }
             })
-          );
+          ); */
+          setUser(result.data)
           setTimeout(() => {
             navigate("/home/notes");
           }, 1500);
@@ -228,15 +227,7 @@ export default function SingleHealthNote() {
       .then((result) => {
         if (result.success) {
           toast.success("Note edited");
-          setNotes(
-            notes.map((item) => {
-              if (item._id === result.note._id) {
-                return result.note;
-              } else {
-                return item;
-              }
-            })
-          );
+          setUser(result.data)
           setTimeout(() => {
             navigate("/home/notes");
           }, 1500);
@@ -263,15 +254,7 @@ export default function SingleHealthNote() {
       .then((result) => {
         if (result.success) {
           toast.success("Note edited");
-          setNotes(
-            notes.map((item) => {
-              if (item._id === result.note._id) {
-                return result.note;
-              } else {
-                return item;
-              }
-            })
-          );
+          setUser(result.data)
           setTimeout(() => {
             navigate("/home/notes");
           }, 1500);
@@ -298,15 +281,7 @@ export default function SingleHealthNote() {
       .then((result) => {
         if (result.success) {
           toast.success("Note edited");
-          setNotes(
-            notes.map((item) => {
-              if (item._id === result.note._id) {
-                return result.note;
-              } else {
-                return item;
-              }
-            })
-          );
+          setUser(result.data)
           setTimeout(() => {
             navigate("/home/notes");
           }, 1500);

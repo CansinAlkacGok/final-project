@@ -1,6 +1,5 @@
-
 import "../styles/NotesStyles.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { GrEdit } from "react-icons/gr";
 import { useContext } from "react";
@@ -8,7 +7,7 @@ import MyContext from "../context/MyContext";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function Notes() {
-  const { notes, setNotes } = useContext(MyContext);
+  const { user, setUser } = useContext(MyContext);
   /* const [notes, setNotes] = useState([]); */
   const [showModalHealth, setShowModalHealth] = useState(false);
   const [showModalBusiness, setShowModalBusiness] = useState(false);
@@ -17,7 +16,7 @@ export default function Notes() {
 
   // GET
 
-  const getAllNotes = () => {
+ /*  const getAllNotes = () => {
     fetch(`/notes`, {
       method: "GET",
       headers: { token: localStorage.getItem("token") },
@@ -34,7 +33,7 @@ export default function Notes() {
 
   useEffect(() => {
     getAllNotes();
-  }, []);
+  }, []); */
 
   // CREATE
 
@@ -55,7 +54,8 @@ export default function Notes() {
       .then((result) => {
         if (result.success) {
           toast.success("New note created");
-          setNotes([...notes, result.note]);
+     /*      setNotes([...notes, result.note]); */
+          setUser(result.data)
           e.target.reset();
           setShowModalHealth(false);
         } else {
@@ -81,7 +81,7 @@ export default function Notes() {
       .then((result) => {
         if (result.success) {
           toast.success("New note created");
-          setNotes([...notes, result.note]);
+          setUser(result.data)
           e.target.reset();
           setShowModalBusiness(false);
         } else {
@@ -106,7 +106,7 @@ export default function Notes() {
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
-          setNotes([...notes, result.note]);
+          setUser(result.data)
           e.target.reset();
           setShowModalInspirations(false);
         } else {
@@ -132,7 +132,7 @@ export default function Notes() {
       .then((result) => {
         if (result.success) {
           toast.success("New note created");
-          setNotes([...notes, result.note]);
+          setUser(result.data)
           e.target.reset();
           setShowModalPersonal(false);
         } else {
@@ -148,7 +148,8 @@ export default function Notes() {
         <h3 className="notesH3">Health:</h3>
         <div className="notesSection">
           <div className="notesTags">
-            {notes.map((item) => {
+
+            {user && user.notes.map((item) => {
               return (
                 <section key={item._id}>
                   {item.health.map((element) => {
@@ -209,7 +210,7 @@ export default function Notes() {
         <h3 className="notesH3">Business:</h3>
         <div className="notesSection">
           <div className="notesTags">
-            {notes.map((item) => {
+            {user && user.notes.map((item) => {
               return (
                 <section key={item._id}>
                   {item.business.map((element) => {
@@ -270,7 +271,7 @@ export default function Notes() {
         <h3 className="notesH3">Inspirations:</h3>
         <div className="notesSection">
           <div className="notesTags">
-            {notes.map((item) => {
+            {user && user.notes.map((item) => {
               return (
                 <section key={item._id}>
                   {item.inspirations.map((element) => {
@@ -331,7 +332,7 @@ export default function Notes() {
         <h3 className="notesH3">Personal:</h3>
         <div className="notesSection">
           <div className="notesTags">
-            {notes.map((item) => {
+            {user && user.notes.map((item) => {
               return (
                 <section key={item._id}>
                   {item.personal.map((element) => {
