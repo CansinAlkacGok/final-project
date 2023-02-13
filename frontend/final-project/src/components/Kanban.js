@@ -144,13 +144,13 @@ export default function Kanban() {
   // ---- drag and drop ----
   const handleDrag = (e, task) => {
     e.dataTransfer.setData("task", JSON.stringify(task));
-
+   
   };
 
   const handleDrop = (e, status) => {
     let task = JSON.parse(e.dataTransfer.getData("task"));
     task.status = status;
-
+    console.log(task)
 
     fetch(`/kanban/${task._id}`, {
       method: "PATCH",
