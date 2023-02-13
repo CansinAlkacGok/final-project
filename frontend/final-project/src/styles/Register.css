@@ -1,10 +1,19 @@
+.regPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-self: baseline;
+  margin-left: 10rem;
+}
+
 .register-container {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 30vw;
-  margin: 0 auto;
+  /*  margin: 0 auto; */
   padding: 2rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background: linear-gradient(
@@ -21,7 +30,7 @@
 
 .register-form-container {
   width: 60%;
-  margin: 1rem;
+/*   margin: 1rem; */
   font-size: clamp(1rem, 1rem, 2rem);
 }
 
@@ -54,4 +63,18 @@
 .register-form-container button:hover {
   background-color: rgb(22, 219, 154);
   cursor: pointer;
+}
+
+@media (max-width: 1400px) {
+  .regPage {
+    width: 100%;
+    margin:  0;
+    padding: 1rem 0;
+  }
+
+  .register-container {
+    width: 100%;
+    margin: 0;
+    padding: 1rem 0;
+  }
 }
