@@ -75,15 +75,15 @@ export default function Profile() {
             </div>
 
             <div className="profile-edit-buttons-container">
-              <span>
+
               <button
                 onClick={editProfile}
-                // className="profile-edit-logout-btns"
-                className="button"
+                className="profile-edit-logout-btns"
+                
               >
                 Edit
               </button>
-              </span>
+
 
               <button onClick={logout} className="profile-edit-logout-btns">
                 Logout

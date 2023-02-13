@@ -8,6 +8,14 @@ import "../styles/UsersLandingPage.css";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
+import brandLogo from "./brandLogo.png";
+import brandLogoBlack from "./brandLogoBlack.png";
+// Font Awesome Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+
+const burgerIcon = <FontAwesomeIcon icon={faBars} />;
+
 export default function UsersLandingPage() {
   // calender
   const [value, onChange] = useState(new Date());
@@ -33,8 +41,97 @@ export default function UsersLandingPage() {
       {user ? (
         <>
           <div className="header">
-            {/* <NavLink to="/home"> Brand Name / Logo </NavLink> <br></br>
-              <button onClick={logout}>Logout </button>   */}
+            <div className="burger-menu">
+              <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#A">
+                    <NavLink className="NavLink" to="/home/kanban" href="#1">
+                      <img
+                        classname="brand-logo"
+                        alt=""
+                        src={brandLogo}
+                        style={{ height: "100px" }}
+                      ></img>
+                    </NavLink>
+                  </a>
+                  <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#main_nav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="main_nav">
+                    <ul class="navbar-nav">
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <NavLink
+                            className="burger-navlink"
+                            style={isActive}
+                            to="/home/profile"
+                          >
+                            {" "}
+                            Profile{" "}
+                          </NavLink>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <NavLink
+                            className="burger-navlink"
+                            style={isActive}
+                            to="/home/kanban"
+                          >
+                            {" "}
+                            Kanban{" "}
+                          </NavLink>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <NavLink
+                            style={isActive}
+                            className="burger-navlink"
+                            to="/home/todo"
+                          >
+                            {" "}
+                            To-Do List{" "}
+                          </NavLink>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <NavLink
+                            style={isActive}
+                            className="burger-navlink"
+                            to="/home/notes"
+                          >
+                            {" "}
+                            Notes{" "}
+                          </NavLink>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            </div>
+            <div id="header-logo">
+            <NavLink to="/home" >
+              {" "}
+              <img
+                classname="brand-logo"
+                alt=""
+                src={brandLogo}
+                style={{ height: "155px"}}
+              ></img>{" "}
+            </NavLink>{" "}
+            </div>
+            
+            {/* <button onClick={logout}>Logout </button> */}
           </div>
 
           <div className="navigation">
@@ -61,12 +158,10 @@ export default function UsersLandingPage() {
                 Notes{" "}
               </NavLink>
               <br></br>
-              <NavLink style={isActive} className="navlink" to="/home/notes/">
-                {" "}
-              </NavLink>
-              <br></br>
             </div>
-            <Calendar></Calendar>
+            <div className="calendar">
+              <Calendar></Calendar>
+            </div>
           </div>
 
           <div className="outlet-feature-container">

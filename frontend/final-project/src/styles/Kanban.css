@@ -1,6 +1,7 @@
 .kanban-container {
-  font-size: clamp(0.5rem, 1vw, 1rem);
+  font-size: clamp(0.5rem, 1.3vw, 1.1rem);
   width: 70%;
+  margin-left: 10rem;
   margin-top: 3rem;
   padding-bottom: 5rem;
 }
@@ -20,6 +21,7 @@
 }
 
 .kanban-form button {
+  font-size: clamp(0.5rem, 1vw, 1rem);
   font-weight: 600;
   border-radius: 5px;
   border: none;
@@ -48,8 +50,17 @@
   );
 }
 
-.board-container h2 {
+.kanban-column-header {
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  font-weight: 600;
+  text-align: center;
   padding: 1rem 0;
+}
+
+.board-task h3 {
+  font-weight: 600;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+padding-top: 0.5rem;
   text-align: center;
 }
 
@@ -224,9 +235,70 @@
   cursor: pointer;
 }
 
-
 @media only screen and (max-width: 1200px) {
+  .kanban-container {
+    margin-left: 10rem;
+  }
+}
 
+@media only screen and (max-width: 800px) {
+  .kanban-container {
+    margin: 0;
+    width: 95%;
+    margin-top: 3rem;
+  }
 
+  .board-column {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    width: 33%;
+    /* background-color: rgb(224, 121, 121); */
+    /* background: linear-gradient(0deg, rgba(135,208,224,1) 0%, rgba(166,223,241,1) 50%, rgba(136,119,221,1) 100%); */
+    /* background: linear-gradient(0deg, rgb(252, 187, 242) 0%, rgba(166,223,241,1) 50%, rgba(135,208,224,1) 100%); */
+    border-radius: inherit;
+  }
 
+  .board-column h3 {
+    font-size: 0.6rem;
+    padding: 0;
+    padding-bottom: 0.5rem;
+    margin: 0;
+    width: 100%;
+  }
+
+  .board-task {
+    width: 100%;
+  }
+
+  .kanban-modal-create {
+    font-size: clamp(1rem, 1vw, 1rem);
+    width: 90%;
+    padding: 0.5rem;
+  }
+
+  .kanban-modal-create input {
+    font-size: clamp(1rem, 1vw, 1rem);
+    min-width: 100%;
+  }
+
+  .kanban-modal-create textarea {
+    font-size: clamp(1rem, 1vw, 1rem);
+    width: 100%;
+  }
+
+  .kanban-modal-edit {
+    font-size: clamp(1rem, 1vw, 1rem);
+    width: 90%;
+    padding: 0.5rem;
+  }
+
+  .kanban-modal-edit input {
+    font-size: clamp(1rem, 1vw, 1rem);
+    min-width: 100%;
+  }
+
+  .kanban-modal-edit textarea {
+    font-size: clamp(1rem, 1vw, 1rem);
+    width: 100%;
+  }
 }

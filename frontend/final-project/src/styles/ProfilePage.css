@@ -4,7 +4,7 @@
   align-items: center;
   margin: 5rem auto;
   padding: 2rem;
-  width:clamp(20rem, -0.875rem + 40.333vw, 50rem);
+  width: clamp(35rem, -0.875rem + 40.333vw, 50rem);
   height: fit-content;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -14,13 +14,15 @@
     rgba(166, 223, 241, 0.9) 50%,
     rgba(135, 208, 224, 0.9) 100%
   );
-  font-size: clamp(0.6rem, -0.875rem + 2.333vw, 1.5rem);
+  font-size: clamp(0.6rem, -0.875rem + 2.333vw, 1.3rem);
 }
 .profile-container h1 {
-  font-size:clamp(1.3rem, -0.875rem + 3.333vw, 2rem)
+  font-size: clamp(1.3rem, -0.875rem + 3.333vw, 2rem);
 }
 
-
+.profile-container h4 {
+  font-size: clamp(0.9rem, 1.5vw, 1.5rem);
+}
 
 .profile-back-span {
   display: flex;
@@ -66,11 +68,40 @@
 .profile-input-container {
   margin: 2rem 0;
   padding: 2rem 2rem 1.5rem 2rem;
-  width: 50%;
+  width: 85%;
   border-radius: 5px;
   background-color: rgb(243, 243, 243);
 }
 
 .user-info {
   margin: 1rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  .profile-container {
+    margin-left: 15rem;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .profile-container {
+    width: 90%;
+    margin: 3rem 0;
+  }
+
+  .profile-input-container {
+    margin: 2rem 0;
+    padding: 2rem 2rem 1.5rem 2rem;
+    width: 100%;
+    border-radius: 5px;
+    background-color: rgb(243, 243, 243);
+  }
+
+  .profile-container h4 {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .profile-back-delete-btns:nth-child(1) {
+    margin-right: -2rem;
+  }
 }
