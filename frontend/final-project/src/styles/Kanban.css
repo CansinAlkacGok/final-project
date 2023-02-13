@@ -60,7 +60,7 @@
 .board-task h3 {
   font-weight: 600;
   font-size: clamp(1rem, 2vw, 1.2rem);
-padding-top: 0.5rem;
+  padding-top: 0.5rem;
   text-align: center;
 }
 
@@ -250,11 +250,8 @@ padding-top: 0.5rem;
 
   .board-column {
     margin: 0.5rem;
-    padding: 0.5rem;
+    padding: 0.3rem;
     width: 33%;
-    /* background-color: rgb(224, 121, 121); */
-    /* background: linear-gradient(0deg, rgba(135,208,224,1) 0%, rgba(166,223,241,1) 50%, rgba(136,119,221,1) 100%); */
-    /* background: linear-gradient(0deg, rgb(252, 187, 242) 0%, rgba(166,223,241,1) 50%, rgba(135,208,224,1) 100%); */
     border-radius: inherit;
   }
 
@@ -271,7 +268,7 @@ padding-top: 0.5rem;
   }
 
   .kanban-modal-create {
-    font-size: clamp(1rem, 1vw, 1rem);
+    font-size: clamp(0.5rem, 1vw, 1rem);
     width: 90%;
     padding: 0.5rem;
   }
@@ -287,7 +284,7 @@ padding-top: 0.5rem;
   }
 
   .kanban-modal-edit {
-    font-size: clamp(1rem, 1vw, 1rem);
+    font-size: clamp(0.5rem, 1vw, 1rem);
     width: 90%;
     padding: 0.5rem;
   }

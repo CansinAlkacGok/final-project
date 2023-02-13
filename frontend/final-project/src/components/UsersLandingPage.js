@@ -9,7 +9,8 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 import brandLogo from "./brandLogo.png";
-import brandLogoBlack from "./brandLogoBlack.png";
+import brandLogo2 from "./brandLogo2.png";
+
 // Font Awesome Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -125,8 +126,8 @@ export default function UsersLandingPage() {
               <img
                 classname="brand-logo"
                 alt=""
-                src={brandLogo}
-                style={{ height: "155px"}}
+                src={brandLogo2}
+                style={{ height: "200px"}}
               ></img>{" "}
             </NavLink>{" "}
             </div>
