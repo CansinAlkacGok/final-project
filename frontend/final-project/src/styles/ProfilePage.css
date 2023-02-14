@@ -30,13 +30,15 @@
 }
 
 .profile-back-delete-btns {
-  background-color: rgb(64, 23, 227);
-  width: fit-content;
-  font-weight: 600;
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-clamp);
   border-radius: 5px;
   border: none;
-  padding: 0.3rem 0.5rem;
-  color: rgb(239, 237, 237);
+  box-shadow: 20px 20px 60px rgba(194, 249, 255, 0.2),
+    -20px -20px 60px rgba(194, 249, 255, 0.3);
+  font-weight: bolder;
+  background-color: rgb(148, 65, 166);
+  color: rgb(235, 233, 233);
 }
 
 .profile-back-delete-btns:hover {
@@ -109,6 +111,6 @@
   }
 
   .profile-back-delete-btns:nth-child(1) {
-    margin-right: -2rem;
+    margin-right: -1.5rem;
   }
 }
