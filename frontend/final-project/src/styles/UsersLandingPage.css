@@ -12,12 +12,10 @@ html {
 :root {
   --main-bg-color: rgb(243, 243, 243);
   --secondary-color: rgb(166, 223, 241);
-  --multicolor: linear-gradient(
-    0deg,
-    rgb(249, 224, 245) 0%,
-    rgba(166, 223, 241, 1) 50%,
-    rgba(135, 208, 224, 0.4) 100%
-  );
+  --multicolor: linear-gradient(0deg,
+      rgb(249, 224, 245) 0%,
+      rgba(166, 223, 241, 1) 50%,
+      rgba(135, 208, 224, 0.4) 100%);
 }
 
 
@@ -88,10 +86,12 @@ html {
     transform: scale(1);
     opacity: 1;
   }
+
   50% {
     transform: scale(0.75);
     opacity: 0.25;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
@@ -103,6 +103,7 @@ html {
   font-size: 2rem;
   padding: 1rem;
 }
+
 .teal2 {
   background-color: #42aba5;
   font-size: 2.5rem;
@@ -114,6 +115,7 @@ html {
   padding: 1rem;
   font-size: 5rem;
 }
+
 .button {
   font-size: clamp(0.6rem, -0.875rem + 3vw, 1rem);
   width: fit-content;
@@ -135,12 +137,10 @@ body {
   height: 10vh;
   /* height: fit-content; */
   width: 100%;
-  background: linear-gradient(
-    0deg,
-    rgb(243, 243, 243) 0%,
-    rgba(166, 223, 241, 1) 70%,
-    rgba(166, 223, 241, 1) 100%
-  );
+  background: linear-gradient(0deg,
+      rgb(243, 243, 243) 0%,
+      rgba(166, 223, 241, 1) 70%,
+      rgba(166, 223, 241, 1) 100%);
   opacity: 0.99;
 }
 
@@ -157,11 +157,9 @@ body {
   min-width: fit-content;
   padding: 1.5rem;
   height: 100vh;
-  background: linear-gradient(
-    0deg,
-    rgb(163, 220, 233) 0%,
-    rgb(243, 243, 243) 100%
-  );
+  background: linear-gradient(0deg,
+      rgb(163, 220, 233) 0%,
+      rgb(243, 243, 243) 100%);
   text-align: center;
 }
 
@@ -209,6 +207,8 @@ body {
 @media only screen and (max-width: 1200px) {
   .navigation {
     padding: 1rem;
+  }
+}
 
 @media (max-width: 1400px) {
   .homePageContainer {
@@ -219,7 +219,7 @@ body {
   .navigationLinks {
     width: 100%;
 
-  /*  padding-right: 0; */
+    /*  padding-right: 0; */
 
     height: auto;
     display: flex;
