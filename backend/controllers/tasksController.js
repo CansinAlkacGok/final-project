@@ -50,7 +50,7 @@ export const createNewTask = async (req,res,next) => {
 
       //  const updatedUser = await UsersCollection.findByIdAndUpdate(req.user._id, {$push: {tasks: task, kanban: req.body.kanban && kanban._id}}, {new: true}).populate("tasks")
       console.log(task)
-      const updatedUser= await UsersCollection.findById(req.user._id).populate("tasks").populate("kanban")
+      const updatedUser= await UsersCollection.findById(req.user._id).populate("kanban").populate("tasks").populate("notes")
       updatedUser.tasks.push(task)
       updatedUser.kanban.push(kanban._id)
       await updatedUser.save();
@@ -123,7 +123,7 @@ export const deleteTask = async (req,res,next) => {
 
             const deletedTask = await TasksCollection.deleteOne({_id: task._id})
 
-            const updatedUser = await UsersCollection.findByIdAndUpdate(req.user._id, {$pull: {tasks: id}}, {new:true}).populate("tasks")
+            const updatedUser = await UsersCollection.findByIdAndUpdate(req.user._id, {$pull: {tasks: id}}, {new:true}).populate("kanban").populate("tasks").populate("notes")
 
             const foundKanban = await KanbanCollection.findOneAndDelete({toDoTaskId: id})
 
@@ -148,7 +148,7 @@ export const deleteCompletedTask = async (req,res,next) => {
 
             const deletedTask = await TasksCollection.deleteOne({_id: task._id})
 
-            const updatedUser = await UsersCollection.findByIdAndUpdate(req.user._id, {$pull: {tasks: id}}, {new:true}).populate({path:"tasks"})
+            const updatedUser = await UsersCollection.findByIdAndUpdate(req.user._id, {$pull: {tasks: id}}, {new:true}).populate("kanban").populate("tasks").populate("notes")
 
             res.json({success:true, data:updatedUser})
         }else{
