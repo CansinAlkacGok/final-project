@@ -11,7 +11,7 @@
 }
 
 .notesContainer {
-  margin: 0 0 5rem 20rem;
+  margin: 0 0 5rem 15rem;
   width: 80%;
 }
 
@@ -33,14 +33,12 @@
 .noteTag {
   text-align: center;
   width: 5rem;
+  min-width: 180px;
+  max-height: 180px;
   border: 1px solid black;
   font-size: 1rem;
   padding: 1rem 2rem;
   margin: 0 1rem 0 0;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-width: 150px;
   border-radius: 16px;
 }
 .overflow-ellipsis {
@@ -61,17 +59,18 @@
 }
 
 .modalHealth {
-  width: 25rem;
-  background-color: #66d2d6;
+  width: 20rem;
+  background-color: rgba(82, 219, 212, 0.5);
   text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 16px;
 }
 .modalBusiness {
-  width: 25rem;
-  background-color: #e56997;
+  width: 20rem;
+  background-color: rgba(237, 160, 211, 0.7);
   text-align: center;
   display: flex;
   align-items: center;
@@ -79,7 +78,7 @@
   border-radius: 16px;
 }
 .modalInspirations {
-  width: 25rem;
+  width: 20rem;
   background-color: #fbc740;
   text-align: center;
   display: flex;
@@ -89,8 +88,8 @@
 }
 
 .modalPersonal {
-  width: 25rem;
-  background-color: #bd97cb;
+  width: 20rem;
+  background-color: rgba(123, 212, 251, 0.5);
   text-align: center;
   display: flex;
   align-items: center;
@@ -113,7 +112,7 @@
 }
 
 .notesTextarea {
-  width: 10rem;
+  width: 15rem;
   padding: 3rem;
   margin: 1rem;
   border-radius: 16px;
@@ -142,7 +141,13 @@
 }
 
 .notesButton:hover {
-  background-color: #eff1db;
+  background: rgb(131, 58, 180);
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 0.4) 0%,
+    rgba(253, 29, 29, 0.4) 50%,
+    rgba(252, 176, 69, 0.4) 100%
+  );
 }
 
 .backButton {
@@ -155,6 +160,7 @@
 .singleNoteContainer {
   width: 50vw;
   padding: 1rem 3rem;
+  margin-top: 5rem;
   word-wrap: break-word;
 }
 
@@ -168,11 +174,11 @@
 }
 
 .health {
-  background-color: #66d2d6;
+  background-color: rgba(82, 219, 212, 0.5);
 }
 
 .personal {
-  background-color: #bd97cb;
+  background-color: rgba(123, 212, 251, 0.5);
 }
 
 .inspirations {
@@ -180,31 +186,78 @@
 }
 
 .business {
-  background-color: #e56997;
+  background-color: rgba(237, 160, 211, 0.7);
 }
 
 @media (max-width: 1024px) {
-  .notesSection {
+  .notesContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 1rem;
-    margin: 1rem;
+    grid-template: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .notesSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
   }
   .notesTags {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .noteTag {
+    text-align: center;
+    width: 5rem;
+    min-width: 180px;
+    max-height: 180px;
+    border: 1px solid black;
+    font-size: 1rem;
+
+    margin: 0.5rem 0;
+    border-radius: 16px;
+  }
+
+  .notesButton {
+    background-color: #ddd;
+    border: none;
+    color: black;
+    /*   padding: 10px 20px; */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /*   margin: 15px; */
+    cursor: pointer;
+    border-radius: 16px;
   }
 }
-
+/* 
 @media (max-width: 550px) {
   .notesSection {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 1rem;
-    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
   }
   .notesTags {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
   }
-}
+} */
