@@ -213,7 +213,7 @@ export default function Kanban() {
         <div>
           <button onClick={handleAdd} className="add-task-btn">
             {" "}
-            {plusIcon} add Task
+            {plusIcon} Add Task
           </button>
           {showModalCreate && (
             <div className="kanban-modal-create">
