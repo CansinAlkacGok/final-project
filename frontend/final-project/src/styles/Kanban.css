@@ -81,6 +81,7 @@
   padding: 0.3rem;
   margin: 0.4rem;
   text-align: center;
+  word-wrap: break-word;
 }
 
 .board-task:hover {
