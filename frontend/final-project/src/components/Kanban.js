@@ -59,15 +59,12 @@ export default function Kanban() {
 
   //  ---- Edit Task ----
   const handleEdit = (task) => {
-
     setShowModalCreate(false);
     setEditTask(task);
     setShowModal(true);
   };
 
   const handleSave = async () => {
-
-
     try {
       const response = await fetch(`/kanban/${editTask._id}`, {
         method: "PATCH",
@@ -78,10 +75,9 @@ export default function Kanban() {
         body: JSON.stringify(editTask),
       });
       const result = await response.json();
-      
+
       setUser((prevState) => {
         const updatedKanban = prevState.kanban.map((task) => {
-          
           if (task._id === result.data._id) {
             return result.data;
           }
@@ -98,7 +94,6 @@ export default function Kanban() {
   // ---- Filter through all the Kanban Tasks and sort them according to status (do, doing, done)
 
   useEffect(() => {
-    
     const filteredTasks = user.kanban.reduce(
       (acc, task) => {
         if (task.status === "do") {
@@ -120,7 +115,6 @@ export default function Kanban() {
 
   // ---- Delete Task ----
   const handleDelete = (taskId) => {
-
     fetch(`/kanban/${taskId}`, {
       method: "DELETE",
       headers: {
@@ -144,12 +138,13 @@ export default function Kanban() {
   // ---- drag and drop ----
   const handleDrag = (e, task) => {
     e.dataTransfer.setData("task", JSON.stringify(task));
-
   };
 
   const handleDrop = (e, status) => {
     let task = JSON.parse(e.dataTransfer.getData("task"));
     task.status = status;
+
+    console.log(task)
 
 
     fetch(`/kanban/${task._id}`, {
@@ -207,8 +202,8 @@ export default function Kanban() {
               />
 
               <div>
-                <button onClick={handleSave}>Save</button>
                 <button onClick={() => setShowModal(false)}>Cancel</button>
+                <button onClick={handleSave}>Save</button>
               </div>
             </div>
           </>
@@ -258,7 +253,7 @@ export default function Kanban() {
             onDrop={(e) => handleDrop(e, "do")}
             onDragOver={(e) => e.preventDefault()}
           >
-            <h2>To Do</h2>
+            <h3 className="kanban-column-header">To Do</h3>
             {doArray
               .filter((task) => task.status === "do")
               .map((task) => (
@@ -287,7 +282,7 @@ export default function Kanban() {
             onDrop={(e) => handleDrop(e, "doing")}
             onDragOver={(e) => e.preventDefault()}
           >
-            <h2>In Progress</h2>
+            <h3 className="kanban-column-header">In Progress</h3>
             {doingArray
               .filter((task) => task.status === "doing")
               .map((task) => (
@@ -315,7 +310,7 @@ export default function Kanban() {
             onDrop={(e) => handleDrop(e, "done")}
             onDragOver={(e) => e.preventDefault()}
           >
-            <h2>Done</h2>
+            <h3 className="kanban-column-header">Done</h3>
             {doneArray
               .filter((task) => task.status === "done")
               .map((task) => (

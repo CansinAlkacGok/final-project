@@ -12,13 +12,12 @@ html {
 :root {
   --main-bg-color: rgb(243, 243, 243);
   --secondary-color: rgb(166, 223, 241);
-  --multicolor: linear-gradient(
-    0deg,
-    rgb(249, 224, 245) 0%,
-    rgba(166, 223, 241, 1) 50%,
-    rgba(135, 208, 224, 0.4) 100%
-  );
+  --multicolor: linear-gradient(0deg,
+      rgb(249, 224, 245) 0%,
+      rgba(166, 223, 241, 1) 50%,
+      rgba(135, 208, 224, 0.4) 100%);
 }
+
 
 .homePageContainer {
   height: 100vh;
@@ -87,10 +86,12 @@ html {
     transform: scale(1);
     opacity: 1;
   }
+
   50% {
     transform: scale(0.75);
     opacity: 0.25;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
@@ -102,6 +103,7 @@ html {
   font-size: 2rem;
   padding: 1rem;
 }
+
 .teal2 {
   background-color: #42aba5;
   font-size: 2.5rem;
@@ -113,6 +115,7 @@ html {
   padding: 1rem;
   font-size: 5rem;
 }
+
 .button {
   font-size: clamp(0.6rem, -0.875rem + 3vw, 1rem);
   width: fit-content;
@@ -132,27 +135,36 @@ body {
 
 .header {
   height: 10vh;
+  /* height: fit-content; */
   width: 100%;
-  background: linear-gradient(
-    0deg,
-    rgb(243, 243, 243) 0%,
-    rgba(166, 223, 241, 1) 70%,
-    rgba(166, 223, 241, 1) 100%
-  );
-  opacity: 0.9;
+  background: linear-gradient(0deg,
+      rgb(243, 243, 243) 0%,
+      rgba(166, 223, 241, 1) 70%,
+      rgba(166, 223, 241, 1) 100%);
+  opacity: 0.99;
+}
+
+#header-logo {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 2rem;
 }
 
 .navigation {
   position: fixed;
   width: 10vw;
+  min-width: fit-content;
   padding: 1.5rem;
   height: 100vh;
-  background: linear-gradient(
-    0deg,
-    rgb(163, 220, 233) 0%,
-    rgb(243, 243, 243) 100%
-  );
+  background: linear-gradient(0deg,
+      rgb(163, 220, 233) 0%,
+      rgb(243, 243, 243) 100%);
   text-align: center;
+}
+
+.burger-menu {
+  display: none;
 }
 
 .navlinks {
@@ -173,7 +185,7 @@ body {
   text-decoration: none;
   color: black;
   padding: 0.3rem 1rem;
-  font-size: clamp(0.5rem, 1vw, 2rem);
+  font-size: clamp(1rem, 1vw, 2rem);
   font-weight: 600;
 }
 
@@ -185,6 +197,19 @@ body {
   font-size: 1.3rem;
 }
 
+
+@media only screen and (max-width: 2400px) {
+  .calendar {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .navigation {
+    padding: 1rem;
+  }
+}
+
 @media (max-width: 1400px) {
   .homePageContainer {
     background-color: rgba(166, 223, 241, 0.9);
@@ -193,6 +218,9 @@ body {
 
   .navigationLinks {
     width: 100%;
+
+    /*  padding-right: 0; */
+
     height: auto;
     display: flex;
     flex-direction: column;
@@ -225,5 +253,48 @@ body {
 
   .startButton {
     width: 10rem;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .header {
+    min-height: 15vh;
+  }
+
+  #header-logo {
+    display: none;
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  .burger-menu {
+    height: fit-content;
+    width: 100%;
+    background-color: rgb(243, 243, 243);
+    border-radius: 0 0 5px 5px;
+    padding-bottom: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 2px;
+    text-align: center;
+  }
+
+  .burger-navlink {
+    text-decoration: none;
+    color: black;
+    padding: 0 2rem;
+  }
+
+  .burger-navlink a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .burger-menu {
+    display: block;
+  }
+
+  .outlet-container {
+    width: 100%;
   }
 }
