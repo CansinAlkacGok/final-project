@@ -5,6 +5,9 @@ import { GrEdit } from "react-icons/gr";
 import { useContext } from "react";
 import MyContext from "../context/MyContext";
 import toast, { Toaster } from "react-hot-toast";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function Notes() {
   const { user, setUser } = useContext(MyContext);
@@ -14,9 +17,12 @@ export default function Notes() {
   const [showModalPersonal, setShowModalPersonal] = useState(false);
   const [showModalInspirations, setShowModalInspirations] = useState(false);
 
+
+  const editIcon = <FontAwesomeIcon icon={faPenToSquare} />;
+
   // GET
 
- /*  const getAllNotes = () => {
+  /*  const getAllNotes = () => {
     fetch(`/notes`, {
       method: "GET",
       headers: { token: localStorage.getItem("token") },
@@ -54,8 +60,8 @@ export default function Notes() {
       .then((result) => {
         if (result.success) {
           toast.success("New note created");
-     /*      setNotes([...notes, result.note]); */
-          setUser(result.data)
+          /*      setNotes([...notes, result.note]); */
+          setUser(result.data);
           e.target.reset();
           setShowModalHealth(false);
         } else {
@@ -81,7 +87,7 @@ export default function Notes() {
       .then((result) => {
         if (result.success) {
           toast.success("New note created");
-          setUser(result.data)
+          setUser(result.data);
           e.target.reset();
           setShowModalBusiness(false);
         } else {
@@ -106,7 +112,7 @@ export default function Notes() {
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
-          setUser(result.data)
+          setUser(result.data);
           e.target.reset();
           setShowModalInspirations(false);
         } else {
@@ -132,7 +138,7 @@ export default function Notes() {
       .then((result) => {
         if (result.success) {
           toast.success("New note created");
-          setUser(result.data)
+          setUser(result.data);
           e.target.reset();
           setShowModalPersonal(false);
         } else {
@@ -144,30 +150,35 @@ export default function Notes() {
   return (
     <div className="notesComponent">
       <Toaster position="top-center" />
-      <div className="notesContainer">        
+      <div className="notesContainer">
         <h3 className="notesH3">Health:</h3>
         <div className="notesSection">
           <div className="notesTags">
-
-            {user && user.notes.map((item) => {
-              return (
-                <section key={item._id}>
-                  {item.health.map((element) => {
-                    return (
-                      <div className="noteTag health" key={element.note}>
-                        <p className="noteTitle">{element.title}</p>
-                        <p className="overflow-ellipsis">{element.note}</p>
-                        <p className="noteLink">
-                          <Link to={`/home/notes/${item._id}`}>
-                            <GrEdit />{" "}
-                          </Link>
-                        </p>
-                      </div>
-                    );
-                  })}
-                </section>
-              );
-            })}
+            {user &&
+              user.notes.map((item) => {
+                return (
+                  <section key={item._id}>
+                    {item.health.map((element) => {
+                      return (
+                        <div className="noteTag health" key={element.note}>
+                          <p className="noteTitle overflow-ellipsis">
+                            {element.title}
+                          </p>
+                          <p className="overflow-ellipsis">{element.note}</p>
+                          <p className="noteLink">
+                            <Link to={`/home/notes/${item._id}`}>
+                              <button className="editing-buttons">
+                              {editIcon}
+                              </button>
+                        
+                            </Link>
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </section>
+                );
+              })}
           </div>
           <button
             className="notesButton"
@@ -210,25 +221,30 @@ export default function Notes() {
         <h3 className="notesH3">Business:</h3>
         <div className="notesSection">
           <div className="notesTags">
-            {user && user.notes.map((item) => {
-              return (
-                <section key={item._id}>
-                  {item.business.map((element) => {
-                    return (
-                      <div key={element.note} className="noteTag business">
-                        <p className="noteTitle">{element.title}</p>
-                        <p className="overflow-ellipsis">{element.note}</p>
-                        <p className="noteLink">
-                          <Link to={`/home/notes/${item._id}`}>
-                            <GrEdit />{" "}
-                          </Link>
-                        </p>
-                      </div>
-                    );
-                  })}
-                </section>
-              );
-            })}
+            {user &&
+              user.notes.map((item) => {
+                return (
+                  <section key={item._id}>
+                    {item.business.map((element) => {
+                      return (
+                        <div key={element.note} className="noteTag business">
+                          <p className="noteTitle overflow-ellipsis">
+                            {element.title}
+                          </p>
+                          <p className="overflow-ellipsis">{element.note}</p>
+                          <p className="noteLink">
+                            <Link to={`/home/notes/${item._id}`}>
+                            <button className="editing-buttons ">
+                              {editIcon}
+                              </button>
+                            </Link>
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </section>
+                );
+              })}
           </div>
           <button
             className="notesButton"
@@ -271,25 +287,33 @@ export default function Notes() {
         <h3 className="notesH3">Inspirations:</h3>
         <div className="notesSection">
           <div className="notesTags">
-            {user && user.notes.map((item) => {
-              return (
-                <section key={item._id}>
-                  {item.inspirations.map((element) => {
-                    return (
-                      <div key={element.note} className="noteTag inspirations">
-                        <p className="noteTitle">{element.title}</p>
-                        <p className="overflow-ellipsis">{element.note}</p>
-                        <p className="noteLink">
-                          <Link to={`/home/notes/${item._id}`}>
-                            <GrEdit />{" "}
-                          </Link>
-                        </p>
-                      </div>
-                    );
-                  })}
-                </section>
-              );
-            })}
+            {user &&
+              user.notes.map((item) => {
+                return (
+                  <section key={item._id}>
+                    {item.inspirations.map((element) => {
+                      return (
+                        <div
+                          key={element.note}
+                          className="noteTag inspirations"
+                        >
+                          <p className="noteTitle overflow-ellipsis">
+                            {element.title}
+                          </p>
+                          <p className="overflow-ellipsis">{element.note}</p>
+                          <p className="noteLink">
+                            <Link to={`/home/notes/${item._id}`}>
+                            <button className="editing-buttons ">
+                              {editIcon}
+                              </button>
+                            </Link>
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </section>
+                );
+              })}
           </div>
           <button
             className="notesButton"
@@ -332,25 +356,30 @@ export default function Notes() {
         <h3 className="notesH3">Personal:</h3>
         <div className="notesSection">
           <div className="notesTags">
-            {user && user.notes.map((item) => {
-              return (
-                <section key={item._id}>
-                  {item.personal.map((element) => {
-                    return (
-                      <div key={element.note} className="noteTag personal">
-                        <p className="noteTitle">{element.title}</p>
-                        <p className="overflow-ellipsis">{element.note}</p>
-                        <p className="noteLink">
-                          <Link to={`/home/notes/${item._id}`}>
-                            <GrEdit />{" "}
-                          </Link>
-                        </p>
-                      </div>
-                    );
-                  })}
-                </section>
-              );
-            })}
+            {user &&
+              user.notes.map((item) => {
+                return (
+                  <section key={item._id}>
+                    {item.personal.map((element) => {
+                      return (
+                        <div key={element.note} className="noteTag personal">
+                          <p className="noteTitle overflow-ellipsis">
+                            {element.title}
+                          </p>
+                          <p className="overflow-ellipsis">{element.note}</p>
+                          <p className="noteLink">
+                            <Link to={`/home/notes/${item._id}`}>
+                            <button className="editing-buttons ">
+                              {editIcon}
+                              </button>
+                            </Link>
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </section>
+                );
+              })}
           </div>
           <button
             className="notesButton"

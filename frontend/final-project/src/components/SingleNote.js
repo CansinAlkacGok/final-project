@@ -7,6 +7,9 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useContext } from "react";
 import MyContext from "../context/MyContext";
 import toast, { Toaster } from "react-hot-toast";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 export default function SingleHealthNote() {
   const navigate = useNavigate();
@@ -16,7 +19,8 @@ export default function SingleHealthNote() {
   const [singleInspirationsNote, setSingleInspirationsNote] = useState(null);
   const [singlePersonalNote, setSinglePersonalNote] = useState(null);
   const [editClicked, setEditClicked] = useState(false);
-
+  const deleteIcon = <FontAwesomeIcon icon={faTrash} />;
+  const editIcon = <FontAwesomeIcon icon={faPenToSquare} />;
   const { id } = useParams();
 
   useEffect(() => {
@@ -305,13 +309,13 @@ export default function SingleHealthNote() {
                 className="notesButton"
                 onClick={() => setEditClicked((current) => !current)}
               >
-                Edit
+                {editIcon}
               </button>
               <button
                 className="notesButton"
                 onClick={() => deleteHealthNote(id)}
               >
-                Delete
+                {deleteIcon}
               </button>
             </>
           )}
@@ -321,13 +325,13 @@ export default function SingleHealthNote() {
                 className="notesButton"
                 onClick={() => setEditClicked((current) => !current)}
               >
-                Edit
+               {editIcon}
               </button>
               <button
                 className="notesButton"
                 onClick={() => deleteBusinessNote(id)}
               >
-                Delete
+                 {deleteIcon}
               </button>
             </>
           )}
@@ -337,13 +341,13 @@ export default function SingleHealthNote() {
                 className="notesButton"
                 onClick={() => setEditClicked((current) => !current)}
               >
-                Edit
+              {editIcon}
               </button>
               <button
                 className="notesButton"
                 onClick={() => deleteInspirationsNote(id)}
               >
-                Delete
+                 {deleteIcon}
               </button>
             </>
           )}
@@ -353,13 +357,13 @@ export default function SingleHealthNote() {
                 className="notesButton"
                 onClick={() => setEditClicked((current) => !current)}
               >
-                Edit
+              {editIcon}
               </button>
               <button
                 className="notesButton"
                 onClick={() => deletePersonalNote(id)}
               >
-                Delete
+                 {deleteIcon}
               </button>
             </>
           )}
