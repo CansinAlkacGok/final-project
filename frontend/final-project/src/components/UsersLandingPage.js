@@ -8,8 +8,8 @@ import "../styles/UsersLandingPage.css";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
-import brandLogo from "./brandLogo.png";
-import brandLogo2 from "./brandLogo2.png";
+import brandLogo from "../assets/brandLogo.png";
+import brandLogo2 from "../assets/brandLogo2.png";
 
 // Font Awesome Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -2,7 +2,7 @@
   font-size: clamp(0.5rem, 1.3vw, 1.1rem);
   width: 70%;
   margin-left: 10rem;
-  margin-top: 3rem;
+  margin-top: 6rem;
   padding-bottom: 5rem;
 }
 
@@ -133,7 +133,7 @@
   border-radius: 5px;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  min-width: 40%;
+  min-width: 60%;
   font-size: clamp(1rem, 1.3rem, 2rem);
   margin: 0.5rem;
 }
@@ -142,7 +142,7 @@
   border-radius: 5px;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  width: 40%;
+  width: 60%;
   font-size: clamp(1rem, 1.3rem, 2rem);
   margin: 0.5rem;
 }
@@ -228,6 +228,9 @@
   font-weight: 600;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+.kanban-modal-create h2{
+  font-size: clamp(1rem, 2vw, 1.7rem);
+}
 
 .kanban-modal-create button:hover {
   background-color: rgb(22, 219, 154);
@@ -238,6 +241,12 @@
 @media only screen and (max-width: 1200px) {
   .kanban-container {
     margin-left: 10rem;
+    margin-top: 6rem;
+  }
+  .kanban-modal-create, .kanban-modal-edit {
+    font-size: clamp(0.5rem, 1vw, 1rem);
+    width: 70%;
+    padding: 0.5rem;
   }
 }
 
