@@ -17,7 +17,7 @@
 .add-button {
     margin-top: 2rem;
     margin-left: 1rem;
-    width: 10%;
+    width: 20%;
     padding: 0.6rem;
     border-radius: 0.6rem;
     border: none;
@@ -176,6 +176,8 @@
     background: linear-gradient(90deg, rgba(131, 58, 180, 0.4) 0%, rgba(253, 29, 29, 0.4) 50%, rgba(252, 176, 69, 0.4) 100%); */
     /*    box-shadow: 20px 20px 60px rgba(194,249,255,0.2) ,
         -20px -20px 60px rgba(194,249,255,0.3); */
+        font-size: 1.2rem;
+   
 }
 
 .task-list-container:hover {
@@ -259,14 +261,34 @@ span {
     }
 
     .add-button {
-        width: 20%;
+        width: 30%;
         font-size: 0.7rem;
+    }
+
+    .tasks-container h3 {
+        font-size: 1.2rem;
+    }
+
+    .editing-buttons-container{
+        justify-content: center;
+        gap: 0;
+    } 
+    .editing-buttons {
+        padding: 0rem;
+        margin: 0.3rem 0.2rem 0.2rem 0.4rem;
+        font-weight: bolder;
+        font-size: 1rem;
+    }
+    .task-list-container {
+        padding: 0.2rem;
+        margin: 0.5rem;
+        font-size: 0.6rem;
     }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 768px) {
     .container {
-        margin-left: 2rem;
+        margin-left: 5rem;
         width: 80%;
         font-size: 0.9rem;
     }
@@ -290,14 +312,36 @@ span {
     }
 
     .add-button {
-        width: 20%;
+        width: 30%;
         font-size: 0.8rem;
     }
+
+    .tasks-container h3 {
+        font-size: 1.3rem;
+    }
+
+    .editing-buttons-container{
+        justify-content: center;
+        gap: 0;
+    } 
+
+    .editing-buttons {
+        padding: 0rem;
+        margin: 0.3rem 0.2rem 0.2rem 0.4rem;
+        font-weight: bolder;
+        font-size: 1.1rem;
+    }
+    .task-list-container {
+        padding: 0.2rem;
+        margin: 0.5rem;
+        font-size: 0.8rem;
+    }
+   
 }
 
 @media only screen and (min-width: 769px) and (max-width: 992px) {
     .container {
-        margin-left: 2rem;
+        margin-left: 10rem;
         width: 70%;
         font-size: 1rem;
     }
@@ -323,5 +367,8 @@ span {
     .add-button {
         width: 20%;
         font-size: 0.8rem;
+    }
+    .task-list-container {
+        font-size: 1rem;
     }
 }
