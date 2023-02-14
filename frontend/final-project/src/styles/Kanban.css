@@ -1,7 +1,8 @@
 .kanban-container {
-  font-size: clamp(0.5rem, 1vw, 1rem);
+  font-size: clamp(0.5rem, 1.3vw, 1.1rem);
   width: 70%;
-  margin-top: 3rem;
+  margin-left: 10rem;
+  margin-top: 6rem;
   padding-bottom: 5rem;
 }
 
@@ -20,6 +21,7 @@
 }
 
 .kanban-form button {
+  font-size: clamp(0.5rem, 1vw, 1rem);
   font-weight: 600;
   border-radius: 5px;
   border: none;
@@ -48,8 +50,17 @@
   );
 }
 
-.board-container h2 {
+.kanban-column-header {
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  font-weight: 600;
+  text-align: center;
   padding: 1rem 0;
+}
+
+.board-task h3 {
+  font-weight: 600;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  padding-top: 0.5rem;
   text-align: center;
 }
 
@@ -122,7 +133,7 @@
   border-radius: 5px;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  min-width: 40%;
+  min-width: 60%;
   font-size: clamp(1rem, 1.3rem, 2rem);
   margin: 0.5rem;
 }
@@ -131,7 +142,7 @@
   border-radius: 5px;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  width: 40%;
+  width: 60%;
   font-size: clamp(1rem, 1.3rem, 2rem);
   margin: 0.5rem;
 }
@@ -217,6 +228,9 @@
   font-weight: 600;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+.kanban-modal-create h2{
+  font-size: clamp(1rem, 2vw, 1.7rem);
+}
 
 .kanban-modal-create button:hover {
   background-color: rgb(22, 219, 154);
@@ -224,9 +238,73 @@
   cursor: pointer;
 }
 
-
 @media only screen and (max-width: 1200px) {
+  .kanban-container {
+    margin-left: 10rem;
+    margin-top: 6rem;
+  }
+  .kanban-modal-create, .kanban-modal-edit {
+    font-size: clamp(0.5rem, 1vw, 1rem);
+    width: 70%;
+    padding: 0.5rem;
+  }
+}
 
+@media only screen and (max-width: 800px) {
+  .kanban-container {
+    margin: 0;
+    width: 95%;
+    margin-top: 3rem;
+  }
 
+  .board-column {
+    margin: 0.5rem;
+    padding: 0.3rem;
+    width: 33%;
+    border-radius: inherit;
+  }
 
+  .board-column h3 {
+    font-size: 0.6rem;
+    padding: 0;
+    padding-bottom: 0.5rem;
+    margin: 0;
+    width: 100%;
+  }
+
+  .board-task {
+    width: 100%;
+  }
+
+  .kanban-modal-create {
+    font-size: clamp(0.5rem, 1vw, 1rem);
+    width: 90%;
+    padding: 0.5rem;
+  }
+
+  .kanban-modal-create input {
+    font-size: clamp(1rem, 1vw, 1rem);
+    min-width: 100%;
+  }
+
+  .kanban-modal-create textarea {
+    font-size: clamp(1rem, 1vw, 1rem);
+    width: 100%;
+  }
+
+  .kanban-modal-edit {
+    font-size: clamp(0.5rem, 1vw, 1rem);
+    width: 90%;
+    padding: 0.5rem;
+  }
+
+  .kanban-modal-edit input {
+    font-size: clamp(1rem, 1vw, 1rem);
+    min-width: 100%;
+  }
+
+  .kanban-modal-edit textarea {
+    font-size: clamp(1rem, 1vw, 1rem);
+    width: 100%;
+  }
 }

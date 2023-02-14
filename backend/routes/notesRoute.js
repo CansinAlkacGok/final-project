@@ -1,49 +1,50 @@
 import express from 'express';
 import {getAllNotes, getAllHealthNotes,getAllPersonalNotes,getAllBusinessNotes,getAllInspirationsNotes, createHealthNotes, createPersonalNotes, createBusinessNotes, createInspirationsNotes, getSingleHealthNote, getSinglePersonalNote, getSingleBusinessNote, getSingleInspirationsNote, updateHealthNote, updatePersonalNote, updateBusinessNote, updateInspirationsNote, deleteHealthNote, deletePersonalNote, deleteBusinessNote, deleteInspirationsNote } from '../controllers/notesController.js'
+import verifyToken from '../middlewares/verification.js';
 
 const route = express.Router();
 
-route.get("/", getAllNotes)
+route.get("/", verifyToken, getAllNotes)
 
-route.get("/health", getAllHealthNotes);
+route.get("/health", verifyToken, getAllHealthNotes);
 
-route.get("/personal", getAllPersonalNotes);
+route.get("/personal", verifyToken, getAllPersonalNotes);
 
-route.get("/business", getAllBusinessNotes);
+route.get("/business", verifyToken, getAllBusinessNotes);
 
-route.get("/inspirations", getAllInspirationsNotes);
+route.get("/inspirations", verifyToken, getAllInspirationsNotes);
 
-route.post("/health", createHealthNotes);
+route.post("/health", verifyToken, createHealthNotes);
 
-route.post("/personal", createPersonalNotes);
+route.post("/personal", verifyToken, createPersonalNotes);
 
-route.post("/business", createBusinessNotes);
+route.post("/business", verifyToken, createBusinessNotes);
 
-route.post("/inspirations", createInspirationsNotes);
+route.post("/inspirations", verifyToken, createInspirationsNotes);
 
-route.get("/health/:id", getSingleHealthNote);
+route.get("/health/:id", verifyToken, getSingleHealthNote);
 
-route.get("/personal/:id", getSinglePersonalNote);
+route.get("/personal/:id", verifyToken, getSinglePersonalNote);
 
-route.get("/business/:id", getSingleBusinessNote);
+route.get("/business/:id", verifyToken, getSingleBusinessNote);
 
-route.get("/inspirations/:id", getSingleInspirationsNote);
+route.get("/inspirations/:id", verifyToken, getSingleInspirationsNote);
 
-route.patch("/health/:id", updateHealthNote);
+route.patch("/health/:id", verifyToken, updateHealthNote);
 
-route.patch("/personal/:id", updatePersonalNote);
+route.patch("/personal/:id", verifyToken, updatePersonalNote);
 
-route.patch("/business/:id", updateBusinessNote);
+route.patch("/business/:id", verifyToken, updateBusinessNote);
 
-route.patch("/inspirations/:id", updateInspirationsNote);
+route.patch("/inspirations/:id", verifyToken, updateInspirationsNote);
 
-route.delete("/health/:id", deleteHealthNote);
+route.delete("/health/:id", verifyToken, deleteHealthNote);
 
-route.delete("/personal/:id", deletePersonalNote);
+route.delete("/personal/:id", verifyToken, deletePersonalNote);
 
-route.delete("/business/:id", deleteBusinessNote);
+route.delete("/business/:id", verifyToken, deleteBusinessNote);
 
-route.delete("/inspirations/:id", deleteInspirationsNote);
+route.delete("/inspirations/:id", verifyToken, deleteInspirationsNote);
 
 
 export default route
