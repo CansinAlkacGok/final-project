@@ -1,5 +1,6 @@
 import KanbanCollection from "../models/kanbanSchema.js";
 import UsersCollection from "../models/userSchema.js";
+import TasksCollection from '../models/tasksSchema.js'
 
 export const getAllTasks = async (req, res, next) => {
   try {
@@ -70,11 +71,21 @@ export const getSingleToDo = async (req, res, next) => {
 };
 
 export const updateTask = async (req, res, next) => {
+  console.log("message")
   try {
     const id = req.params.id;
     const updatedTask = await KanbanCollection.findByIdAndUpdate(id, req.body, {
       new: true,
     });
+
+    console.log(updatedTask)
+    const foundTask = await TasksCollection.findById(updatedTask.toDoTaskId)
+   console.log(foundTask)
+        if(foundTask) {
+            foundTask.task = updatedTask.task
+            await foundTask.save()
+        }
+
     res.json({ success: true, data: updatedTask });
   } catch (err) {
     next(err);
@@ -98,6 +109,9 @@ export const deleteTask = async (req, res, next) => {
         { $pull: { existingTask: id } },
         { new: true }
       ).populate({ path: "kanban" });
+
+      const foundTask = await TasksCollection.findOneAndDelete({_id: existingTask.toDoTaskId})
+
 
       // console.log(updatedUser); // clg to check
 

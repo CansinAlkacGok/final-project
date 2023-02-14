@@ -1,7 +1,14 @@
 import React, { useState, useContext } from 'react';
 import MyContext from '../context/MyContext.js';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faSquareCheck } from '@fortawesome/free-regular-svg-icons';
 import "../styles/ToDoList.css"
 
+const deleteIcon = <FontAwesomeIcon icon={faTrash} />;
+const editIcon = <FontAwesomeIcon icon={faPenToSquare} />;
+const doneIcon = <FontAwesomeIcon icon={faSquareCheck} />
 
 export default function SingleToDo({ task, date }) {
 
@@ -9,13 +16,17 @@ export default function SingleToDo({ task, date }) {
 
     const { user, setUser } = useContext(MyContext)
 
+/* const editedDate= task.date.slice(0,10).split('-').reverse().join('/')
+console.log(editedDate) */
+
+
     const handleUpdate = (e) => {
 
         e.preventDefault()
 
         fetch(`/tasks/${task._id}`, {
             method: "PATCH",
-            body: JSON.stringify({ task: e.target.task.value, date: e.target.date.value === '' ? Date.now() : e.target.date.value }),
+            body: JSON.stringify({ task: e.target.task.value, date: e.target.date.value === '' ? Date.now() : e.target.date.value}),
             headers: { "Content-Type": "application/json", token: localStorage.getItem("token") }
         })
             .then(res => res.json())
@@ -89,13 +100,21 @@ export default function SingleToDo({ task, date }) {
 
 
     return (
-        <div>
+        <div className='task-list-container'>
 
             <li className='task-list' key={task._id}>{task.task}</li>
-            <span>{date.reverse()}</span>
-            <button onClick={() => { setEditing(!editing) }} className='editing-buttons'>Edit</button>
-            <button onClick={handleDelete} className='editing-buttons'>Delete</button>
-            <button onClick={handleDone} className='editing-buttons'>Done</button>
+            <span>{date}</span>
+            <div className='editing-buttons-container'>
+                <div>
+                    <button onClick={() => { setEditing(!editing) }} className='editing-buttons'>{editIcon}</button>
+                    <button onClick={handleDelete}
+                        className='editing-buttons'>{deleteIcon}</button>
+                </div>
+                <div>
+                    <button onClick={handleDone} className='editing-buttons done-button'>{doneIcon}</button>
+                </div>
+
+            </div>
             <div>
                 {
                     editing && (
@@ -104,7 +123,7 @@ export default function SingleToDo({ task, date }) {
                             <input type="text" name="task" defaultValue={task.task}></input><br></br>
                             <label>Due Date: </label>
                             <input type="date" name="date"></input><br></br>
-                            <div>
+                            <div className='edit-form-buttons'>
                                 <button onClick={() => setEditing(!editing)}>Cancel</button>
                                 <button>Save</button>
                             </div>
