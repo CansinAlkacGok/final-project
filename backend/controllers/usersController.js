@@ -25,7 +25,7 @@ export const createNewUser = async (req, res, next) => {
 export const getSingleUser = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const singleUser = await UsersCollection.findById(id);
+    const singleUser = await UsersCollection.findById(id).populate("kanban").populate("tasks").populate("notes");
     res.json({ success: true, user: singleUser });
   } catch (err) {
     const error = new Error("Id doesn't exist");
