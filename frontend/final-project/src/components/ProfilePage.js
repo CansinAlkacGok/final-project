@@ -14,7 +14,7 @@ export default function Profile() {
   const logout = () => {
     localStorage.removeItem("token");
     setUser(null);
-    navigate("/login");
+    navigate("/");
   };
 
   const editProfile = () => {

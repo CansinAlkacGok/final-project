@@ -144,6 +144,9 @@ export default function Kanban() {
     let task = JSON.parse(e.dataTransfer.getData("task"));
     task.status = status;
 
+    console.log(task)
+
+
     fetch(`/kanban/${task._id}`, {
       method: "PATCH",
       headers: {

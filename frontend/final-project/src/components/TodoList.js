@@ -4,9 +4,12 @@ import toast, { Toaster } from 'react-hot-toast'
 import SingleToDo from './SingleToDo.js';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import "../styles/ToDoList.css"
 
-const plusIcon = <FontAwesomeIcon icon={faCirclePlus} />
+const plusIcon = <FontAwesomeIcon icon={faCirclePlus} />;
+const deleteIcon = <FontAwesomeIcon icon={faTrash} />;
+
 
 export default function TodoList() {
 
@@ -41,7 +44,7 @@ export default function TodoList() {
 
     setForm(!form)
   }
-  console.log(user, "cansin")
+
 
   const doneTask = user && user.tasks.filter(task => task.completed)
   const pendingTask = user && user.tasks.filter(task => !task.completed)
@@ -51,7 +54,7 @@ export default function TodoList() {
 
   return (
     <div className='container'>
-      <h2>To Do List</h2>
+      {/*     <h2>To Do List</h2> */}
       <button onClick={addTaskButton} className='add-button' >{plusIcon} Add Task</button>
       <div>
         {form && (
@@ -62,8 +65,8 @@ export default function TodoList() {
             <label>Due Date: </label>
             <input type="date" name="date"></input><br></br>
             <div className='checkbox'>
-              <input type="checkbox" name="kanban"></input>
-              <label>Add to Kanban Board</label>
+              <input type="checkbox" name="kanban" id='checkbox'></input>
+              <label for='checkbox'>Add to Kanban Board</label>
             </div>
             <div className='create-task-form-button'>
               <button onClick={addTaskButton}>Cancel</button>
@@ -77,21 +80,26 @@ export default function TodoList() {
         {
           user && (
             <div className='tasks-container'>
-              <div>
-                <h3>Tasks</h3>
+              <div className='tasks-container-children'>
+                <div className='title-border'>
+                  <h3>Tasks</h3>
+                </div>
                 <ul>
                   {pendingTask.map((task) => {
-                    console.log(task)
-                    const date = [(task.date).split('').splice(0, 4), "/", (task.date).split('').splice(5, 2), "/", (task.date).split('').splice(8, 2)]
-                    //console.log(date)
+                    //console.log(task.date)
+                    //const date = [(task.date).split('').splice(0, 4), "/", (task.date).split('').splice(5, 2), "/", (task.date).split('').splice(8, 2)]
+                    const date = task.date.slice(0,10).split('-').reverse().join('/')
+                    //console.log(date.flat())
                     return (
                       <SingleToDo task={task} date={date} />
                     )
                   })}
                 </ul>
               </div>
-              <div>
-                <h3>Done</h3>
+              <div className='tasks-container-children'>
+                <div className='title-border'>
+                  <h3>Done</h3>
+                </div>
                 <ul>
                   {doneTask.map((task) => {
                     console.log(task)
@@ -99,25 +107,27 @@ export default function TodoList() {
                     //console.log(date)
 
                     return (
-                      <div>
+                      <div className='task-list-container done-list-container'>
                         <li className='task-list' key={task._id}>{task.task}</li>
                         <span>{date.reverse()}</span>
-                        <button onClick={(e) => {
-                          e.preventDefault();
+                        <div className='done-button-container'>
+                          <button onClick={(e) => {
+                            e.preventDefault();
 
-                          fetch(`tasks/completed/${task._id}`, {
-                            method: "DELETE",
-                            headers: { token: localStorage.getItem("token") }
-                          })
-                            .then(res => res.json())
-                            .then(result => {
-                              setUser(prevTask => {
-                                const updated = prevTask.tasks.filter((singleTask) => singleTask._id !== task._id)
-                                return { ...prevTask, tasks: updated }
-                              })
-
+                            fetch(`tasks/completed/${task._id}`, {
+                              method: "DELETE",
+                              headers: { token: localStorage.getItem("token") }
                             })
-                        }} className='editing-buttons'>Delete</button>
+                              .then(res => res.json())
+                              .then(result => {
+                                setUser(prevTask => {
+                                  const updated = prevTask.tasks.filter((singleTask) => singleTask._id !== task._id)
+                                  return { ...prevTask, tasks: updated }
+                                })
+
+                              })
+                          }} className='editing-buttons'>{deleteIcon}</button>
+                        </div>
                       </div>
                     )
 

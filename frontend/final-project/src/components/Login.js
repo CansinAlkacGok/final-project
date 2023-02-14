@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import MyContext from "../context/MyContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import "../styles/Login.css";
 
 export default function Login() {
@@ -40,10 +40,6 @@ export default function Login() {
 
   return (
     <div className="login-page">
-      <div className="test">
-        <h1>ladida</h1>
-      </div>
-
       <div className="login-container">
         <h1>Login</h1>
         <Toaster position="top-center" />
@@ -62,8 +58,8 @@ export default function Login() {
             <button>Login</button>
           </span>
         </form>
+        Not registered yet? Head to <NavLink to="/users"> Register </NavLink>
       </div>
-
     </div>
   );
 }
