@@ -20,7 +20,7 @@ export const createNewTask = async (req, res, next) => {
       req.user._id,
       { $push: { kanban: task } },
       { new: true }
-    ).populate("kanban");
+    ).populate("kanban").populate("tasks").populate("notes");
 
     res.json({ success: true, data: updatedUser });
   } catch (err) {
@@ -108,7 +108,7 @@ export const deleteTask = async (req, res, next) => {
         req.user._id,
         { $pull: { existingTask: id } },
         { new: true }
-      ).populate({ path: "kanban" });
+      ).populate("kanban").populate("tasks").populate("notes");
 
       const foundTask = await TasksCollection.findOneAndDelete({_id: existingTask.toDoTaskId})
 

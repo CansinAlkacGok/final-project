@@ -24,6 +24,8 @@ app.use(morgan("dev"));
 
 app.use(express.json());
 
+app.use(express.static('./views/build'))
+
 app.use(express.urlencoded({extended:true}))
 
 app.use(fileUpload());
@@ -34,6 +36,9 @@ app.use((req,res,next)=> {
     next();
 })
 
+app.get('/', (req,res,next) => {
+    res.sendFile('./views/build/index.html', {root: '.'})
+})
 
 app.use("/users", usersRoute);
 
